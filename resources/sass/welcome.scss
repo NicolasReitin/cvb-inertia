@@ -1,4 +1,5 @@
-@import 'style.scss';
+@use 'style' as *;
+@use 'sass:map';
 
 //________________________________________________________________
 // _____________________________ Photo intro ____________________________
@@ -162,17 +163,17 @@
             position: absolute;
             bottom: -30px;
             right: -10px;
-            // Utilisation de map-get() pour récupérer les valeurs de $buttonGold
-            bottom: map-get($buttonGold, bottom);
-            right: map-get($buttonGold, right);
-            padding: map-get($buttonGold, padding);
-            background: map-get($buttonGold, background);
-            font-size: map-get($buttonGold, font-size);
-            font-weight: map-get($buttonGold, font-weight);
-            color: map-get($buttonGold, color);
-            border-radius: map-get($buttonGold, border-radius);
-            box-shadow: map-get($buttonGold, box-shadow);
-            transition: map-get($buttonGold, transition);        
+            // Utilisation de map.get() pour récupérer les valeurs de $buttonGold
+            bottom: map.get($buttonGold, bottom);
+            right: map.get($buttonGold, right);
+            padding: map.get($buttonGold, padding);
+            background: map.get($buttonGold, background);
+            font-size: map.get($buttonGold, font-size);
+            font-weight: map.get($buttonGold, font-weight);
+            color: map.get($buttonGold, color);
+            border-radius: map.get($buttonGold, border-radius);
+            box-shadow: map.get($buttonGold, box-shadow);
+            transition: map.get($buttonGold, transition);        
             &:hover{
                 // transform: scale(1.02);
                 background-color: $jauneHoverCVB;
@@ -221,16 +222,16 @@
         }
     }
     .button-post{
-        bottom: map-get($buttonGold, bottom);
-        right: map-get($buttonGold, right);
-        padding: map-get($buttonGold, padding);
-        background: map-get($buttonGold, background);
-        font-size: map-get($buttonGold, font-size);
-        font-weight: map-get($buttonGold, font-weight);
-        color: map-get($buttonGold, color);
-        border-radius: map-get($buttonGold, border-radius);
-        box-shadow: map-get($buttonGold, box-shadow);
-        transition: map-get($buttonGold, transition);
+        bottom: map.get($buttonGold, bottom);
+        right: map.get($buttonGold, right);
+        padding: map.get($buttonGold, padding);
+        background: map.get($buttonGold, background);
+        font-size: map.get($buttonGold, font-size);
+        font-weight: map.get($buttonGold, font-weight);
+        color: map.get($buttonGold, color);
+        border-radius: map.get($buttonGold, border-radius);
+        box-shadow: map.get($buttonGold, box-shadow);
+        transition: map.get($buttonGold, transition);
         position: relative;
         &:hover{
             // transform: scale(1.02);

@@ -1,4 +1,4 @@
-@import 'style.scss';
+@use 'style' as *;
 
 @mixin white-gradient {
 	background: linear-gradient(to right,  rgba(255,255,255,1) 20%,rgba(255,255,255,0) 100%);

@@ -1,16 +1,17 @@
-@import 'style.scss';
+@use 'style' as *;
+@use 'sass:map';
 
 .button-next-previous{
-    bottom: map-get($buttonGold, bottom);
-    right: map-get($buttonGold, right);
-    padding: map-get($buttonGold, padding);
-    background: map-get($buttonGold, background);
-    font-size: map-get($buttonGold, font-size);
-    font-weight: map-get($buttonGold, font-weight);
-    color: map-get($buttonGold, color);
-    border-radius: map-get($buttonGold, border-radius);
-    box-shadow: map-get($buttonGold, box-shadow);
-    transition: map-get($buttonGold, transition);
+    bottom: map.get($buttonGold, bottom);
+    right: map.get($buttonGold, right);
+    padding: map.get($buttonGold, padding);
+    background: map.get($buttonGold, background);
+    font-size: map.get($buttonGold, font-size);
+    font-weight: map.get($buttonGold, font-weight);
+    color: map.get($buttonGold, color);
+    border-radius: map.get($buttonGold, border-radius);
+    box-shadow: map.get($buttonGold, box-shadow);
+    transition: map.get($buttonGold, transition);
     &:hover{
         // transform: scale(1.02);
         background-color: $jauneHoverCVB;
