@@ -1,0 +1,72 @@
+$jauneCVB : #f1ac17;
+$jauneHoverCVB : #e09900;
+$rougeCVB : #b32c27;
+$bleuCVB : #111731;
+$whiteFondCVB : #F9F9F9;
+
+$fontTitle : Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
+$marginTitle : 10% 0 10% -10%;
+$sizeTitle : 48px;
+
+$sizeTitleMobile : 30px;
+
+//voir exemple dans actualité de welcome.jsx
+$buttonGold : (
+    // bottom: -30px,
+    // right: -10px,
+    padding: 5px,
+    background: $jauneCVB,
+    font-size: 18px,
+    font-weight: 900,
+    color: white,
+    border-radius: 5px,
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+    transition: transform 0.3s ease-in-out,
+);
+
+
+
+// ------------------ media queries ------------------- 
+
+// Device = Desktops
+@media (min-width: 1280px) {
+
+    // CSS
+
+}
+
+// Device = Laptops, Desktops
+@media (min-width: 1025px) and (max-width: 1279px) {
+
+    // CSS
+
+}
+
+// Device = Tablets, Ipads (portrait)
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+    // CSS
+}
+
+// Device = Low Resolution Tablets, Mobiles (Landscape)
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+    // CSS 
+    
+}
+
+// Device = Most of the Smartphones Mobiles (Portrait)
+@media (min-width: 481px) and (max-width: 767px) {
+  
+    // CSS 
+    
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+    // CSS 
+
+}
+
+
+

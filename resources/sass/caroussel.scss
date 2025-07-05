@@ -1,0 +1,93 @@
+@import 'style.scss';
+
+@mixin white-gradient {
+	background: linear-gradient(to right,  rgba(255,255,255,1) 20%,rgba(255,255,255,0) 100%);
+}
+
+$animationSpeed: 50s;
+
+// Animation
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	// 100% { transform: translateX(calc(-200px * 22))}
+    100% { transform: translateX(calc(-1 * 200px * var(--translation-multiplier))); }
+}
+
+
+// Styling
+.slider {
+	background: white;
+	box-shadow: 0 10px 20px -5px rgba(30, 30, 30, 1);
+	height: 200px;
+	margin: auto;
+	overflow:hidden;
+	position: relative;
+	width: 100%;
+	
+	&::before,
+	&::after {
+		@include white-gradient;
+		content: "";
+		height: 150px;
+		position: absolute;
+		width: 200px;
+		z-index: 2;
+	}
+	
+	&::after {
+		right: 0;
+		top: 0;
+		transform: rotateZ(180deg);
+	}
+
+	&::before {
+		left: 0;
+		top: 0;
+	}
+	
+	.slide-track {
+		animation: scroll $animationSpeed linear infinite;
+		display: flex;
+        gap: 50px;
+		width: calc(250px * var(--translation-multiplier));
+		&:hover{
+			animation-play-state:paused;
+		}
+	}
+
+	
+	.slide img{
+        margin-top: 50px;
+		max-height: 100px;
+		max-width: 200px;
+        object-fit: contain; /* Utilisez 'contain' pour que l'image soit entièrement visible à l'intérieur de son conteneur sans déformation */
+	}
+}
+
+//________________________________________________________________
+// ______________________ Media queries __________________________
+//________________________________________________________________
+
+/* Media queries pour appareils mobiles */
+@media (max-width: 480px) {
+	.slider {
+		height: 100px;		
+		&::before, &::after {
+			height: 0px;
+			width: 0px;
+		}		
+		
+		.slide-track {
+			gap: 20px;
+			width: calc(250px * var(--translation-multiplier));
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.slide img{
+			margin-top: 0px;
+			max-height: 95px;
+			max-width: 100px;
+		}
+	}
+}

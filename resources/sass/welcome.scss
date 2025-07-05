@@ -1,0 +1,392 @@
+@import 'style.scss';
+
+//________________________________________________________________
+// _____________________________ Photo intro ____________________________
+//________________________________________________________________
+
+.main-photo-cover{
+    background-size: cover;
+    img{
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+    }
+}
+
+//________________________________________________________________
+// _____________________________ Scores ____________________________
+//________________________________________________________________
+.scores{
+    margin: 20px auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    h2{
+        position: relative;
+        white-space: nowrap;
+        margin: 3% 0 3% -10%;
+        Font-family: $fontTitle;
+        font-size: $sizeTitle;
+        color: $bleuCVB;
+        font-weight: 900;
+        span{
+            color: $rougeCVB;
+        }
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: -5px; /* Ajustez cette valeur selon vos besoins */
+        left: 0;
+        width: 90%; /* Largeur de la barre égale à la largeur du titre */
+        height: 4px;
+        background: $rougeCVB;
+    }
+}
+
+
+
+//________________________________________________________________
+// _____________________________ Atualités ____________________________
+//________________________________________________________________
+.actualites::after {
+    content: '';
+    position: absolute;
+    top: 10%; /* Commence à 60% de la hauteur */
+    left: 50%;
+    transform: translateX(-50.5%); /* Recentre l'élément par rapport à son point de départ */
+    right: 0%;
+    width: 100vw; /* 100% de la largeur de la fenêtre */
+    height: 70%;
+    background-color: $bleuCVB;
+    z-index: -1; /* Assurez-vous que l'arrière-plan reste en arrière */
+}
+.actualites{
+    position: relative;
+    margin: 20px auto;
+    padding: 10px;
+    width: 80%;
+    h2{
+        position: relative;
+        white-space: nowrap;
+        margin: $marginTitle;
+        Font-family: $fontTitle;
+        font-size: $sizeTitle;
+        color: white;
+        font-weight: 900;
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: -5px; /* Ajustez cette valeur selon vos besoins */
+        left: 0;
+        width: 90%; /* Largeur de la barre égale à la largeur du titre */
+        height: 4px;
+        background: $rougeCVB;
+    }
+
+    .first-actu{
+        width: 58%;
+        margin-right: 5%;
+        min-width: 500px;
+        max-width: 700px;
+        height: 60%;
+        min-height: 500px;
+        background: rgb(255, 255, 255);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+        h3{
+            color: $bleuCVB;
+            font-size: 18px;
+            overflow: hidden;
+        }
+        p{
+            color: $jauneCVB;
+        }
+        img{
+            border-radius: 5px 5px 0 0;
+            border-bottom: solid 1px rgba(0, 0, 0, 0.199);
+            width: 100%;
+            height: 420px;
+            // object-fit: none;  géré par le javascript
+            object-position: center;          
+        }
+        //filtre image obscur
+        .filtre-img{
+            background-color: rgba(0,0,0,0.1);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+        transition: transform 0.3s ease-in-out;
+        &:hover{
+            transform: scale(1.01);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+    }
+    .others-actu{
+        position: relative;
+        width: 35%;
+        min-width: 450px;
+        // max-width: 600px;
+        height: 60%;
+        min-height: 370px;
+        white-space: nowrap;
+        .block-others-actus{
+            padding: 12px;
+            width: auto;
+            background: rgb(255, 255, 255);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            h3{
+                color: $bleuCVB;
+                font-size: 18px;
+                font-weight: 900;
+                overflow: hidden;
+            }
+            p{
+                color: $jauneCVB;
+            }
+            &:hover{
+                transform: scale(1.02);
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+            }
+        }
+        .all-actus {
+            position: absolute;
+            bottom: -30px;
+            right: -10px;
+            // Utilisation de map-get() pour récupérer les valeurs de $buttonGold
+            bottom: map-get($buttonGold, bottom);
+            right: map-get($buttonGold, right);
+            padding: map-get($buttonGold, padding);
+            background: map-get($buttonGold, background);
+            font-size: map-get($buttonGold, font-size);
+            font-weight: map-get($buttonGold, font-weight);
+            color: map-get($buttonGold, color);
+            border-radius: map-get($buttonGold, border-radius);
+            box-shadow: map-get($buttonGold, box-shadow);
+            transition: map-get($buttonGold, transition);        
+            &:hover{
+                // transform: scale(1.02);
+                background-color: $jauneHoverCVB;
+                box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            }
+        }
+        
+    }
+}
+
+
+//________________________________________________________________
+// _____________________________ Réseaux sociaux ____________________________
+//________________________________________________________________
+.reseaux{
+    position: relative;
+    margin: 20px auto;
+    width: 80%;
+    margin-top: 5%;    
+    h2{
+        position: relative;
+        margin: $marginTitle;
+        Font-family: $fontTitle;
+        font-size: $sizeTitle;
+        color: $bleuCVB;
+        font-weight: 900;
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: -5px; /* Ajustez cette valeur selon vos besoins */
+        left: 0;
+        width: 90%; /* Largeur de la barre égale à la largeur du titre */
+        height: 4px;
+        background: $rougeCVB;
+    }
+    img{
+        width: 60%;
+        max-width: 200px;
+        transition: all 0.3s ease;
+        position: relative;
+        &:hover{
+            // transform: scale(1.02);
+            left: 2px; /* Déplacement vers la droite de 5 pixels */
+            top: 2px; /* Déplacement vers le bas de 5 pixels */
+        }
+    }
+    .button-post{
+        bottom: map-get($buttonGold, bottom);
+        right: map-get($buttonGold, right);
+        padding: map-get($buttonGold, padding);
+        background: map-get($buttonGold, background);
+        font-size: map-get($buttonGold, font-size);
+        font-weight: map-get($buttonGold, font-weight);
+        color: map-get($buttonGold, color);
+        border-radius: map-get($buttonGold, border-radius);
+        box-shadow: map-get($buttonGold, box-shadow);
+        transition: map-get($buttonGold, transition);
+        position: relative;
+        &:hover{
+            // transform: scale(1.02);
+            left: 1px; /* Déplacement vers la droite de 5 pixels */
+            top: 1px; /* Déplacement vers le bas de 5 pixels */
+            background-color: $jauneHoverCVB;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+//________________________________________________________________
+// _____________________________ Partenaires ____________________________
+//________________________________________________________________
+.partenaires::after {
+    content: '';
+    position: absolute;
+    top: 10%; /* Commence à 60% de la hauteur */
+    left: 50%;
+    transform: translateX(-50.5%); /* Recentre l'élément par rapport à son point de départ */
+    right: 0%;
+    width: 100vw; /* 100% de la largeur de la fenêtre */
+    height: 120%;
+    background-color: $rougeCVB;
+    z-index: -1; /* Assurez-vous que l'arrière-plan reste en arrière */
+}
+.partenaires{
+    position: relative;
+    height: 500px;
+    margin: 20px auto;
+    width: 100%;
+    h2{
+        position: relative;
+        margin: 10% 0 5% 2%;
+        Font-family: $fontTitle;
+        font-size: $sizeTitle;
+        color: white;
+        font-weight: 900;
+        padding-top: 5%;
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: -5px; /* Ajustez cette valeur selon vos besoins */
+        left: 0;
+        width: 80%; /* Largeur de la barre égale à la largeur du titre */
+        height: 4px;
+        background: $bleuCVB;
+    }
+}
+
+//________________________________________________________________
+// ______________________ Media queries __________________________
+//________________________________________________________________
+
+/* Media queries pour appareils tablettes */
+@media (max-width: 1024px) {
+    
+}
+
+/* Media queries pour appareils mobiles */
+@media (max-width: 480px) {
+    // _____________________________ Photo intro ____________________________
+    .main-photo-cover{
+        img{
+            height: 25vh;
+        }
+    }
+    // _____________________________ Scores ____________________________
+    .scores{
+        width: 95%;
+        h2{
+            margin: 3% 0 3% 0%;
+            font-size: $sizeTitleMobile;
+        }    
+    }
+    // _____________________________ Atualités ____________________________
+    .actualites::after {
+        top: 2%; 
+        height: 100%;
+    }
+    .actualites{
+        margin: 0 auto;
+        width: 100%;
+        h2{
+            margin: 10% 0 10% 0%;;
+            font-size: $sizeTitleMobile;
+        }
+        .first-actu{
+            width: 100%;
+            margin: 0 auto;
+            min-width: 300px;
+            max-width: 480px;
+            min-height: 0px;
+            h3{
+                font-size: 18px;
+            }
+            img{
+                height: 300px;
+            }
+        }
+        .others-actu{
+            width: 100%;
+            min-width: 300px;
+            min-height: 0px;
+            margin-bottom: 20px;
+            .block-others-actus{
+                h3{
+                    font-size: 16px;
+                }
+                p{
+                    font-size: 14px;
+                }
+            }
+            .all-actus {
+                bottom: -25px;
+                right: -5px;
+                font-size: 14px; 
+            }
+            
+        }
+    }    
+    // _____________________________ Réseaux ____________________________
+
+    .reseaux{
+        margin: 0 auto;
+        width: 80%;
+        margin-top: 15%;
+        h2{
+            position: relative;
+            margin: $marginTitle;
+            Font-family: $fontTitle;
+            font-size: $sizeTitleMobile;
+            color: $bleuCVB;
+            font-weight: 900;
+        }
+        img{
+            width: 80%;
+            margin-top: 10%;
+        }
+        .button-post{
+            font-size: 16px;
+        }
+    }
+
+    // _____________________________ Partenaires ____________________________
+    .partenaires::after {
+        top: -10%; /* Commence à 60% de la hauteur */
+        height: 200%;
+    }
+    .partenaires{
+        height: 220px;
+        h2{
+            margin: 0 0 5% 2%;
+            font-size: $sizeTitleMobile;
+        }
+    }
+
+}
