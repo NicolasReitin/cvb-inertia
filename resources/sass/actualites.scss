@@ -14,7 +14,7 @@
     transition: map.get($buttonGold, transition);
     &:hover{
         // transform: scale(1.02);
-        background-color: $jauneHoverCVB;
+        background-color: $yellowHoverCVB;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     }
 }
@@ -49,7 +49,7 @@ section{
         margin: 3%;
         Font-family: $fontTitle;
         font-size: $sizeTitle;
-        color: $bleuCVB;
+        color: $blueCVB;
         font-weight: 900;
     }
     h1::after {
@@ -59,7 +59,7 @@ section{
         left: 0;
         width: 60%; /* Largeur de la barre égale à la largeur du titre */
         height: 4px;
-        background: $rougeCVB;
+        background: $redCVB;
     }
     //dans la page actualités
     .cards{
@@ -113,7 +113,7 @@ section{
             margin: 3% 10%;
             Font-family: $fontTitle;
             font-size: $sizeTitle;
-            color: $bleuCVB;
+            color: $blueCVB;
             font-weight: 900;
         }
         h1::after {
@@ -123,7 +123,7 @@ section{
             left: 0;
             width: 60%; /* Largeur de la barre égale à la largeur du titre */
             height: 4px;
-            background: $rougeCVB;
+            background: $redCVB;
         }
         .card-actu{
             margin: 5% auto;

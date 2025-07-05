@@ -28,10 +28,10 @@
         margin: 3% 0 3% -10%;
         Font-family: $fontTitle;
         font-size: $sizeTitle;
-        color: $bleuCVB;
+        color: $blueCVB;
         font-weight: 900;
         span{
-            color: $rougeCVB;
+            color: $redCVB;
         }
     }
     h2::after {
@@ -41,7 +41,7 @@
         left: 0;
         width: 90%; /* Largeur de la barre égale à la largeur du titre */
         height: 4px;
-        background: $rougeCVB;
+        background: $redCVB;
     }
 }
 
@@ -59,7 +59,7 @@
     right: 0%;
     width: 100vw; /* 100% de la largeur de la fenêtre */
     height: 70%;
-    background-color: $bleuCVB;
+    background-color: $blueCVB;
     z-index: -1; /* Assurez-vous que l'arrière-plan reste en arrière */
 }
 .actualites{
@@ -83,7 +83,7 @@
         left: 0;
         width: 90%; /* Largeur de la barre égale à la largeur du titre */
         height: 4px;
-        background: $rougeCVB;
+        background: $redCVB;
     }
 
     .first-actu{
@@ -98,12 +98,12 @@
         border-radius: 5px;
         overflow: hidden;
         h3{
-            color: $bleuCVB;
+            color: $blueCVB;
             font-size: 18px;
             overflow: hidden;
         }
         p{
-            color: $jauneCVB;
+            color: $yellowCVB;
         }
         img{
             border-radius: 5px 5px 0 0;
@@ -146,13 +146,13 @@
             overflow: hidden;
             transition: transform 0.3s ease-in-out;
             h3{
-                color: $bleuCVB;
+                color: $blueCVB;
                 font-size: 18px;
                 font-weight: 900;
                 overflow: hidden;
             }
             p{
-                color: $jauneCVB;
+                color: $yellowCVB;
             }
             &:hover{
                 transform: scale(1.02);
@@ -176,7 +176,7 @@
             transition: map.get($buttonGold, transition);        
             &:hover{
                 // transform: scale(1.02);
-                background-color: $jauneHoverCVB;
+                background-color: $yellowHoverCVB;
                 box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
             }
         }
@@ -198,7 +198,7 @@
         margin: $marginTitle;
         Font-family: $fontTitle;
         font-size: $sizeTitle;
-        color: $bleuCVB;
+        color: $blueCVB;
         font-weight: 900;
     }
     h2::after {
@@ -208,7 +208,7 @@
         left: 0;
         width: 90%; /* Largeur de la barre égale à la largeur du titre */
         height: 4px;
-        background: $rougeCVB;
+        background: $redCVB;
     }
     img{
         width: 60%;
@@ -237,7 +237,7 @@
             // transform: scale(1.02);
             left: 1px; /* Déplacement vers la droite de 5 pixels */
             top: 1px; /* Déplacement vers le bas de 5 pixels */
-            background-color: $jauneHoverCVB;
+            background-color: $yellowHoverCVB;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         }
     }
@@ -255,7 +255,7 @@
     right: 0%;
     width: 100vw; /* 100% de la largeur de la fenêtre */
     height: 120%;
-    background-color: $rougeCVB;
+    background-color: $redCVB;
     z-index: -1; /* Assurez-vous que l'arrière-plan reste en arrière */
 }
 .partenaires{
@@ -279,7 +279,7 @@
         left: 0;
         width: 80%; /* Largeur de la barre égale à la largeur du titre */
         height: 4px;
-        background: $bleuCVB;
+        background: $blueCVB;
     }
 }
 
@@ -365,7 +365,7 @@
             margin: $marginTitle;
             Font-family: $fontTitle;
             font-size: $sizeTitleMobile;
-            color: $bleuCVB;
+            color: $blueCVB;
             font-weight: 900;
         }
         img{

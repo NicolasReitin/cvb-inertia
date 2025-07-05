@@ -274,7 +274,7 @@
                 margin: 3% 10%;
                 Font-family: $fontTitle;
                 font-size: 25px;
-                color: $bleuCVB;
+                color: $blueCVB;
                 font-weight: 900;
             }
             h1.with-bar::after {
@@ -284,7 +284,7 @@
                 left: 0;
                 width: 60%; /* Largeur de la barre égale à la largeur du titre */
                 height: 4px;
-                background: $rougeCVB;
+                background: $redCVB;
             }
             .card-actu{
                 img{

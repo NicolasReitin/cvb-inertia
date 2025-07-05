@@ -11,7 +11,7 @@ section{
         margin: 3%;
         Font-family: $fontTitle;
         font-size: $sizeTitle;
-        color: $bleuCVB;
+        color: $blueCVB;
         font-weight: 900;
     }
     h1::after {
@@ -21,7 +21,7 @@ section{
         left: 0;
         width: 60%; /* Largeur de la barre égale à la largeur du titre */
         height: 4px;
-        background: $rougeCVB;
+        background: $redCVB;
     }
     .planning, .organigramme, .historique, .reglement, .statuts, .tarifs, .mode-emploi-icence, .devenez-partenaire{
         margin: 5% 10%;
@@ -36,7 +36,7 @@ section{
         width: 100%;
         .intro{
             padding: 3% 20%;
-            background-color: $rougeCVB;
+            background-color: $redCVB;
             color: white;
             h3{
                 text-align: center;
@@ -60,7 +60,7 @@ section{
                 font-weight: 900;
                 margin: 2% auto;
                 text-decoration: underline;
-                color: $rougeCVB;
+                color: $redCVB;
             }
             h4{
                 text-align: center;
@@ -79,14 +79,14 @@ section{
                 a{
                     text-decoration: underline;
                     cursor: pointer;
-                    color: $rougeCVB;
+                    color: $redCVB;
                     font-weight: bold;
                 }
             }
         }
         .modalites{
             strong{
-                color: $rougeCVB;
+                color: $redCVB;
             }
         }
     }
@@ -104,7 +104,7 @@ section{
             p{
                 width: 50%;
                 margin: 5% auto;
-                background-color: $jauneCVB;
+                background-color: $yellowCVB;
                 color: white;
                 border-radius: 5px;
                 font-weight: bold;
@@ -112,7 +112,7 @@ section{
                 position: relative;
                 transition: all 0.3s ease;
                 &:hover{
-                    background-color: $jauneHoverCVB;
+                    background-color: $yellowHoverCVB;
                     left: 1px; /* Déplacement vers la droite de 5 pixels */
                     top: 1px; /* Déplacement vers le bas de 5 pixels */
                 }
@@ -130,7 +130,7 @@ section{
     font-size: 30px;
     text-align: center;
     font-weight: 700;
-    color: $bleuCVB;
+    color: $blueCVB;
     text-decoration: underline;
 }
 .partners{
@@ -167,11 +167,11 @@ section{
             font-weight: 400;
             font-size: 18px;
             a{
-                color: $rougeCVB;
+                color: $redCVB;
                 font-weight: 600;
                 cursor: pointer;
                 &:hover{
-                    color: $jauneHoverCVB;
+                    color: $yellowHoverCVB;
                 }
             }
         }
@@ -183,18 +183,18 @@ section{
             text-align: center;
             font-weight: 800;
             font-size: 30px;
-            color: $bleuCVB;
+            color: $blueCVB;
             text-decoration: underline;
         }
         p{
             text-align: center;
-            color: $rougeCVB;
+            color: $redCVB;
             font-weight: 800;
             font-size: 20px;
             a{
                 cursor: pointer;
                 &:hover{
-                    color: $jauneHoverCVB;
+                    color: $yellowHoverCVB;
                 }
             }
         }
@@ -210,21 +210,21 @@ section{
             text-align: center;
             font-weight: 800;
             font-size: 30px;
-            color: $bleuCVB;
+            color: $blueCVB;
             text-decoration: underline;
         }
         p{
             margin: 5% auto;
             text-align: center;
-            color: $bleuCVB;
+            color: $blueCVB;
             font-weight: 500;
             font-size: 20px;
             a{
-                color: $rougeCVB;
+                color: $redCVB;
                 font-weight: 800;
                 cursor: pointer;
                 &:hover{
-                    color: $jauneHoverCVB;
+                    color: $yellowHoverCVB;
                 }
             }
         }
@@ -243,7 +243,7 @@ section{
             justify-content: center;
             h3{
                 text-align: center;
-                color: $rougeCVB;
+                color: $redCVB;
                 font-size: 25px;
                 font-weight: 700;
             }

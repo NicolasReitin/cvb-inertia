@@ -1,4 +1,4 @@
-import '../../sass/welcome.scss'  
+import '../../sass/welcome.scss'
 
 import Header from '@/Layouts/Header'
 import Footer from '@/Layouts/Footer'

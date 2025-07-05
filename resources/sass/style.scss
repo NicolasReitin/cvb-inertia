@@ -1,5 +1,5 @@
-@use 'variables' as *;
-@forward 'variables';
+@use '_variables' as *;
+@forward '_variables';
 
 html, body{
     margin: 0;
@@ -7,7 +7,7 @@ html, body{
     overflow-x: hidden;
 }
 body{
-    background-color: $whiteFondCVB;
+    background-color: $whiteBackgroundCVB;
     overflow-x: hidden;
 }
 //________________________________________________________________
@@ -25,7 +25,7 @@ body{
     z-index: 2;
 }
 .introBar{
-    background: linear-gradient(to left, $rougeCVB 0%, $bleuCVB 100%);
+    background: linear-gradient(to left, $redCVB 0%, $blueCVB 100%);
     height: 35px;
     p{
         margin-left: 20%;
@@ -62,7 +62,7 @@ body{
             li {
                 font-weight: 500;
                 font-size: 20px;
-                color: $bleuCVB;
+                color: $blueCVB;
                 display: inline-block;
                 margin: 0;
                 text-decoration: none;
@@ -75,7 +75,7 @@ body{
                 left: 0;
                 width: 0;
                 height: 2px;
-                background-color: $jauneCVB;
+                background-color: $yellowCVB;
                 transition: width 0.4s ease-in-out, transform 0.4s ease-in-out;
                 transform-origin: left;
             }
@@ -254,12 +254,12 @@ body{
         color: black;
         font-weight: 500;
         border-radius: 5px;
-        border-top: 5px solid $jauneCVB;
+        border-top: 5px solid $yellowCVB;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
         padding: 20px;
         background: #ffffffe8;
         h3{
-            color: $jauneCVB;
+            color: $yellowCVB;
         }
     }
 }
@@ -292,13 +292,13 @@ body{
     }
     
     .custom-shape-divider-bottom-1709894291 .shape-fill {
-        fill: $bleuCVB;
+        fill: $blueCVB;
     }
     
     .footer{
         width: 100%;
         padding-bottom: 20px;
-        background: $bleuCVB;
+        background: $blueCVB;
         .logoClub{
             width: 200px;
         }
@@ -332,7 +332,7 @@ body{
                 left: 0;
                 width: 0;
                 height: 2px;
-                background-color: $jauneCVB;
+                background-color: $yellowCVB;
                 transition: width 0.4s ease-in-out, transform 0.4s ease-in-out;
                 transform-origin: left;
             }
@@ -368,7 +368,7 @@ body{
                 left: 0;
                 width: 0;
                 height: 2px;
-                background-color: $jauneCVB;
+                background-color: $yellowCVB;
                 transition: width 0.4s ease-in-out, transform 0.4s ease-in-out;
                 transform-origin: left;
             }
@@ -402,7 +402,7 @@ body{
         background-color: #ffffff;
     }
     .introBar{
-        background: linear-gradient(to left, $rougeCVB 0%, $bleuCVB 100%);
+        background: linear-gradient(to left, $redCVB 0%, $blueCVB 100%);
         height: 25px;
         p{
             margin-left: 2%;
