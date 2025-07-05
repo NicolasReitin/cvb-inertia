@@ -50,7 +50,7 @@
 //________________________________________________________________
 // _____________________________ Atualités ____________________________
 //________________________________________________________________
-.actualites::after {
+.posts::after {
     content: '';
     position: absolute;
     top: 10%; /* Commence à 60% de la hauteur */
@@ -62,7 +62,7 @@
     background-color: $blueCVB;
     z-index: -1; /* Assurez-vous que l'arrière-plan reste en arrière */
 }
-.actualites{
+.posts{
     position: relative;
     margin: 20px auto;
     padding: 10px;
@@ -86,7 +86,7 @@
         background: $redCVB;
     }
 
-    .first-actu{
+    .first-post{
         width: 58%;
         margin-right: 5%;
         min-width: 500px;
@@ -129,7 +129,7 @@
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
         }
     }
-    .others-actu{
+    .others-posts{
         position: relative;
         width: 35%;
         min-width: 450px;
@@ -137,7 +137,7 @@
         height: 60%;
         min-height: 370px;
         white-space: nowrap;
-        .block-others-actus{
+        .block-others-posts{
             padding: 12px;
             width: auto;
             background: rgb(255, 255, 255);
@@ -159,7 +159,7 @@
                 box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
             }
         }
-        .all-actus {
+        .all-posts {
             position: absolute;
             bottom: -30px;
             right: -10px;
@@ -188,7 +188,7 @@
 //________________________________________________________________
 // _____________________________ Réseaux sociaux ____________________________
 //________________________________________________________________
-.reseaux{
+.socials{
     position: relative;
     margin: 20px auto;
     width: 80%;
@@ -246,7 +246,7 @@
 //________________________________________________________________
 // _____________________________ Partenaires ____________________________
 //________________________________________________________________
-.partenaires::after {
+.partners::after {
     content: '';
     position: absolute;
     top: 10%; /* Commence à 60% de la hauteur */
@@ -258,7 +258,7 @@
     background-color: $redCVB;
     z-index: -1; /* Assurez-vous que l'arrière-plan reste en arrière */
 }
-.partenaires{
+.partners{
     position: relative;
     height: 500px;
     margin: 20px auto;
@@ -309,18 +309,18 @@
         }    
     }
     // _____________________________ Atualités ____________________________
-    .actualites::after {
+    .posts::after {
         top: 2%; 
         height: 100%;
     }
-    .actualites{
+    .posts{
         margin: 0 auto;
         width: 100%;
         h2{
             margin: 10% 0 10% 0%;;
             font-size: $sizeTitleMobile;
         }
-        .first-actu{
+        .first-post{
             width: 100%;
             margin: 0 auto;
             min-width: 300px;
@@ -333,12 +333,12 @@
                 height: 300px;
             }
         }
-        .others-actu{
+        .others-posts{
             width: 100%;
             min-width: 300px;
             min-height: 0px;
             margin-bottom: 20px;
-            .block-others-actus{
+            .block-others-posts{
                 h3{
                     font-size: 16px;
                 }
@@ -346,7 +346,7 @@
                     font-size: 14px;
                 }
             }
-            .all-actus {
+            .all-posts {
                 bottom: -25px;
                 right: -5px;
                 font-size: 14px; 
@@ -356,7 +356,7 @@
     }    
     // _____________________________ Réseaux ____________________________
 
-    .reseaux{
+    .socials{
         margin: 0 auto;
         width: 80%;
         margin-top: 15%;
@@ -378,11 +378,11 @@
     }
 
     // _____________________________ Partenaires ____________________________
-    .partenaires::after {
+    .partners::after {
         top: -10%; /* Commence à 60% de la hauteur */
         height: 200%;
     }
-    .partenaires{
+    .partners{
         height: 220px;
         h2{
             margin: 0 0 5% 2%;

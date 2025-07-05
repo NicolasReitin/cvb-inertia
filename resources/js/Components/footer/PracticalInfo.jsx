@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function InfosPratiques() {
+export default function PracticalInfo() {
   return (
     <>
-        <div className='infos-pratiques'>
+        <div className='pratical-info'>
             <h2 className='ml-4 lg:ml-0'>INFOS PRATIQUES</h2>
             <p className='mt-4'>Caen Volley Ball</p>
             <p>Centre Sportif La Haie Vigné, 135 Rue de Bayeux</p>

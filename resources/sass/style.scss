@@ -302,7 +302,7 @@ body{
         .logoClub{
             width: 200px;
         }
-        .infos-pratiques{
+        .pratical-info{
             h2{
                 font-size: 32px;
                 font-weight: 900;
@@ -341,7 +341,7 @@ body{
                 left: 0;
             }  
         }
-        .reseaux-sociaux img{
+        .social-networks img{
                 width: 30px;
                 transition: transform 0.3s ease-in-out;
                 &:hover{
@@ -429,7 +429,7 @@ body{
         .logoClub{
             width: 200px;
         }
-        .infos-pratiques{
+        .pratical-info{
             h2{
                 font-size: $sizeTitleMobile;
             }

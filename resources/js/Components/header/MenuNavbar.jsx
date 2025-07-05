@@ -7,7 +7,6 @@ import "../../../sass/dashboard.scss"
 // import { useAuth } from '@/context/AuthContext'; // Importez useAuth
 
 export default function MenuNavbar({ /*auth*/ }) {
-// console.log(auth.user);
   const [isOpen, setIsOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null);
 

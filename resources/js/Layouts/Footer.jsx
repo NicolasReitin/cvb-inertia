@@ -1,6 +1,5 @@
 import LogoClub from '@/Components/LogoClub'
-import Reseaux from '@/Components/Reseaux'
-import InfosPratiques from '@/Components/footer/InfosPratiques'
+import PracticalInfo from '@/Components/footer/PracticalInfo'
 import PoliciesMentions from '@/Components/footer/PoliciesMentions'
 import React from 'react'
 
@@ -21,7 +20,7 @@ export default function Footer() {
                     <LogoClub 
                         filePath = "/assets/images/logo-cvb-white.png"                
                     />
-                    <InfosPratiques />
+                    <PracticalInfo />
                 </div>
                 <PoliciesMentions />
             </div>
