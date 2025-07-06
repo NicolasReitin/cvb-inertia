@@ -46,12 +46,13 @@ Route::get('/equipe-junior/{equipe_id}', fn ($equipe_id) => Inertia::render('Equ
 ]));
 
 //---------------------------- Divers ----------------------------
-Route::get('/projet', fn () => Inertia::render('Divers/Projet'));
-Route::get('/historique', fn () => Inertia::render('Divers/Historique'));
-Route::get('/organigramme', fn () => Inertia::render('Divers/Organigramme'));
-Route::get('/reglement', fn () => Inertia::render('Divers/Reglement'));
-Route::get('/statuts', fn () => Inertia::render('Divers/Statuts'));
-Route::get('/planning', fn () => Inertia::render('Divers/Planning'));
+Route::get('/project', fn () => Inertia::render('Divers/Projet'));
+Route::get('/history', fn () => Inertia::render('Divers/Historique'));
+Route::get('/organisation-chart', fn () => Inertia::render('Divers/Organigramme'));
+Route::get('/internal_rules', fn () => Inertia::render('Divers/Reglement'));
+Route::get('/statuses', fn () => Inertia::render('Divers/Statuts'));
+Route::get('/schedule', fn () => Inertia::render('Divers/Planning'));
+
 Route::get('/tarifs', fn () => Inertia::render('Divers/Tarifs'));
 Route::get('/modalites', fn () => Inertia::render('Divers/Modalites'));
 Route::get('/modeEmploiLicence', fn () => Inertia::render('Divers/ModeEmploiLicence'));
