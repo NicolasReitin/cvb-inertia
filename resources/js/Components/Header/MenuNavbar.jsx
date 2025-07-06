@@ -3,12 +3,13 @@ import { Link } from '@inertiajs/react';
 import React, { useState } from 'react'
 import ButtonGold from '../ButtonGold'
 import "../../../sass/dashboard.scss"
-
-// import { useAuth } from '@/context/AuthContext'; // Importez useAuth
+import { usePage } from '@inertiajs/react';
 
 export default function MenuNavbar({ /*auth*/ }) {
+  const { auth } = usePage().props;
   const [isOpen, setIsOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null);
+console.log(auth);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -34,13 +35,13 @@ export default function MenuNavbar({ /*auth*/ }) {
       <div className='menu-desktop'>
         <ul className='MenuNavbar mt-8'>
           <li>
-            <Link to="/" className='itemMenu'>
+            <Link href="/" className='itemMenu'>
               <span>Accueil</span>
             </Link>
           </li>
           <li>
-            <Link to='/actualites' className='itemMenu'>
-                <span>Actualités</span>
+            <Link href="/actualites" className="itemMenu">
+              <span>Actualités</span>
             </Link>
           </li>
           <li className='dropdown-item'>
@@ -52,12 +53,12 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </div>
                 <div className='dropdown-content w-64'>
                   <ul>
-                    <Link to='/projet'><li>Le projet</li></Link>
-                    <Link to='/historique'><li>Historique</li></Link>
-                    <Link to='/organigramme'><li>Organigramme</li></Link>
-                    <Link to='/reglement'><li>Règlement intérieur</li></Link>
-                    <Link to='/statuts'><li>Les statuts de l'association</li></Link>
-                    <Link to='/planning'><li>Planning / entrainements</li></Link>
+                    <Link href='/projet'><li>Le projet</li></Link>
+                    <Link href='/historique'><li>Historique</li></Link>
+                    <Link href='/organigramme'><li>Organigramme</li></Link>
+                    <Link href='/reglement'><li>Règlement intérieur</li></Link>
+                    <Link href='/statuts'><li>Les statuts de l'association</li></Link>
+                    <Link href='/planning'><li>Planning / entrainements</li></Link>
                   </ul>
                 </div>
               </div>
@@ -70,16 +71,16 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </div>
                 <div className='dropdown-content w-64'>
                   <ul>
-                    {/* <Link to={route('equipe.index', 2)}>Nationale 3 Masculine</Link> */}
-                    <Link to='/equipe-senior/2'><li>Nationale 3 Masculine</li></Link>
-                    <Link to='/equipe-senior/3'><li>Prénationale Masculine</li></Link>
-                    <Link to='/equipe-senior/4'><li>Régionale Masculine</li></Link>
-                    <Link to='/equipe-senior/8'><li>Régionale Féminine</li></Link>
-                    <Link to="/equipe-senior/7"><li>Départementales Masculines</li></Link>
-                    <Link to="/equipe-senior/10"><li>Départementale Féminine</li></Link>
-                    <Link to='/equipe-senior/1'><li>Ufolep</li></Link>
-                    <Link to='/equipe-senior/9'><li>Volley assis</li></Link>
-                    <Link to="/equipe-senior/11"><li>Loisirs</li></Link>
+                    {/* <Link href={route('equipe.index', 2)}>Nationale 3 Masculine</Link> */}
+                    <Link href='/equipe-senior/2'><li>Nationale 3 Masculine</li></Link>
+                    <Link href='/equipe-senior/3'><li>Prénationale Masculine</li></Link>
+                    <Link href='/equipe-senior/4'><li>Régionale Masculine</li></Link>
+                    <Link href='/equipe-senior/8'><li>Régionale Féminine</li></Link>
+                    <Link href="/equipe-senior/7"><li>Départementales Masculines</li></Link>
+                    <Link href="/equipe-senior/10"><li>Départementale Féminine</li></Link>
+                    <Link href='/equipe-senior/1'><li>Ufolep</li></Link>
+                    <Link href='/equipe-senior/9'><li>Volley assis</li></Link>
+                    <Link href="/equipe-senior/11"><li>Loisirs</li></Link>
                   </ul>
                 </div>
               </div>
@@ -92,11 +93,11 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </div>
                 <div className='dropdown-content w-44'>
                   <ul>
-                    <Link to="/equipe-junior/2"><li>M13 Masculins</li></Link>
-                    <Link to="/equipe-junior/3"><li>M15 Masculins</li></Link>
-                    <Link to="/equipe-junior/4"><li>M18 Féminines</li></Link>
-                    <Link to="/equipe-junior/5"><li>M18 Masculins</li></Link>
-                    <Link to="/equipe-junior/6"><li>M21 Masculins</li></Link>
+                    <Link href="/equipe-junior/2"><li>M13 Masculins</li></Link>
+                    <Link href="/equipe-junior/3"><li>M15 Masculins</li></Link>
+                    <Link href="/equipe-junior/4"><li>M18 Féminines</li></Link>
+                    <Link href="/equipe-junior/5"><li>M18 Masculins</li></Link>
+                    <Link href="/equipe-junior/6"><li>M21 Masculins</li></Link>
                   </ul>
                 </div>
               </div>
@@ -109,8 +110,8 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </div>
                 <div className='dropdown-content w-48'>
                   <ul>
-                    <Link to='/partenaires'><li>Nos partenaires</li></Link>
-                    <Link to='/devenez-partenaire'><li>Devenez partenaire</li></Link>
+                    <Link href='/partenaires'><li>Nos partenaires</li></Link>
+                    <Link href='/devenez-partenaire'><li>Devenez partenaire</li></Link>
                   </ul>
                 </div>
               </div>
@@ -123,32 +124,35 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </div>
                 <div className='dropdown-content w-64'>
                   <ul>
-                    <Link to='/tarifs'><li>Tarifs</li></Link>
-                    <Link to='/modalites'><li>Modalités d'inscription</li></Link>
-                    <Link to='/modeEmploiLicence'><li>Comment remplir sa licence</li></Link>
-                    <Link to='/documentsDivers'><li>Documents divers</li></Link>
+                    <Link href='/tarifs'><li>Tarifs</li></Link>
+                    <Link href='/modalites'><li>Modalités d'inscription</li></Link>
+                    <Link href='/modeEmploiLicence'><li>Comment remplir sa licence</li></Link>
+                    <Link href='/documentsDivers'><li>Documents divers</li></Link>
                   </ul>
                 </div>
               </div>
           </li>
           <li>
-            <Link to='/boutique' className='itemMenu'>
+            <Link href='/boutique' className='itemMenu'>
               <span>Boutique</span>
             </Link>
           </li>
-
-            <ButtonGold 
-              href='/dashboard'
-              content="Admin"
-              classNameButton="bouton-admin"
-            />
+          {auth.user && (
+            <li>
+              <ButtonGold 
+                href='/dashboard'
+                content="Admin"
+                classNameButton="bouton-admin"
+              />
+            </li>
+          )}
         </ul>
       </div>
 
 
         {/* ------------------------------ Menu burger ------------------------------ */}
       <div className="burger-menu">
-        <Link to="/">
+        <Link href="/">
           <img src="/assets/images/logo-cvb-black.png" alt="Logo" className="menu-logo-burger" />
         </Link>
         <button onClick={toggleMenu} className="burger-button">
@@ -167,12 +171,12 @@ export default function MenuNavbar({ /*auth*/ }) {
           </button>
           <ul>
             <li>
-              <Link to="/" className='itemMenu' onClick={closeMenu}>
+              <Link href="/" className='itemMenu' onClick={closeMenu}>
                 <span>Accueil</span>
               </Link>
             </li>
             <li>
-              <Link to='/actualites' className='itemMenu' onClick={closeMenu}>
+              <Link href='/actualites' className='itemMenu' onClick={closeMenu}>
                 <span>Actualités</span>
               </Link>
             </li>
@@ -183,12 +187,12 @@ export default function MenuNavbar({ /*auth*/ }) {
               </span>
               {openSubMenu === 'club' && (
                 <ul className='submenu'>
-                  <li><Link to='/projet' onClick={closeMenu}>Le projet</Link></li>
-                  <li><Link to='/historique' onClick={closeMenu}>Historique</Link></li>
-                  <li><Link to='/organigramme' onClick={closeMenu}>Organigramme</Link></li>
-                  <li><Link to='/reglement' onClick={closeMenu}>Règlement intérieur</Link></li>
-                  <li><Link to='/statuts' onClick={closeMenu}>Les statuts de l'association</Link></li>
-                  <li><Link to='/planning' onClick={closeMenu}>Planning / entrainements</Link></li>
+                  <li><Link href='/projet' onClick={closeMenu}>Le projet</Link></li>
+                  <li><Link href='/historique' onClick={closeMenu}>Historique</Link></li>
+                  <li><Link href='/organigramme' onClick={closeMenu}>Organigramme</Link></li>
+                  <li><Link href='/reglement' onClick={closeMenu}>Règlement intérieur</Link></li>
+                  <li><Link href='/statuts' onClick={closeMenu}>Les statuts de l'association</Link></li>
+                  <li><Link href='/planning' onClick={closeMenu}>Planning / entrainements</Link></li>
                 </ul>
               )}
             </li>
@@ -199,15 +203,15 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </span>
               {openSubMenu === 'seniors' && (
                 <ul className='submenu'>
-                  <li><Link to='/equipe-senior/2' onClick={closeMenu}>Nationale 3 Masculine</Link></li>
-                  <li><Link to='/equipe-senior/3' onClick={closeMenu}>Prénationale Masculine</Link></li>
-                  <li><Link to='/equipe-senior/4' onClick={closeMenu}>Régionale Masculine</Link></li>
-                  <li><Link to='/equipe-senior/8' onClick={closeMenu}>Régionale Féminine</Link></li>
-                  <li><Link to='/equipe-senior/7' onClick={closeMenu}>Départementales Masculines</Link></li>
-                  <li><Link to='/equipe-senior/10' onClick={closeMenu}>Départementale Féminine</Link></li>
-                  <li><Link to='/equipe-senior/1' onClick={closeMenu}>Ufolep</Link></li>
-                  <li><Link to='/equipe-senior/9' onClick={closeMenu}>Volley assis</Link></li>
-                  <li><Link to='/equipe-senior/11' onClick={closeMenu}>Loisirs</Link></li>
+                  <li><Link href='/equipe-senior/2' onClick={closeMenu}>Nationale 3 Masculine</Link></li>
+                  <li><Link href='/equipe-senior/3' onClick={closeMenu}>Prénationale Masculine</Link></li>
+                  <li><Link href='/equipe-senior/4' onClick={closeMenu}>Régionale Masculine</Link></li>
+                  <li><Link href='/equipe-senior/8' onClick={closeMenu}>Régionale Féminine</Link></li>
+                  <li><Link href='/equipe-senior/7' onClick={closeMenu}>Départementales Masculines</Link></li>
+                  <li><Link href='/equipe-senior/10' onClick={closeMenu}>Départementale Féminine</Link></li>
+                  <li><Link href='/equipe-senior/1' onClick={closeMenu}>Ufolep</Link></li>
+                  <li><Link href='/equipe-senior/9' onClick={closeMenu}>Volley assis</Link></li>
+                  <li><Link href='/equipe-senior/11' onClick={closeMenu}>Loisirs</Link></li>
                 </ul>
               )}
             </li>
@@ -218,11 +222,11 @@ export default function MenuNavbar({ /*auth*/ }) {
               </span>
               {openSubMenu === 'juniors' && (
                 <ul className='submenu'>
-                  <li><Link to='/equipe-junior/2' onClick={closeMenu}>M13 Masculins</Link></li>
-                  <li><Link to='/equipe-junior/3' onClick={closeMenu}>M15 Masculins</Link></li>
-                  <li><Link to='/equipe-junior/4' onClick={closeMenu}>M18 Féminines</Link></li>
-                  <li><Link to='/equipe-junior/5' onClick={closeMenu}>M18 Masculins</Link></li>
-                  <li><Link to='/equipe-junior/6' onClick={closeMenu}>M21 Masculins</Link></li>
+                  <li><Link href='/equipe-junior/2' onClick={closeMenu}>M13 Masculins</Link></li>
+                  <li><Link href='/equipe-junior/3' onClick={closeMenu}>M15 Masculins</Link></li>
+                  <li><Link href='/equipe-junior/4' onClick={closeMenu}>M18 Féminines</Link></li>
+                  <li><Link href='/equipe-junior/5' onClick={closeMenu}>M18 Masculins</Link></li>
+                  <li><Link href='/equipe-junior/6' onClick={closeMenu}>M21 Masculins</Link></li>
                 </ul>
               )}
             </li>
@@ -233,8 +237,8 @@ export default function MenuNavbar({ /*auth*/ }) {
               </span>
               {openSubMenu === 'partenaires' && (
                 <ul className='submenu'>
-                  <li><Link to='/partenaires' onClick={closeMenu}>Nos partenaires</Link></li>
-                  <li><Link to='/devenez-partenaire' onClick={closeMenu}>Devenez partenaire</Link></li>
+                  <li><Link href='/partenaires' onClick={closeMenu}>Nos partenaires</Link></li>
+                  <li><Link href='/devenez-partenaire' onClick={closeMenu}>Devenez partenaire</Link></li>
                 </ul>
               )}
             </li>
@@ -246,31 +250,31 @@ export default function MenuNavbar({ /*auth*/ }) {
               {openSubMenu === 'inscriptions' && (
                 <>
                   <ul className='submenu'>
-                    <li><Link to='/tarifs' onClick={closeMenu}>Tarifs</Link></li>
-                    <li><Link to='/modalites' onClick={closeMenu}>Modalités d'inscription</Link></li>
-                    <li><Link to='/modeEmploiLicence' onClick={closeMenu}>Comment remplir sa licence</Link></li>
-                    <li><Link to='/documentsDivers' onClick={closeMenu}>Documents divers</Link></li>
+                    <li><Link href='/tarifs' onClick={closeMenu}>Tarifs</Link></li>
+                    <li><Link href='/modalites' onClick={closeMenu}>Modalités d'inscription</Link></li>
+                    <li><Link href='/modeEmploiLicence' onClick={closeMenu}>Comment remplir sa licence</Link></li>
+                    <li><Link href='/documentsDivers' onClick={closeMenu}>Documents divers</Link></li>
                   </ul>
                 </>
               )}
             </li>
             <li>
-              <Link to='/boutique' className='itemMenu' onClick={closeMenu}>
+              <Link href='/boutique' className='itemMenu' onClick={closeMenu}>
                 <span>Boutique</span>
               </Link>
             </li>
-              <ButtonGold 
-                href='/dashboard'
-                content="Admin"
-                classNameButton="bouton-admin"
-              />
+            {auth.user && (
+              <li>
+                  <ButtonGold 
+                    href='/dashboard'
+                    content="Admin"
+                    classNameButton="bouton-admin"
+                  />
+              </li>
+            )}
           </ul>
         </nav>
       </div>
-      
-
-
-      
     </>
   )
 }
