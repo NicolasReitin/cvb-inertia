@@ -1,6 +1,6 @@
-import IntroBar from "@/Components/header/IntroBar";
+import IntroBar from "@/Components/Header/IntroBar";
 import LogoClub from "@/Components/LogoClub";
-import MenuNavbar from "@/Components/header/MenuNavbar";
+import MenuNavbar from "@/Components/Header/MenuNavbar";
 
 
 export default function Header({auth}) {

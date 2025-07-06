@@ -1,6 +1,6 @@
 import LogoClub from '@/Components/LogoClub'
-import PracticalInfo from '@/Components/footer/PracticalInfo'
-import PoliciesMentions from '@/Components/footer/PoliciesMentions'
+import PracticalInfo from '@/Components/Footer/PracticalInfo'
+import PoliciesMentions from '@/Components/Footer/PoliciesMentions'
 import React from 'react'
 
 export default function Footer() {
