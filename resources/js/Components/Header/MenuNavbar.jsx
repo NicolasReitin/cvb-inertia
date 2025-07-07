@@ -35,36 +35,36 @@ export default function MenuNavbar({ /*auth*/ }) {
         <ul className='MenuNavbar mt-8'>
           <li>
             <Link href="/" className='itemMenu'>
-              <span>{trans.home}</span>
+              <span>{trans.header.home}</span>
             </Link>
           </li>
           <li>
             <Link href="/actualites" className="itemMenu">
-              <span>{trans.posts}</span>
+              <span>{trans.header.posts}</span>
             </Link>
           </li>
           <li className='dropdown-item'>
               <div className='flex'>
-                <span className='whitespace-nowrap cursor-default'>{trans.the_club}</span>
+                <span className='whitespace-nowrap cursor-default'>{trans.header.the_club}</span>
 
                 <div >
                   <img src="/assets/icones/arrow-down-yellow.png" />
                 </div>
                 <div className='dropdown-content w-64'>
                   <ul>
-                    <Link href='/project'><li>{trans.the_project}</li></Link>
-                    <Link href='/history'><li>{trans.history}</li></Link>
-                    <Link href='/organisation-chart'><li>{trans.organisation_chart}</li></Link>
-                    <Link href='/internal_rules'><li>{trans.internal_rules}</li></Link>
-                    <Link href='/statuses'><li>{trans.status_of_the_association}</li></Link>
-                    <Link href='/schedule'><li>{trans.schedule}</li></Link>
+                    <Link href='/project'><li>{trans.header.the_project}</li></Link>
+                    <Link href='/history'><li>{trans.header.history}</li></Link>
+                    <Link href='/organisation-chart'><li>{trans.header.organisation_chart}</li></Link>
+                    <Link href='/internal_rules'><li>{trans.header.internal_rules}</li></Link>
+                    <Link href='/statuses'><li>{trans.header.status_of_the_association}</li></Link>
+                    <Link href='/schedule'><li>{trans.header.schedule}</li></Link>
                   </ul>
                 </div>
               </div>
           </li>
           <li className='dropdown-item'>
               <div className='flex'>
-                <span className='whitespace-nowrap cursor-default'>{trans.senior_team}</span>
+                <span className='whitespace-nowrap cursor-default'>{trans.header.senior_team}</span>
                 <div>
                   <img src="/assets/icones/arrow-down-yellow.png" />
                 </div>
@@ -85,7 +85,7 @@ export default function MenuNavbar({ /*auth*/ }) {
           </li>
           <li className='dropdown-item'>
               <div className='flex'>
-                <span className='whitespace-nowrap cursor-default'>{trans.young_team}</span>
+                <span className='whitespace-nowrap cursor-default'>{trans.header.young_team}</span>
                 <div>
                   <img src="/assets/icones/arrow-down-yellow.png" />
                 </div>
@@ -102,37 +102,37 @@ export default function MenuNavbar({ /*auth*/ }) {
           </li>
           <li className='dropdown-item'>
               <div className='flex'>
-                <span className='whitespace-nowrap cursor-default'>{trans.partners}</span>
+                <span className='whitespace-nowrap cursor-default'>{trans.header.partners}</span>
                 <div>
                   <img src="/assets/icones/arrow-down-yellow.png" />
                 </div>
                 <div className='dropdown-content w-48'>
                   <ul>
-                    <Link href='/partenaires'><li>{trans.our_partners}</li></Link>
-                    <Link href='/devenez-partenaire'><li>{trans.become_partner}</li></Link>
+                    <Link href='/partenaires'><li>{trans.header.our_partners}</li></Link>
+                    <Link href='/devenez-partenaire'><li>{trans.header.become_partner}</li></Link>
                   </ul>
                 </div>
               </div>
           </li>
           <li className='dropdown-item'>
               <div className='flex'>
-                <span className='whitespace-nowrap cursor-default'>{trans.registrations}</span>
+                <span className='whitespace-nowrap cursor-default'>{trans.header.registrations}</span>
                 <div>
                   <img src="/assets/icones/arrow-down-yellow.png" />
                 </div>
                 <div className='dropdown-content w-64'>
                   <ul>
-                    <Link href='/tarifs'><li>{trans.prices}</li></Link>
-                    <Link href='/modalites'><li>{trans.how_to_register}</li></Link>
-                    <Link href='/modeEmploiLicence'><li>{trans.how_to_fill_license}</li></Link>
-                    <Link href='/documentsDivers'><li>{trans.miscellaneous_documents}</li></Link>
+                    <Link href='/tarifs'><li>{trans.header.prices}</li></Link>
+                    <Link href='/modalites'><li>{trans.header.how_to_register}</li></Link>
+                    <Link href='/modeEmploiLicence'><li>{trans.header.how_to_fill_license}</li></Link>
+                    <Link href='/documentsDivers'><li>{trans.header.miscellaneous_documents}</li></Link>
                   </ul>
                 </div>
               </div>
           </li>
           <li>
             <Link href='/boutique' className='itemMenu'>
-              <span>{trans.shop}</span>
+              <span>{trans.header.shop}</span>
             </Link>
           </li>
           {auth.user && (
@@ -170,33 +170,33 @@ export default function MenuNavbar({ /*auth*/ }) {
           <ul>
             <li>
               <Link href="/" className='itemMenu' onClick={closeMenu}>
-                <span>{trans.home}</span>
+                <span>{trans.header.home}</span>
               </Link>
             </li>
             <li>
               <Link href='/actualites' className='itemMenu' onClick={closeMenu}>
-                <span>{trans.posts}</span>
+                <span>{trans.header.posts}</span>
               </Link>
             </li>
             <li className='dropdown-item'>             
               <span className='itemMenu' onClick={() => toggleSubMenu('club')}>
-                <span>{trans.the_club}</span>
+                <span>{trans.header.the_club}</span>
                 <img src="/assets/icones/arrow-down-yellow.png" />
               </span>
               {openSubMenu === 'club' && (
                 <ul className='submenu'>
-                  <li><Link href='/projet' onClick={closeMenu}>{trans.the_project}</Link></li>
-                  <li><Link href='/historique' onClick={closeMenu}>{trans.history}</Link></li>
-                  <li><Link href='/organigramme' onClick={closeMenu}>{trans.organisation_chart}</Link></li>
-                  <li><Link href='/reglement' onClick={closeMenu}>{trans.internal_rules}</Link></li>
-                  <li><Link href='/statuts' onClick={closeMenu}>{trans.status_of_the_association}</Link></li>
-                  <li><Link href='/planning' onClick={closeMenu}>{trans.schedule}</Link></li>
+                  <li><Link href='/projet' onClick={closeMenu}>{trans.header.the_project}</Link></li>
+                  <li><Link href='/historique' onClick={closeMenu}>{trans.header.history}</Link></li>
+                  <li><Link href='/organigramme' onClick={closeMenu}>{trans.header.organisation_chart}</Link></li>
+                  <li><Link href='/reglement' onClick={closeMenu}>{trans.header.internal_rules}</Link></li>
+                  <li><Link href='/statuts' onClick={closeMenu}>{trans.header.status_of_the_association}</Link></li>
+                  <li><Link href='/planning' onClick={closeMenu}>{trans.header.schedule}</Link></li>
                 </ul>
               )}
             </li>
             <li className='dropdown-item'>
               <span className='itemMenu' onClick={() => toggleSubMenu('seniors')}>
-                <span>{trans.senior_team}</span>
+                <span>{trans.header.senior_team}</span>
                 <img src="/assets/icones/arrow-down-yellow.png" />
                 </span>
               {openSubMenu === 'seniors' && (
@@ -215,7 +215,7 @@ export default function MenuNavbar({ /*auth*/ }) {
             </li>
             <li className='dropdown-item'>
               <span className='itemMenu' onClick={() => toggleSubMenu('juniors')}>
-                <span>{trans.young_team}</span>
+                <span>{trans.header.young_team}</span>
                 <img src="/assets/icones/arrow-down-yellow.png" />
               </span>
               {openSubMenu === 'juniors' && (
@@ -230,35 +230,35 @@ export default function MenuNavbar({ /*auth*/ }) {
             </li>
             <li className='dropdown-item'>
               <span className='itemMenu' onClick={() => toggleSubMenu('partenaires')}>
-                <span>{trans.partners}</span>
+                <span>{trans.header.partners}</span>
                 <img src="/assets/icones/arrow-down-yellow.png" />
               </span>
               {openSubMenu === 'partenaires' && (
                 <ul className='submenu'>
-                  <li><Link href='/partenaires' onClick={closeMenu}>{trans.our_partners}</Link></li>
-                  <li><Link href='/devenez-partenaire' onClick={closeMenu}>{trans.become_partner}</Link></li>
+                  <li><Link href='/partenaires' onClick={closeMenu}>{trans.header.our_partners}</Link></li>
+                  <li><Link href='/devenez-partenaire' onClick={closeMenu}>{trans.header.become_partner}</Link></li>
                 </ul>
               )}
             </li>
             <li className='dropdown-item'>
               <span className='itemMenu' onClick={() => toggleSubMenu('inscriptions')}>
-                <span>{trans.registrations}</span>
+                <span>{trans.header.registrations}</span>
                 <img src="/assets/icones/arrow-down-yellow.png" />
               </span>
               {openSubMenu === 'inscriptions' && (
                 <>
                   <ul className='submenu'>
-                    <li><Link href='/tarifs' onClick={closeMenu}>{trans.prices}</Link></li>
-                    <li><Link href='/modalites' onClick={closeMenu}>{trans.how_to_register}</Link></li>
-                    <li><Link href='/modeEmploiLicence' onClick={closeMenu}>{trans.how_to_fill_license}</Link></li>
-                    <li><Link href='/documentsDivers' onClick={closeMenu}>{trans.miscellaneous_documents}</Link></li>
+                    <li><Link href='/tarifs' onClick={closeMenu}>{trans.header.prices}</Link></li>
+                    <li><Link href='/modalites' onClick={closeMenu}>{trans.header.how_to_register}</Link></li>
+                    <li><Link href='/modeEmploiLicence' onClick={closeMenu}>{trans.header.how_to_fill_license}</Link></li>
+                    <li><Link href='/documentsDivers' onClick={closeMenu}>{trans.header.miscellaneous_documents}</Link></li>
                   </ul>
                 </>
               )}
             </li>
             <li>
               <Link href='/boutique' className='itemMenu' onClick={closeMenu}>
-                <span>{trans.shop}</span>
+                <span>{trans.header.shop}</span>
               </Link>
             </li>
             {auth.user && (

@@ -2,6 +2,7 @@ import { Link } from '@inertiajs/react';
 import React, { useEffect, useState } from 'react'
 import ButtonGold from './ButtonGold'
 import moment from 'moment';
+import trans from '@/lang/fr/main'
 import axios from '@/libs/axios';
 
 export default function Posts() {
@@ -46,7 +47,7 @@ export default function Posts() {
   return (
     <>
         <div className="posts">
-          <h2>LES ACTUALITÉS</h2>
+          <h2>{trans.posts.title}</h2>
           <div className="flex flex-col items-center lg:flex-row lg:justify-center mt-10">
           {/* mt-8 md:mt-12 lg:mt-16 */}
           {firstPost && (

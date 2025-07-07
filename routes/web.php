@@ -18,6 +18,10 @@ use Inertia\Inertia;
 // Route::middleware(['auth', 'role:admin'])->group(function () {
 //     Route::get('/admin', fn () => 'Bienvenue Admin !');
 // });
+
+//---------------------------- Accueil ----------------------------
+Route::get('/', fn () => Inertia::render('Welcome'));
+
 //---------------------------- Admin / Auth ----------------------------
 Route::get('/cvb-admin', fn () => Inertia::render('Auth/Login'));
 Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->middleware(['auth'])->name('dashboard');
@@ -27,9 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-//---------------------------- Accueil ----------------------------
-Route::get('/', fn () => Inertia::render('Welcome'));
 
 //---------------------------- Posts ----------------------------
 Route::get('/actualites', fn () => Inertia::render('Actualites/Actualites'));
@@ -64,8 +65,6 @@ Route::get('/devenez-partenaire', fn () => Inertia::render('Partenaires/DevenezP
 
 //---------------------------- Shop ----------------------------
 Route::get('/boutique', fn () => Inertia::render('Boutique/Boutique'));
-
-
 
 
 
