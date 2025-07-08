@@ -4,12 +4,12 @@ import React from 'react'
 
 import '../../../sass/divers.scss'  
 
-export default function DocumentsDivers({auth}) {
+export default function DocumentsDivers() {
     return (
         <>
             {/* <Head title='Docvuments divers' /> */}
     
-            <Header auth={auth}/>
+            <Header />
     
             <section>
                 <h1>Documents divers </h1>

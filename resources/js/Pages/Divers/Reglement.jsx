@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function Reglement({auth}) {
+export default function Reglement() {
   return (
     <>
         {/* <Head title='Reglement' /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Règlement intérieur du Caen Volley Ball</h1>

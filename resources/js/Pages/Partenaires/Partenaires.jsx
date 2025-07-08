@@ -8,7 +8,7 @@ import axios from '@/libs/axios';
 
 
 
-export default function Partenaires( {auth} ) {
+export default function Partenaires() {
 
     const [partnersInstitutionnels, setPartnersInstitutionnels] = useState([]);
     const [partnersHelp, setPartnersHelp] = useState([]);
@@ -34,7 +34,7 @@ export default function Partenaires( {auth} ) {
     <>
         {/* <Head title='Les partenaires' /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Nos partenaires </h1>
@@ -73,11 +73,7 @@ export default function Partenaires( {auth} ) {
                         ))
                     }
                 </div>
-            
-
         </section>
-
-
         <Footer />
     </>
   )

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '@/Layouts/Footer'
 import Header from '@/Layouts/Header'
-import {Link } from 'react-router-dom';
+import { Link } from '@inertiajs/react';
 import moment from 'moment';
 
 import '../../../sass/actualites.scss'  
@@ -12,7 +12,7 @@ import ApiReseaux from '@/Components/ApiReseaux';
 import axios from '@/libs/axios';
 
 
-export default function Actualites({ auth }) {
+export default function Actualites() {
     const [actualites, setActualites] = useState([]);
 
     useEffect(() =>{
@@ -53,7 +53,7 @@ export default function Actualites({ auth }) {
     <>
         {/* <Head title="Actualités" /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <div className='bloc-main-photo'>
             <MainPhoto 
@@ -71,8 +71,8 @@ export default function Actualites({ auth }) {
                     {
                         actualites.map((actu)=> (
                             <div className='card' key={actu.id}>
-                                {/* <Link to={route('actu.show', {actu: actu.id})}> */}
-                                <Link to={`/actualite/${actu.id}`}>
+                                {/* <Link href={route('actu.show', {actu: actu.id})}> */}
+                                <Link href={`/actualite/${actu.id}`}>
                                     <div className='relative'>
                                         <img src={actu.photo} alt="actualité" />
                                         <div className="filtre-img"></div>

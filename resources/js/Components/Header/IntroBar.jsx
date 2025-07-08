@@ -4,7 +4,7 @@ import trans from '@/lang/fr/main'
 export default function IntroBar() {
   return (
     <div className="introBar flex justify-between">
-        <p className='text-white mt-2'><i>{trans.slogan}</i></p>
+        <p className='text-white mt-2'><i>{trans.header.slogan}</i></p>
         <div className='flex gap-4 mb-1 mt-1'>
             <a target='_blank' rel="stylesheet" href="https://instagram.com/caenvolleyball/">
                 <img src="/assets/icones/instagram.png" alt="instagram Caen Volley Ball" />

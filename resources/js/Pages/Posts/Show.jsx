@@ -6,7 +6,7 @@ import moment from 'moment'
 import '../../../sass/actualites.scss'  
 import axios from '@/libs/axios';
 
-export default function show({ auth }) {
+export default function show() {
     const { actu } = useParams();
     const [actualite, setActualite] = useState([]);
 
@@ -47,7 +47,7 @@ export default function show({ auth }) {
     <>
         {/* <Head title="Actualités" /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <article>

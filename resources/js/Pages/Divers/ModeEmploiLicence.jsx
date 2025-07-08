@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function ModeEmploiLicence({auth}) {
+export default function ModeEmploiLicence() {
     return (
     <>
         {/* <Head title="Mode d'emploi Licence" /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Comment remplir sa licence</h1>

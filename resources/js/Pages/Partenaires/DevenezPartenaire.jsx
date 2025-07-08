@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function DevenezPartenaire({auth}) {
+export default function DevenezPartenaire() {
   return (
     <>
         {/* <Head title='Devenez partenaire' /> */}
 
-        <Header auth={auth}/>
+        <Header />
         <section>
             <h1>Devenez partenaire du Caen Volley Ball</h1>
             <div className='devenez-partenaire'>

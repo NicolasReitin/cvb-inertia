@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function Tarifs({auth}) {
+export default function Tarifs() {
   return (
     <>
         {/* <Head title='Tarifs' /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Tarifs</h1>

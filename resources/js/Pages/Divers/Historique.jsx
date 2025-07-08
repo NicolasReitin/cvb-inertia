@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function Historique({auth}) {
+export default function Historique() {
   return (
     <>
         {/* <Head title='Historique' /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Historique du Caen Volley Ball</h1>

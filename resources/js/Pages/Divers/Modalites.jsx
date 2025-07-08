@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function Modalites({auth}) {
+export default function Modalites() {
   return (
     <>
         {/* <Head title="Les modalités d'inscription" /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Les modalités d'inscription</h1>

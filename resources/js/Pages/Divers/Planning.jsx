@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function Planning({auth}) {
+export default function Planning() {
   return (
     <>
         {/* <Head title='Planning' /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Planning des entrainements</h1>

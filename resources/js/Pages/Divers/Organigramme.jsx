@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function Organigramme({auth}) {
+export default function Organigramme() {
   return (
     <>
         {/* <Head title='Organigramme' /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Organigramme du Caen Volley Ball</h1>

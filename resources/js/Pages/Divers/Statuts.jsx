@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function Statuts({auth}) {
+export default function Statuts() {
   return (
     <>
         {/* <Head title='Les statuts' /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Les statuts du Caen Volley Ball</h1>

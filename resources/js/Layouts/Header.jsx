@@ -3,7 +3,7 @@ import LogoClub from "@/Components/LogoClub";
 import MenuNavbar from "@/Components/Header/MenuNavbar";
 
 
-export default function Header({auth}) {
+export default function Header() {
 
     return (
         <>
@@ -16,9 +16,7 @@ export default function Header({auth}) {
                                 <LogoClub 
                                 filePath="/assets/images/logo-cvb-black.png"
                                 />
-                                <MenuNavbar 
-                                    auth={auth}
-                                />
+                                <MenuNavbar />
                             </div>
                         </div>
                     </div>

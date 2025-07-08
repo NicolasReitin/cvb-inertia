@@ -52,7 +52,7 @@ export default function Posts() {
           {/* mt-8 md:mt-12 lg:mt-16 */}
           {firstPost && (
             <div className="first-post">
-              <Link to={`/actualite/${firstPost.id}`}>
+              <Link href={`/actualite/${firstPost.id}`}>
                 <div className='relative'>
                     <img src={firstPost.photo} alt="main actus" />
                     <div className="filtre-img"></div>
@@ -68,7 +68,7 @@ export default function Posts() {
                   <div 
                   key={post.id}
                   className='block-others-posts'>
-                    <Link to={`/actualite/${post.id}`}>
+                    <Link href={`/actualite/${post.id}`}>
                         <p className='lg:ml-3'>Le { moment(post.created_at).locale('fr').format('DD/MM/YYYY') }</p>
                         <h3 className='lg:ml-3 lg:mt-2'><strong> { post.titre }</strong></h3>
                     </Link>                  

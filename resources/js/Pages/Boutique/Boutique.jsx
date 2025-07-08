@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function Boutique( {auth}) {
+export default function Boutique() {
   return (
     <>
       {/* <Head title='Boutique officielle' /> */}
 
-      <Header auth={auth}/>
+      <Header />
 
       <section>
           <h1>Boutique officielle CVB</h1>

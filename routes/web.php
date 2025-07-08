@@ -33,15 +33,15 @@ Route::middleware('auth')->group(function () {
 });
 
 //---------------------------- Posts ----------------------------
-Route::get('/actualites', fn () => Inertia::render('Actualites/Actualites'));
+Route::get('/actualites', fn () => Inertia::render('Posts/Actualites'));
 Route::get('/actualite/{actu}', fn () => Inertia::render('Actualites/Show'));
 
 //---------------------------- Teams ----------------------------
-Route::get('/equipe-senior/{equipe_id}', fn ($equipe_id) => Inertia::render('Equipe/Equipes', [
+Route::get('/equipe-senior/{equipe_id}', fn ($equipe_id) => Inertia::render('Team/Teams', [
     'equipeType' => 'senior',
     'equipe_id' => $equipe_id,
 ]));
-Route::get('/equipe-junior/{equipe_id}', fn ($equipe_id) => Inertia::render('Equipe/Equipes', [
+Route::get('/equipe-junior/{equipe_id}', fn ($equipe_id) => Inertia::render('Team/Teams', [
     'equipeType' => 'junior',
     'equipe_id' => $equipe_id,
 ]));
@@ -65,7 +65,5 @@ Route::get('/devenez-partenaire', fn () => Inertia::render('Partenaires/DevenezP
 
 //---------------------------- Shop ----------------------------
 Route::get('/boutique', fn () => Inertia::render('Boutique/Boutique'));
-
-
 
 require __DIR__.'/auth.php';

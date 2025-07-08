@@ -5,12 +5,12 @@ import React from 'react'
 import '../../../sass/divers.scss'  
 
 
-export default function Projet({auth}) {
+export default function Projet() {
   return (
     <>
         {/* <Head title='Le projet' /> */}
 
-        <Header auth={auth}/>
+        <Header />
 
         <section>
             <h1>Le projet</h1>
