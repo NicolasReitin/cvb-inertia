@@ -1,26 +1,14 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-// exemple avec middleware role créé via GPT le 05/07
-// Route::middleware(['auth', 'role:admin'])->group(function () {
-//     Route::get('/admin', fn () => 'Bienvenue Admin !');
-// });
-
 //---------------------------- Accueil ----------------------------
-Route::get('/', fn () => Inertia::render('Welcome'));
+// Route::get('/', fn () => Inertia::render('Welcome'));
+Route::get('/', [WelcomeController::class, 'index']);
 
 //---------------------------- Admin / Auth ----------------------------
 Route::get('/cvb-admin', fn () => Inertia::render('Auth/Login'));
@@ -33,7 +21,8 @@ Route::middleware('auth')->group(function () {
 });
 
 //---------------------------- Posts ----------------------------
-Route::get('/actualites', fn () => Inertia::render('Posts/Actualites'));
+// Route::get('/actualites', fn () => Inertia::render('Posts/Actualites'));
+Route::get('/actualites', [PostController::class, 'index'])->name('post.index');
 Route::get('/actualite/{actu}', fn () => Inertia::render('Actualites/Show'));
 
 //---------------------------- Teams ----------------------------

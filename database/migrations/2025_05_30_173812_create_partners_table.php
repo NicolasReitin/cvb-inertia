@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->enum('role', ['institutional partner', 'private partner', 'helped us'])->nullable();
             $table->timestamps();
+            $table->softDeletes(); 
         });
     }
 

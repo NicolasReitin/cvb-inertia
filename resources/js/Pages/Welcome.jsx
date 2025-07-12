@@ -8,7 +8,7 @@ import Partners from '@/Components/Partners'
 import Scores from '@/Components/Scores'
 import MainLayout from '@/Layouts/MainLayout'
 
-export default function Welcome() {
+export default function Welcome({ firstPost, othersPosts}) {
   
   return (
     <>
@@ -36,11 +36,15 @@ export default function Welcome() {
           }}
         />
 
-        <Posts />
+        <Posts 
+          firstPost={firstPost}
+          othersPosts={othersPosts}
+        />
 
         <Socials />
 
         <Partners />
+        
       </MainLayout>
     </>
   )

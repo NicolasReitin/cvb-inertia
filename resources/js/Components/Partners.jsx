@@ -12,7 +12,7 @@ export default function Partners() {
         const fetchPartners = async() => {
           try {
             const response = await axios.get('/api/partenaires')
-            setPartners(response.data.partners)      
+            setPartners(response.data.partners)
           } catch (err) {
             console.error(err);
           }
