@@ -20,9 +20,9 @@ class WelcomeController extends Controller
         $partners = Partner::all();
 
         return Inertia::render('Welcome', [
-            'firstPost' => $firstPost ? PostResource::make($firstPost)->resolve() : null,
-            'othersPosts' => $othersPosts ? PostResource::collection($othersPosts)->resolve() : null,
-            'partners' => $partners ? PartnerResource::collection($partners)->resolve() : null,
+            'firstPost' => null !== $firstPost ? PostResource::make($firstPost)->resolve() : null,
+            'othersPosts' => null !== $othersPosts ? PostResource::collection($othersPosts)->resolve() : null,
+            'partners' => null !== $partners ? PartnerResource::collection($partners)->resolve() : null,
         ]);
     }
 }

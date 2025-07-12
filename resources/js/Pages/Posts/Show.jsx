@@ -1,31 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import Footer from '@/Layouts/Footer'
-import Header from '@/Layouts/Header'
+import React, { useEffect } from 'react'
 import moment from 'moment'
-import '../../../sass/actualites.scss'  
-import axios from '@/libs/axios';
+import '../../../sass/posts.scss'
+import { usePage } from '@inertiajs/react'
+import MainLayout from '@/Layouts/MainLayout'
 
 export default function show() {
-    const { actu } = useParams();
-    const [actualite, setActualite] = useState([]);
-
-    useEffect(() =>{
-        // Fonction asynchrone pour récupérer les articles
-    const fetchActualites = async() => {
-        try {
-            const response = await axios.get(`/api/actualite/${actu}`)
-            setActualite(response.data.data);
-        } catch (err) {
-            console.error(err);
-        }
-    }
-    fetchActualites();
-      }, []);
+    
+    const { post } = usePage().props;
 
     useEffect(() => {
         adjustImageFit();
-    }, [actualite]);
+    }, [post]);
 
     const adjustImageFit = () => {
         const img = document.querySelector('.card-actu img');
@@ -45,26 +30,21 @@ export default function show() {
 
   return (
     <>
-        {/* <Head title="Actualités" /> */}
-
-        <Header />
-
-        <section>
-            <article>
-                <h1>{ actualite.titre }</h1>
-                <div className='card-actu'>
-                    <div className='relative'>
-                        <h3>Par { actualite.auteur } | Le { moment(actualite.created_at).format('DD/MM/YYYY') }</h3> 
-                        <img src={actualite.photo} alt="actu" />
-                        <div className="filtre-img"></div>
+        <MainLayout title='Actualités'>
+            <section>
+                <article>
+                    <h1>{ post.title }</h1>
+                    <div className='card-actu'>
+                        <div className='relative'>
+                            <h3>Par { post.author } | Le { moment(post.created_at).format('DD/MM/YYYY') }</h3> 
+                            <img src={post.photo} alt="actu" />
+                            <div className="filtre-img"></div>
+                        </div>
+                        <p className='article-content'>{ post.content }</p>
                     </div>
-                    <p className='article-content'>{ actualite.content }</p>
-                </div>
-            </article>
-        </section>
-
-        <Footer />
-
+                </article>
+            </section>
+        </MainLayout>
     </>
   )
 }

@@ -21,9 +21,8 @@ Route::middleware('auth')->group(function () {
 });
 
 //---------------------------- Posts ----------------------------
-// Route::get('/actualites', fn () => Inertia::render('Posts/Actualites'));
 Route::get('/actualites', [PostController::class, 'index'])->name('post.index');
-Route::get('/actualite/{actu}', fn () => Inertia::render('Actualites/Show'));
+Route::get('/actualites/{post}', [PostController::class, 'show'])->name('post.show');
 
 //---------------------------- Teams ----------------------------
 Route::get('/equipe-senior/{equipe_id}', fn ($equipe_id) => Inertia::render('Team/Teams', [

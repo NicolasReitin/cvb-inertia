@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import '../../../sass/actualites.scss'
+import '../../../sass/posts.scss'
 import { Link, usePage } from '@inertiajs/react';
 import moment from 'moment';
 import ButtonGold from '@/Components/ButtonGold';
@@ -20,6 +20,7 @@ export default function Posts() {
         images.forEach(img => {
             const handleLoad = () => {
                 const ratio = img.naturalHeight / img.naturalWidth;
+                
                 const threshold = 0.9; // Seuil pour décider proche portrait
                 img.style.objectFit = ratio < threshold ? 'cover' : 'contain';
             };
@@ -43,17 +44,17 @@ export default function Posts() {
         </div>    
                 
         <section className='flex'>
-            <div>
+            <div className='w-full'>
                 <h1>ACTUALITÉS</h1>
                 <div className='cards'>
                     {
                         newsArray.map((post)=> (
                             <div className='card' key={post.data.id}>
                                 {/* <Link href={route('post.data.show', {post: post.id})}> */}
-                                <Link href={`/actualite/${post.data.id}`}>
+                                <Link href={`/actualites/${post.data.id}`}>
                                     <div className='relative'>
-                                        <img src={post.data.photo} alt="actualité" />
-                                        <div className="filtre-img"></div>
+                                        <img src={post.data.photo} alt="actualité" className="w-full h-auto" />
+                                        <div className="filtre-img absolute inset-0"></div>
                                     </div>
                                     <h2>{ post.data.title }</h2> 
                                     <h3>Le { moment(post.data.created_at).locale('fr').format('DD/MM/YYYY') }</h3>

@@ -25,10 +25,12 @@ class PostController extends Controller
         ]);
     }
     
-    // Afficher un news spécifique
-    public function show(Post $post): JsonResponse
+    // Afficher un post spécifique
+    public function show(Post $post): Response
     {
-        return response()->json($post);
+        return Inertia::render('Posts/Show', [
+            'post' => null !== $post ? PostResource::make( $post )->resolve() : null,
+        ]);
     }
 
 
