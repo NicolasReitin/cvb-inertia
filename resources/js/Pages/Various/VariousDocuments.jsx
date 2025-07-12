@@ -1,16 +1,10 @@
-import Footer from '@/Layouts/Footer'
-import Header from '@/Layouts/Header'
 import React from 'react'
-
 import '../../../sass/divers.scss'  
+import MainLayout from '@/Layouts/MainLayout'
 
-export default function DocumentsDivers() {
+export default function VariousDocuments() {
     return (
-        <>
-            {/* <Head title='Docvuments divers' /> */}
-    
-            <Header />
-    
+        <MainLayout title='Documents divers'>
             <section>
                 <h1>Documents divers </h1>
                 <div className='docs-divers'>
@@ -56,8 +50,6 @@ export default function DocumentsDivers() {
                     </ul>
                 </div>
             </section>
-    
-            <Footer />
-        </>
+        </MainLayout >
       )
 }

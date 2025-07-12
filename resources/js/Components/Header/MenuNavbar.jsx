@@ -52,12 +52,12 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </div>
                 <div className='dropdown-content w-64'>
                   <ul>
-                    <Link href='/project'><li>{trans.header.the_project}</li></Link>
-                    <Link href='/history'><li>{trans.header.history}</li></Link>
-                    <Link href='/organisation-chart'><li>{trans.header.organisation_chart}</li></Link>
-                    <Link href='/internal_rules'><li>{trans.header.internal_rules}</li></Link>
-                    <Link href='/statuses'><li>{trans.header.status_of_the_association}</li></Link>
-                    <Link href='/schedule'><li>{trans.header.schedule}</li></Link>
+                    <Link href='/projet'><li>{trans.header.the_project}</li></Link>
+                    <Link href='/historique'><li>{trans.header.history}</li></Link>
+                    <Link href='/organigramme'><li>{trans.header.organisation_chart}</li></Link>
+                    <Link href='/reglement'><li>{trans.header.internal_rules}</li></Link>
+                    <Link href='/statuts'><li>{trans.header.status_of_the_association}</li></Link>
+                    <Link href='/planning'><li>{trans.header.schedule}</li></Link>
                   </ul>
                 </div>
               </div>
@@ -124,8 +124,8 @@ export default function MenuNavbar({ /*auth*/ }) {
                   <ul>
                     <Link href='/tarifs'><li>{trans.header.prices}</li></Link>
                     <Link href='/modalites'><li>{trans.header.how_to_register}</li></Link>
-                    <Link href='/modeEmploiLicence'><li>{trans.header.how_to_fill_license}</li></Link>
-                    <Link href='/documentsDivers'><li>{trans.header.miscellaneous_documents}</li></Link>
+                    <Link href='/instructions'><li>{trans.header.how_to_fill_license}</li></Link>
+                    <Link href='/documents-divers'><li>{trans.header.miscellaneous_documents}</li></Link>
                   </ul>
                 </div>
               </div>

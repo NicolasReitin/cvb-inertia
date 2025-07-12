@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
@@ -21,8 +22,8 @@ Route::middleware('auth')->group(function () {
 });
 
 //---------------------------- Posts ----------------------------
-Route::get('/actualites', [PostController::class, 'index'])->name('post.index');
-Route::get('/actualites/{post}', [PostController::class, 'show'])->name('post.show');
+Route::get('/actualites', [PostController::class, 'index'])->name('posts.index');
+Route::get('/actualites/{post}', [PostController::class, 'show'])->name('posts.show');
 
 //---------------------------- Teams ----------------------------
 Route::get('/equipe-senior/{equipe_id}', fn ($equipe_id) => Inertia::render('Team/Teams', [
@@ -35,23 +36,23 @@ Route::get('/equipe-junior/{equipe_id}', fn ($equipe_id) => Inertia::render('Tea
 ]));
 
 //---------------------------- Divers ----------------------------
-Route::get('/project', fn () => Inertia::render('Divers/Projet'));
-Route::get('/history', fn () => Inertia::render('Divers/Historique'));
-Route::get('/organisation-chart', fn () => Inertia::render('Divers/Organigramme'));
-Route::get('/internal_rules', fn () => Inertia::render('Divers/Reglement'));
-Route::get('/statuses', fn () => Inertia::render('Divers/Statuts'));
-Route::get('/schedule', fn () => Inertia::render('Divers/Planning'));
+Route::get('/projet', fn () => Inertia::render('Various/Project'));
+Route::get('/historique', fn () => Inertia::render('Various/History'));
+Route::get('/organigramme', fn () => Inertia::render('Various/OrganisationChart'));
+Route::get('/reglement', fn () => Inertia::render('Various/InternalRules'));
+Route::get('/statuts', fn () => Inertia::render('Various/Statuses'));
+Route::get('/planning', fn () => Inertia::render('Various/Planning'));
 
-Route::get('/tarifs', fn () => Inertia::render('Divers/Tarifs'));
-Route::get('/modalites', fn () => Inertia::render('Divers/Modalites'));
-Route::get('/modeEmploiLicence', fn () => Inertia::render('Divers/ModeEmploiLicence'));
-Route::get('/documentsDivers', fn () => Inertia::render('Divers/DocumentsDivers'));
+Route::get('/tarifs', fn () => Inertia::render('Various/Prices'));
+Route::get('/modalites', fn () => Inertia::render('Various/Details'));
+Route::get('/instructions', fn () => Inertia::render('Various/Instructions'));
+Route::get('/documents-divers', fn () => Inertia::render('Various/VariousDocuments'));
 
 //---------------------------- Partners ----------------------------
-Route::get('/partenaires', fn () => Inertia::render('Partenaires/Partenaires'));
-Route::get('/devenez-partenaire', fn () => Inertia::render('Partenaires/DevenezPartenaire'));
+Route::get('/partenaires', [PartnerController::class, 'index'])->name('partners.index');
+Route::get('/devenez-partenaire', fn () => Inertia::render('Partners/BecomePartner'));
 
 //---------------------------- Shop ----------------------------
-Route::get('/boutique', fn () => Inertia::render('Boutique/Boutique'));
+Route::get('/boutique', fn () => Inertia::render('Shop/Shop'));
 
 require __DIR__.'/auth.php';

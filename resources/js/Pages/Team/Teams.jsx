@@ -1,10 +1,8 @@
 import '../../../sass/equipes.scss'  
-
-import Footer from '@/Layouts/Footer'
-import Header from '@/Layouts/Header'
 import React, { useEffect, useState } from 'react'
 import { usePage } from '@inertiajs/react'
 import axios from '@/libs/axios';
+import MainLayout from '@/Layouts/MainLayout';
 
 export default function Teams() {
   const { props } = usePage();
@@ -34,11 +32,7 @@ export default function Teams() {
 
 
   return (
-    <>
-      {/* <Head title={equipe.nom} /> */}
-
-      <Header />
-      
+    <MainLayout title={equipe.name}>
       <section>
         <h1>{equipe.nom}</h1>
         {equipe.photo && (
@@ -88,8 +82,6 @@ export default function Teams() {
           )}
         </div>
       </section>
-      
-      <Footer />
-    </>
+    </MainLayout>
   )
 }

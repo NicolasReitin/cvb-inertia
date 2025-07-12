@@ -1,17 +1,10 @@
-import Footer from '@/Layouts/Footer'
-import Header from '@/Layouts/Header'
 import React from 'react'
-
 import '../../../sass/divers.scss'  
+import MainLayout from '@/Layouts/MainLayout'
 
-
-export default function Boutique() {
+export default function Shop() {
   return (
-    <>
-      {/* <Head title='Boutique officielle' /> */}
-
-      <Header />
-
+    <MainLayout title='Boutique officielle'>
       <section>
           <h1>Boutique officielle CVB</h1>
           <div className='boutique'>
@@ -47,15 +40,8 @@ export default function Boutique() {
                 </div>
               </div>
             </div>
-
           </div>
-
-          <p></p>
-
       </section>
-
-
-      <Footer />
-    </>
+    </MainLayout>
   )
 }

@@ -29,22 +29,20 @@ export default function show() {
     };
 
   return (
-    <>
-        <MainLayout title='Actualités'>
-            <section>
-                <article>
-                    <h1>{ post.title }</h1>
-                    <div className='card-actu'>
-                        <div className='relative'>
-                            <h3>Par { post.author } | Le { moment(post.created_at).format('DD/MM/YYYY') }</h3> 
-                            <img src={post.photo} alt="actu" />
-                            <div className="filtre-img"></div>
-                        </div>
-                        <p className='article-content'>{ post.content }</p>
+    <MainLayout title='Actualités'>
+        <section>
+            <article>
+                <h1>{ post.title }</h1>
+                <div className='card-actu'>
+                    <div className='relative'>
+                        <h3>Par { post.author } | Le { moment(post.created_at).format('DD/MM/YYYY') }</h3> 
+                        <img src={post.photo} alt="actu" />
+                        <div className="filtre-img"></div>
                     </div>
-                </article>
-            </section>
-        </MainLayout>
-    </>
+                    <p className='article-content'>{ post.content }</p>
+                </div>
+            </article>
+        </section>
+    </MainLayout>
   )
 }

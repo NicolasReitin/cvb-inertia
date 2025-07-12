@@ -14,43 +14,41 @@ export default function Welcome() {
   const { firstPost, othersPosts, partners } = usePage().props;
   
   return (
-    <>
-      <MainLayout title='Accueil'>
-        <MainPhoto 
-          src='/assets/images/cover.webp'
-          alt={"Caen Volley Ball Photo"}
-          className={'main-photo-cover'}
-          loading='lazy'
-        />
+    <MainLayout title='Accueil'>
+      <MainPhoto 
+        src='/assets/images/cover.webp'
+        alt={"Caen Volley Ball Photo"}
+        className={'main-photo-cover'}
+        loading='lazy'
+      />
 
-        <Scores
-          id="65f4382f11d4460dd0e0c6a0"
-          title="Score'N'Co"
-          height="460" 
-          src="https://v1.scorenco.com/widget/65f4382f11d4460dd0e0c6a0/" 
-          style={{
-            display: 'block', 
-            width: '100%', 
-            overflow: 'auto', 
-            margin: 'auto', 
-            borderWidth: '0px', 
-            borderRadius: '5px', 
-            boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.1)'
-          }}
-        />
+      <Scores
+        id="65f4382f11d4460dd0e0c6a0"
+        title="Score'N'Co"
+        height="460" 
+        src="https://v1.scorenco.com/widget/65f4382f11d4460dd0e0c6a0/" 
+        style={{
+          display: 'block', 
+          width: '100%', 
+          overflow: 'auto', 
+          margin: 'auto', 
+          borderWidth: '0px', 
+          borderRadius: '5px', 
+          boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.1)'
+        }}
+      />
 
-        <Posts
-          firstPost={firstPost}
-          othersPosts={othersPosts}
-        />
+      <Posts
+        firstPost={firstPost}
+        othersPosts={othersPosts}
+      />
 
-        <Socials />
+      <Socials />
 
-        <Partners 
-          partners={partners}
-        />
+      <Partners 
+        partners={partners}
+      />
 
-      </MainLayout>
-    </>
+    </MainLayout>
   )
 }

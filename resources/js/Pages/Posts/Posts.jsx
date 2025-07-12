@@ -33,8 +33,7 @@ export default function Posts() {
     };
 
   return (
-    <>
-      <MainLayout title='Actualités'>
+    <MainLayout title='Actualités'>
         <div className='bloc-main-photo'>
             <MainPhoto 
             src='/assets/images/cover2baw.webp'
@@ -95,9 +94,7 @@ export default function Posts() {
                 </div>
             </div>
         </section>  
-
-      </MainLayout>
-    </>
+    </MainLayout>
   )
 }
 
