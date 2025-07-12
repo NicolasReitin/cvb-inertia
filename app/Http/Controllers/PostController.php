@@ -15,21 +15,14 @@ class PostController extends Controller
     // Afficher tous les news
     public function index(): Response
     {
-        $posts = Post::latest()->paginate(10);
-        $firstPost = Post::latest('created_at')->first();
-        $latestPost = Post::latest('created_at')->take(6)->get(); // prend les 6 derniers posts
-        $othersPosts = $latestPost->skip(1);
+        $posts = Post::latest()->paginate(9);
 
-        return Inertia::render('Posts/Actualites', [
-            'posts' => $posts ? PostResource::collection($posts) : null,
-            'firstPost' => $firstPost ? PostResource::make($firstPost) : null,
-            'othersPosts' => $othersPosts ? PostResource::collection($othersPosts) : null
+        // on garde le paginator et on transforme chaque item avec through()
+        $postsTransformed = $posts->through(fn ($post) => new PostResource($post));
+
+        return Inertia::render('Posts/Posts', [
+            'posts' => $postsTransformed,
         ]);
-        // return response()->json([
-        //     'firstPost' => $firstPost ? PostResource::make($firstPost) : null,
-        //     'posts' => $posts ? PostResource::collection($posts) : null,
-        //     'othersPosts' => $othersPosts ? PostResource::collection($othersPosts) : null
-        // ]);
     }
     
     // Afficher un news spécifique

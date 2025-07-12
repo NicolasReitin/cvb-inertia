@@ -1,36 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import Footer from '@/Layouts/Footer'
-import Header from '@/Layouts/Header'
-import { Link } from '@inertiajs/react';
+import React, { useEffect } from 'react'
+import '../../../sass/actualites.scss'
+import { Link, usePage } from '@inertiajs/react';
 import moment from 'moment';
-
-import '../../../sass/actualites.scss'  
 import ButtonGold from '@/Components/ButtonGold';
 import MainPhoto from '@/Components/Header/MainPhoto';
-import ApiReseaux from '@/Components/ApiReseaux';
+import MainLayout from '@/Layouts/MainLayout';
 
-import axios from '@/libs/axios';
+export default function Posts() {
 
-
-export default function Actualites() {
-    const [actualites, setActualites] = useState([]);
-
-    useEffect(() =>{
-        // Fonction asynchrone pour récupérer les articles
-        const fetchActualites = async() => {
-          try {
-            const response = await axios.get('/api/actualites')
-            setActualites(response.data.actualites)           
-          } catch (err) {
-            console.error(err);
-          }
-        }
-        fetchActualites();
-    }, []);
+    const { posts } = usePage().props;
+    const newsArray = posts.data;
 
     useEffect(() => {
         adjustImageFit();
-    }, [actualites]); // Réajuster chaque fois que les actualités changent
+    }, [newsArray]); // Réajuster chaque fois que les actualités changent
 
     const adjustImageFit = () => {
         const images = document.querySelectorAll('.card img');
@@ -48,13 +31,9 @@ export default function Actualites() {
         });
     };
 
-
   return (
     <>
-        {/* <Head title="Actualités" /> */}
-
-        <Header />
-
+      <MainLayout title='Actualités'>
         <div className='bloc-main-photo'>
             <MainPhoto 
             src='/assets/images/cover2baw.webp'
@@ -62,23 +41,22 @@ export default function Actualites() {
             className={'main-photo'}
             />
         </div>    
-
                 
         <section className='flex'>
-            <div className="left-bloc">
+            <div>
                 <h1>ACTUALITÉS</h1>
                 <div className='cards'>
                     {
-                        actualites.map((actu)=> (
-                            <div className='card' key={actu.id}>
-                                {/* <Link href={route('actu.show', {actu: actu.id})}> */}
-                                <Link href={`/actualite/${actu.id}`}>
+                        newsArray.map((post)=> (
+                            <div className='card' key={post.data.id}>
+                                {/* <Link href={route('post.data.show', {post: post.id})}> */}
+                                <Link href={`/actualite/${post.data.id}`}>
                                     <div className='relative'>
-                                        <img src={actu.photo} alt="actualité" />
+                                        <img src={post.data.photo} alt="actualité" />
                                         <div className="filtre-img"></div>
                                     </div>
-                                    <h2>{ actu.titre }</h2>
-                                    <h3>Le { moment(actu.created_at).locale('fr').format('DD/MM/YYYY') }</h3>
+                                    <h2>{ post.data.title }</h2> 
+                                    <h3>Le { moment(post.data.created_at).locale('fr').format('DD/MM/YYYY') }</h3>
                                 </Link>
                             </div>
                         ))
@@ -86,10 +64,10 @@ export default function Actualites() {
                 </div>
                 {/* Afficher la pagination avec <Link> */}
                 <div className='flex justify-center gap-8'>
-                    {actualites.prev_page_url && (
+                    {posts.prev_page_url && (
                         <>
                             <ButtonGold
-                                href = {actualites.prev_page_url}
+                                href = {posts.prev_page_url}
                                 classNameButton = 'button-next-previous' 
                                 content = {
                                     <>
@@ -97,13 +75,13 @@ export default function Actualites() {
                                     </>
                                 }
                             />
-                            {/* <Link href={actualites.prev_page_url}>Précédent</Link> */}
+                            {/* <Link href={posts.prev_page_url}>Précédent</Link> */}
                         </>
                     )}
-                    {actualites.next_page_url && (
+                    {posts.next_page_url && (
                         <>
                             <ButtonGold
-                                href = {actualites.next_page_url}
+                                href = {posts.next_page_url}
                                 classNameButton = 'button-next-previous' 
                                 content = {
                                     <>
@@ -115,13 +93,9 @@ export default function Actualites() {
                     )}
                 </div>
             </div>
-            <div className="right-bloc">
-                <ApiReseaux />
-            </div>
         </section>  
 
-        <Footer />
-
+      </MainLayout>
     </>
   )
 }
