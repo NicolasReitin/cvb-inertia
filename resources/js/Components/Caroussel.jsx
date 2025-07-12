@@ -4,26 +4,9 @@ import axios from '@/libs/axios';
 
 
 
-export default function Caroussel() {
-
-    const [partners, setPartners] = useState([]);
+export default function Caroussel({ partners }) {
 
     const translationMultiplier = partners.length; // Valeur dynamique que vous souhaitez utiliser
-
-    useEffect(() =>{
-        // Fonction asynchrone pour récupérer les articles
-        const fetchPartners = async() => {
-          try {
-            const response = await axios.get('/api/partenaires')
-            console.log(response.data);
-            setPartners(response.data.partners)                  
-          } catch (err) {
-            console.error(err);
-          }
-        }
-    
-        fetchPartners();
-      }, []);
 
     return (
         <>
@@ -35,7 +18,6 @@ export default function Caroussel() {
                                 <img src={partner.logo} height="100" width="250" alt={partner.nom}/>
                             </div>
                         ))
-                        
                     } 
                     {/* double des div pour enchainement du carousel */}
                     {

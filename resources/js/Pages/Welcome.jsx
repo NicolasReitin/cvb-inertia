@@ -7,8 +7,11 @@ import Socials from '@/Components/Socials'
 import Partners from '@/Components/Partners'
 import Scores from '@/Components/Scores'
 import MainLayout from '@/Layouts/MainLayout'
+import { usePage } from '@inertiajs/react'
 
-export default function Welcome({ firstPost, othersPosts}) {
+export default function Welcome() {
+  
+  const { firstPost, othersPosts, partners } = usePage().props;
   
   return (
     <>
@@ -36,15 +39,17 @@ export default function Welcome({ firstPost, othersPosts}) {
           }}
         />
 
-        <Posts 
+        <Posts
           firstPost={firstPost}
           othersPosts={othersPosts}
         />
 
         <Socials />
 
-        <Partners />
-        
+        <Partners 
+          partners={partners}
+        />
+
       </MainLayout>
     </>
   )
