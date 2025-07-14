@@ -6,8 +6,8 @@ import React, { useState } from 'react'
 import ButtonGold from '../ButtonGold'
 import { usePage } from '@inertiajs/react';
 
-export default function MenuNavbar({ /*auth*/ }) {
-  const { auth } = usePage().props;
+export default function MenuNavbar() {
+  const { auth, teams } = usePage().props;
   const [isOpen, setIsOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null);
 
@@ -70,15 +70,14 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </div>
                 <div className='dropdown-content w-64'>
                   <ul>
-                    <Link href='/equipe-senior/2'><li>Nationale 3 Masculine</li></Link>
-                    <Link href='/equipe-senior/3'><li>Prénationale Masculine</li></Link>
-                    <Link href='/equipe-senior/4'><li>Régionale Masculine</li></Link>
-                    <Link href='/equipe-senior/8'><li>Régionale Féminine</li></Link>
-                    <Link href="/equipe-senior/7"><li>Départementales Masculines</li></Link>
-                    <Link href="/equipe-senior/10"><li>Départementale Féminine</li></Link>
-                    <Link href='/equipe-senior/1'><li>Ufolep</li></Link>
-                    <Link href='/equipe-senior/9'><li>Volley assis</li></Link>
-                    <Link href="/equipe-senior/11"><li>Loisirs</li></Link>
+                    {teams
+                      .filter(team => team.category === 'senior')
+                      .map(team => (
+                        <Link href={`/equipe/${team.id}`} key={team.id}>
+                          <li>{team.name}</li>
+                        </Link>
+                      ))
+                    }
                   </ul>
                 </div>
               </div>
@@ -91,11 +90,14 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </div>
                 <div className='dropdown-content w-44'>
                   <ul>
-                    <Link href="/equipe-junior/2"><li>M13 Masculins</li></Link>
-                    <Link href="/equipe-junior/3"><li>M15 Masculins</li></Link>
-                    <Link href="/equipe-junior/4"><li>M18 Féminines</li></Link>
-                    <Link href="/equipe-junior/5"><li>M18 Masculins</li></Link>
-                    <Link href="/equipe-junior/6"><li>M21 Masculins</li></Link>
+                    {teams
+                      .filter(team => team.category === 'young')
+                      .map(team => (
+                        <Link href={`/equipe/${team.id}`} key={team.id}>
+                          <li>{team.name}</li>
+                        </Link>
+                      ))
+                    }
                   </ul>
                 </div>
               </div>
@@ -201,30 +203,34 @@ export default function MenuNavbar({ /*auth*/ }) {
                 </span>
               {openSubMenu === 'seniors' && (
                 <ul className='submenu'>
-                  <li><Link href='/equipe-senior/2' onClick={closeMenu}>Nationale 3 Masculine</Link></li>
-                  <li><Link href='/equipe-senior/3' onClick={closeMenu}>Prénationale Masculine</Link></li>
-                  <li><Link href='/equipe-senior/4' onClick={closeMenu}>Régionale Masculine</Link></li>
-                  <li><Link href='/equipe-senior/8' onClick={closeMenu}>Régionale Féminine</Link></li>
-                  <li><Link href='/equipe-senior/7' onClick={closeMenu}>Départementales Masculines</Link></li>
-                  <li><Link href='/equipe-senior/10' onClick={closeMenu}>Départementale Féminine</Link></li>
-                  <li><Link href='/equipe-senior/1' onClick={closeMenu}>Ufolep</Link></li>
-                  <li><Link href='/equipe-senior/9' onClick={closeMenu}>Volley assis</Link></li>
-                  <li><Link href='/equipe-senior/11' onClick={closeMenu}>Loisirs</Link></li>
+                  {teams
+                    .filter(team => team.category === 'senior')
+                    .map(team => (
+                      <li key={team.id}>
+                        <Link href={`/equipe/${team.id}`} onClick={closeMenu}>
+                          {team.name}
+                        </Link>
+                      </li>
+                    ))}
                 </ul>
               )}
             </li>
             <li className='dropdown-item'>
-              <span className='itemMenu' onClick={() => toggleSubMenu('juniors')}>
+              <span className='itemMenu' onClick={() => toggleSubMenu('youngs')}>
                 <span>{trans.header.young_team}</span>
                 <img src="/assets/icones/arrow-down-yellow.png" />
               </span>
-              {openSubMenu === 'juniors' && (
+              {openSubMenu === 'youngs' && (
                 <ul className='submenu'>
-                  <li><Link href='/equipe-junior/2' onClick={closeMenu}>M13 Masculins</Link></li>
-                  <li><Link href='/equipe-junior/3' onClick={closeMenu}>M15 Masculins</Link></li>
-                  <li><Link href='/equipe-junior/4' onClick={closeMenu}>M18 Féminines</Link></li>
-                  <li><Link href='/equipe-junior/5' onClick={closeMenu}>M18 Masculins</Link></li>
-                  <li><Link href='/equipe-junior/6' onClick={closeMenu}>M21 Masculins</Link></li>
+                  {teams
+                    .filter(team => team.category === 'young')
+                    .map(team => (
+                      <li key={team.id}>
+                        <Link href={`/equipe/${team.id}`} onClick={closeMenu}>
+                          {team.name}
+                        </Link>
+                      </li>
+                    ))}
                 </ul>
               )}
             </li>

@@ -1,65 +1,42 @@
 import '../../../sass/equipes.scss'  
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { usePage } from '@inertiajs/react'
-import axios from '@/libs/axios';
 import MainLayout from '@/Layouts/MainLayout';
 
 export default function Teams() {
-  const { props } = usePage();
-  const { equipeType, equipe_id } = props;
 
-  const [equipe, setEquipe] = useState([]);
-  const [coachs, setCoachs] = useState([]);
-  const [joueurs, setJoueurs] = useState([]);
-
-  useEffect(() =>{
-    const fetchEquipe = async() => {
-      try {
-        let url = `/api/equipe-${equipeType}/${equipe_id}`;
-        const response = await axios.get(url)
-        setEquipe(response.data.equipe)
-        setCoachs(response.data.coachs)
-        if (response.data.equipe) {
-          setJoueurs(response.data.equipe.joueurs);
-        }              
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    fetchEquipe();
-  }, [equipe_id, equipeType]); // Ajouter equipe_id et equipeType comme dépendance
-
+  const { team } = usePage().props;
+  const players = team.players
 
   return (
-    <MainLayout title={equipe.name}>
+    <MainLayout title={team.name}>
       <section>
-        <h1>{equipe.nom}</h1>
-        {equipe.photo && (
+        <h1>{team.name}</h1>
+        {team.photo && (
           <div>
             <img 
-              src={equipe.photo} 
+              src={team.photo} 
               alt="Photo d'équipe"
               className='team-img' 
             />
           </div>
           )
         } 
-        <h2>{equipe.division}</h2>
+        <h2>{team.division}</h2>
 
         <div className='players-cards'>
-          {joueurs &&(
-            joueurs.map((joueur) => (
-              <div key={joueur.id} className='player-card'>
-                <img src={joueur.photo} alt="player" />
-                <h3>{joueur.nom+ ' '+ joueur.prenom}</h3>
+          {players &&(
+            players.map((player) => (
+              <div key={player.id} className='player-card'>
+                <img src={player.photo} alt="player" />
+                <h3>{player.last_name+ ' '+ player.first_name}</h3>
               </div>
             ))
           )
           }
         </div>
         <hr />
-        <div className='coach-card'>
+        {/* <div className='coach-card'>
           {coachs && coachs.length > 0 &&(
             <>
               <h2 className='mt-2'>Coachs</h2>
@@ -80,7 +57,7 @@ export default function Teams() {
               </div>
             </>
           )}
-        </div>
+        </div> */}
       </section>
     </MainLayout>
   )

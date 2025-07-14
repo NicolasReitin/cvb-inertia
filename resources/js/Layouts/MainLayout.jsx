@@ -8,10 +8,13 @@ export default function MainLayout({ children, title = 'CVB' }) {
   return (
     <>
       <Head title={title} />
+
       <Header />
+
       <main className="min-h-screen">
         {children}
       </main>
+      
       <Footer />
     </>
   );

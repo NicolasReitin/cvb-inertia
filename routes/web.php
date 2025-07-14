@@ -3,7 +3,9 @@
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\WelcomeController;
+use App\Models\Team;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -26,14 +28,14 @@ Route::get('/actualites', [PostController::class, 'index'])->name('posts.index')
 Route::get('/actualites/{post}', [PostController::class, 'show'])->name('posts.show');
 
 //---------------------------- Teams ----------------------------
-Route::get('/equipe-senior/{equipe_id}', fn ($equipe_id) => Inertia::render('Team/Teams', [
-    'equipeType' => 'senior',
-    'equipe_id' => $equipe_id,
-]));
-Route::get('/equipe-junior/{equipe_id}', fn ($equipe_id) => Inertia::render('Team/Teams', [
-    'equipeType' => 'junior',
-    'equipe_id' => $equipe_id,
-]));
+// Route::get('/equipe/{team}', function (Team $team) {
+//     return Inertia::render('Team/Teams', [
+//         'team' => $team,
+//     ]);
+// })->name('team.show');
+
+Route::get('/equipe/{team}', [TeamController::class, 'show'])
+     ->name('team.show');
 
 //---------------------------- Divers ----------------------------
 Route::get('/projet', fn () => Inertia::render('Various/Project'));
