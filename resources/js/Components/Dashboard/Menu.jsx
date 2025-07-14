@@ -1,11 +1,7 @@
 import React from 'react'
-import { useAuth } from '@/context/AuthContext'; // Importez useAuth
-
 
 export default function Menu( {onMenuChange}) {
-  const { auth } = useAuth(); // Utilise le contexte d'authentification
 
-  // console.log(auth.role);
   const handleMenuClick = (menuItem) => {
     onMenuChange(menuItem);
   };
@@ -49,16 +45,12 @@ export default function Menu( {onMenuChange}) {
                 La boutique
             </li>
           </div>
-          {auth && auth.role === 'admin' &&(
-            <>
-              <div>
-                <li onClick={() => handleMenuClick('users')}>
-                  <img src="/assets/icones/user.png" alt="" />
-                    Utilisateurs
-                </li>
-              </div>
-            </>
-          )}
+          <div>
+            <li onClick={() => handleMenuClick('users')}>
+              <img src="/assets/icones/user.png" alt="" />
+                Utilisateurs
+            </li>
+          </div>
         </ul>
     </div>
   )

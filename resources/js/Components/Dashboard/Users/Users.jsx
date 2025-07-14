@@ -13,20 +13,6 @@ const Users = () => {
     email: ''
   });
 
-  useEffect(() =>{
-    // Fonction asynchrone pour récupérer les staff
-    const fetchStaff = async() => {
-      try {
-        const response = await axios.get('/api/dashboard')
-        setStaff(response.data.staff)
-              
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    fetchStaff();
-  }, []);
-
   //EDIT
   const handleEdit = (id, name, email) => {
     setUtilisateurId(id); // recuperer id de l'utilisateur ciblé

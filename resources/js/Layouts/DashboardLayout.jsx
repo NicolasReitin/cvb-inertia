@@ -1,7 +1,5 @@
 import { React, useState } from 'react';
-
-import '../../sass/dashboard.scss';
-
+import '@sass/dashboard.scss';
 import LogoClub from '@/Components/LogoClub';
 import Profile from '@/Components/Dashboard/Profile';
 import Menu from '@/Components/Dashboard/Menu';
@@ -34,9 +32,7 @@ export default function Authenticated() {
             case 'partenaires':
                 return <Partenaires />;
             case 'shop':
-                return <Shop 
-                
-                />;
+                return <Shop />;
             default:
                 return <Default />;
         }
