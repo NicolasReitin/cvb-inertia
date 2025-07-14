@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import moment from 'moment'
-import '../../../sass/posts.scss'
+import '@sass/posts.scss'
 import { usePage } from '@inertiajs/react'
 import MainLayout from '@/Layouts/MainLayout'
 

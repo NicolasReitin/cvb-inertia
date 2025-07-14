@@ -1,5 +1,5 @@
+import "@sass/dashboard.scss"
 import { Link } from '@inertiajs/react';
-import "../../../sass/dashboard.scss"
 import trans from '@/lang/fr/main'
 
 import React, { useState } from 'react'

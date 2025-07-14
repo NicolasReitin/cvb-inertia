@@ -1,4 +1,4 @@
-import '../../../sass/equipes.scss'  
+import '@sass/equipes.scss'  
 import React from 'react'
 import { usePage } from '@inertiajs/react'
 import MainLayout from '@/Layouts/MainLayout';

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../sass/divers.scss'  
+import '@sass/divers.scss'  
 import MainLayout from '@/Layouts/MainLayout'
 import { usePage } from '@inertiajs/react';
 

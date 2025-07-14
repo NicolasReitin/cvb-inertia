@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../../sass/caroussel.scss' 
+import '@sass/caroussel.scss' 
 import axios from '@/libs/axios';
 
 

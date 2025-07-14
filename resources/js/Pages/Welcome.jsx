@@ -1,4 +1,4 @@
-import '../../sass/welcome.scss'
+import '@sass/welcome.scss'
 
 import React from 'react'
 import MainPhoto from '@/Components/Header/MainPhoto'
