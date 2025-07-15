@@ -5,7 +5,7 @@ export default function Partners({ partners }) {
   
   return (
     <>
-      <div className="partners">
+      <div className="welcome-partners">
         <h2 className=''>LES PARTENAIRES</h2>
         <div className="flex justify-center mt-10">
           <Caroussel partners={partners}/>

@@ -1,4 +1,3 @@
-import "@sass/dashboard.scss"
 import { Link } from '@inertiajs/react';
 import trans from '@/lang/fr/main'
 

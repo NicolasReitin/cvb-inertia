@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import '@sass/posts.scss'
 import { Link, usePage } from '@inertiajs/react';
 import moment from 'moment';
 import ButtonGold from '@/Components/ButtonGold';

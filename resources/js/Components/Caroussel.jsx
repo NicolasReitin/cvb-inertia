@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import '@sass/caroussel.scss' 
-import axios from '@/libs/axios';
-
-
+import React from 'react'
 
 export default function Caroussel({ partners }) {
-
     const translationMultiplier = partners.length; // Valeur dynamique que vous souhaitez utiliser
 
     return (

@@ -246,7 +246,7 @@
 //________________________________________________________________
 // _____________________________ Partenaires ____________________________
 //________________________________________________________________
-.partners::after {
+.welcome-partners::after {
     content: '';
     position: absolute;
     top: 10%; /* Commence à 60% de la hauteur */
@@ -258,7 +258,7 @@
     background-color: $redCVB;
     z-index: -1; /* Assurez-vous que l'arrière-plan reste en arrière */
 }
-.partners{
+.welcome-partners{
     position: relative;
     height: 500px;
     margin: 20px auto;
@@ -378,11 +378,11 @@
     }
 
     // _____________________________ Partenaires ____________________________
-    .partners::after {
+    .welcome-partners::after {
         top: -10%; /* Commence à 60% de la hauteur */
         height: 200%;
     }
-    .partners{
+    .welcome-partners{
         height: 220px;
         h2{
             margin: 0 0 5% 2%;

@@ -1,5 +1,4 @@
 import { React, useState } from 'react';
-import '@sass/dashboard.scss';
 import LogoClub from '@/Components/LogoClub';
 import Profile from '@/Components/Dashboard/Profile';
 import Menu from '@/Components/Dashboard/Menu';
@@ -10,7 +9,6 @@ import Equipes from '@/Components/Dashboard/Equipes/Equipes';
 import Partenaires from '@/Components/Dashboard/Partenaires/Partenaires';
 import Shop from '@/Components/Dashboard/Shop/Shop';
 import Default from '@/Components/Dashboard/Default/Default';
-
 
 export default function Authenticated() {
     const [selectedMenuItem, setSelectedMenuItem] = useState('default');
