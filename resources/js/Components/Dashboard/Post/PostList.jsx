@@ -2,7 +2,7 @@ import {React, useEffect, useState} from 'react'
 import axios from '@/libs/axios';
 
 
-export default function ListeActus( {actualites, setActualites} ) {
+export default function PostList( {actualites, setActualites} ) {
     const [page, setPage] = useState(1); // État pour suivre la page actuelle
 
     const articlesPerPage = 8; // Nombre d'articles par page

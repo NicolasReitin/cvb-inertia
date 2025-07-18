@@ -9,7 +9,7 @@ export default function Default() {
             <div className="stats">
                 <div className="bloc-stats calendrier">
                     <img src="/assets/icones/calendrier.png" alt="players" />
-                    <p><span>Saison</span> 2024 / 2025</p>
+                    <p><span>Saison</span> 2025/ 2026</p>
                 </div>
                 <div className="bloc-stats licencies">
                     <img src="/assets/icones/joueur.png" alt="players" />

@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from '@/libs/axios';
 
-export default function ButtonAddActu({ addActualite }) {
+export default function ButtonAddPost({ addActualite }) {
     const [createActu, setCreateActu] = useState(false);
     const [previewImage, setPreviewImage] = useState(null);
     const [formData, setFormData] = useState({

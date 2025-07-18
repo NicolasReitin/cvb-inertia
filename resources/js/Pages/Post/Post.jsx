@@ -5,7 +5,7 @@ import ButtonGold from '@/Components/ButtonGold';
 import MainPhoto from '@/Components/Header/MainPhoto';
 import MainLayout from '@/Layouts/MainLayout';
 
-export default function Posts() {
+export default function Post() {
 
     const { posts } = usePage().props;
     const newsArray = posts.data;

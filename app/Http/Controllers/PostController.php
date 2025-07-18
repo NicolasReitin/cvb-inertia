@@ -20,7 +20,7 @@ class PostController extends Controller
         // on garde le paginator et on transforme chaque item avec through()
         $postsTransformed = $posts->through(fn ($post) => new PostResource($post));
 
-        return Inertia::render('Posts/Posts', [
+        return Inertia::render('Post/Post', [
             'posts' => $postsTransformed,
         ]);
     }
@@ -28,7 +28,7 @@ class PostController extends Controller
     // Afficher un post spécifique
     public function show(Post $post): Response
     {
-        return Inertia::render('Posts/Show', [
+        return Inertia::render('Post/Show', [
             'post' => null !== $post ? PostResource::make( $post )->resolve() : null,
         ]);
     }

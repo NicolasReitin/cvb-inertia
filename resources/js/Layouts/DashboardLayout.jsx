@@ -3,12 +3,12 @@ import LogoClub from '@/Components/LogoClub';
 import Profile from '@/Components/Dashboard/Profile';
 import Menu from '@/Components/Dashboard/Menu';
 import Users from '@/Components/Dashboard/Users/Users';
-import Actualites from '@/Components/Dashboard/Actualites/Actualites';
 import Club from '@/Components/Dashboard/Club/Club';
-import Equipes from '@/Components/Dashboard/Equipes/Equipes';
-import Partenaires from '@/Components/Dashboard/Partenaires/Partenaires';
 import Shop from '@/Components/Dashboard/Shop/Shop';
 import Default from '@/Components/Dashboard/Default/Default';
+import Post from '@/Components/Dashboard/Post/Post';
+import Partner from '@/Components/Dashboard/Partner/Partner';
+import Team from '@/Components/Dashboard/Team/Team';
 
 export default function Authenticated() {
     const [selectedMenuItem, setSelectedMenuItem] = useState('default');
@@ -22,13 +22,13 @@ export default function Authenticated() {
             case 'users':
                 return <Users />;
             case 'actualites':
-                return <Actualites />;
+                return <Post />;
             case 'club':
                 return <Club />;
             case 'equipes':
-                return <Equipes />;
+                return <Team />;
             case 'partenaires':
-                return <Partenaires />;
+                return <Partner />;
             case 'shop':
                 return <Shop />;
             default:

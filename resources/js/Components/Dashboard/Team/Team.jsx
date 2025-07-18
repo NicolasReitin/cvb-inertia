@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-export default function Equipes() {
+export default function Team() {
   
   const [joueurs, setJoueurs] = useState([]);
   const [equipesJeunes, setEquipesJeunes] = useState([]);

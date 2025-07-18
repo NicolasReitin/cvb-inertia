@@ -17,7 +17,7 @@ class PartnerController extends Controller
         $partnersHelp = Partner::query()->where('role', 'helped us')->get();
         $partnersPrivate = Partner::query()->where('role', 'private partner')->get();
         
-        return Inertia::render('Partners/Partners', [
+        return Inertia::render('Partner/Partner', [
             'partnersInstitutionnels' => null !== $partnersInstitutionnels ? PartnerResource::collection($partnersInstitutionnels)->resolve() : null,
             'partnersHelp' => null !== $partnersHelp ? PartnerResource::collection($partnersHelp)->resolve() : null,
             'partnersPrivate' => null !== $partnersPrivate ? PartnerResource::collection($partnersPrivate)->resolve() : null,

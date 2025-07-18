@@ -2,7 +2,7 @@ import React from 'react'
 import MainLayout from '@/Layouts/MainLayout'
 import { usePage } from '@inertiajs/react';
 
-export default function Partenaires() {
+export default function Partner() {
     const { partnersInstitutionnels, partnersHelp, partnersPrivate } = usePage().props;
 
     return (
