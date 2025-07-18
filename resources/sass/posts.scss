@@ -12,23 +12,28 @@
     border-radius: map.get($buttonGold, border-radius);
     box-shadow: map.get($buttonGold, box-shadow);
     transition: map.get($buttonGold, transition);
+
     &:hover{
         // transform: scale(1.02);
         background-color: $yellowHoverCVB;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     }
 }
+
 .bloc-main-photo{
     position: relative;
+
     .main-photo{
         background-size: cover;
         position: relative;
+
         img{
             width: 100%;
             height: 40vh;
             object-fit: cover;
         }
     }
+
     h1{
         position: absolute;
         top: 80%;
@@ -43,6 +48,7 @@
 
 section{
     width: auto;
+
     h1{
         position: relative;
         white-space: nowrap;
@@ -52,6 +58,7 @@ section{
         color: $blueCVB;
         font-weight: 900;
     }
+
     h1::after {
         content: '';
         position: absolute;
@@ -61,12 +68,14 @@ section{
         height: 4px;
         background: $redCVB;
     }
+
     //dans la page actualités
     .cards{
         margin: 0% 6% 3%;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+
         .card{
             margin-top: 2%;
             margin-right: 3%;
@@ -83,16 +92,19 @@ section{
                 padding: 0 10px;
                 color: #353740;
             }
+
             h3{
                 margin: 10px 10px;
                 padding: 0 10px;
                 color: #989fa6;
             }
+
             img{
                 height: 350px;
                 min-width: 100%;
                 // object-fit: cover; //géré par le javascript selon resolution de l'image
             }
+
             .filtre-img{
                 background-color: rgba(0,0,0,0.1);
                 position: absolute;
@@ -107,6 +119,7 @@ section{
 
     //dans la page pour chaque actualité individuelle
     article{
+
         h1{
             position: relative;
             white-space: nowrap;
@@ -116,6 +129,7 @@ section{
             color: $blueCVB;
             font-weight: 900;
         }
+
         h1::after {
             content: '';
             position: absolute;
@@ -125,6 +139,7 @@ section{
             height: 4px;
             background: $redCVB;
         }
+
         .card-actu{
             margin: 5% auto;
             width: 70%;
@@ -132,11 +147,13 @@ section{
             min-height: auto;
             background: white;
             border: 1px solid #d8d8d8;
+
             h3{
                 position: absolute;
                 font-style: italic;
                 top: -5%;
             }
+
             h2{
                 font-size: 20px;
                 font-weight: 800;
@@ -144,6 +161,7 @@ section{
                 padding: 20px;
                 color: #353740;
             }
+
             .article-content{
                 margin-top: 2%;
                 line-height: 1.65;
@@ -151,12 +169,14 @@ section{
                 text-align: justify;
                 color: #353740;
             }
+
             img{
                 width: 100%;
                 height: auto;
                 max-height: 600px;
                 // object-fit: cover; //géré par le javascript selon resolution de l'image
             }
+
             .filtre-img{
                 background-color: rgba(0,0,0,0.1);
                 position: absolute;
@@ -181,49 +201,64 @@ section{
 
 /* Media queries pour appareils mobiles */
 @media (max-width: 480px) {
+
     .bloc-main-photo{
+
         .main-photo{
+
             img{
                 height: 25vh;
             }
         }
     }
+
     section{
         width: 0 auto;
+
         h1{
             margin: 5% !important;
             font-size: $sizeTitleMobile !important;
         }
+
         //dans la page actualités
         .cards{
             margin: 0% 2% 3%;
+
             .card{
                 margin: 0 auto;
                 width: 500px;
+
                 h2{
                     font-size: 18px;
                 }
+
                 h3{
                     font-size: 14px;
                     text-align: center;
                 }
+
                 img{
                     height: 200px;
                 }
             }
         }
+
         //dans la page pour chaque actualité individuelle
         article{
+
             h1{
                 margin: 3% 10%;
                 font-size: $sizeTitleMobile !important;
             }
+
             .card-actu{
                 margin: 80px auto;
                 width: 95%;
+
                 h3{
                     top: -30px;
                 }
+
                 .article-content{
                     margin-top: 2%;
                     line-height: 1.25;
@@ -232,6 +267,4 @@ section{
             }
         }
     }
-
-
 }

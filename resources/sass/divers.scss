@@ -5,6 +5,7 @@ body{
 }
 
 section{
+
     h1{
         position: relative;
         white-space: nowrap;
@@ -14,6 +15,7 @@ section{
         color: $blueCVB;
         font-weight: 900;
     }
+
     h1::after {
         content: '';
         position: absolute;
@@ -23,21 +25,26 @@ section{
         height: 4px;
         background: $redCVB;
     }
+
     .planning, .organigramme, .historique, .reglement, .statuts, .tarifs, .mode-emploi-icence, .devenez-partenaire{
         margin: 5% 10%;
         display: flex;
         justify-content: center;
     }
+
     .reglement, .statuts, .tarifs, .mode-emploi-icence, .devenez-partenaire{
         border-bottom: solid 1px rgb(153, 153, 153);
     }
+
     .projet{
         margin: 0 auto;
         width: 100%;
+
         .intro{
             padding: 3% 20%;
             background-color: $redCVB;
             color: white;
+
             h3{
                 text-align: center;
                 color: white;
@@ -45,6 +52,7 @@ section{
                 margin-bottom: 3%;
                 font-weight: 600;
             }
+
             p{
                 margin-top: 2%;
                 text-align: center;
@@ -53,8 +61,10 @@ section{
                 font-size: 18px;
             }
         }
+
         .projet-content{
             margin-top: 5%;
+
             h3{
                 text-align: center;
                 font-weight: 900;
@@ -62,20 +72,24 @@ section{
                 text-decoration: underline;
                 color: $redCVB;
             }
+
             h4{
                 text-align: center;
                 margin: 2% auto;
                 font-weight: 700;
             }
+
             p{
                 padding: 0 20%;
                 line-height: 1.5;
                 text-align: justify;
                 margin-bottom: 25px;
+
                 ul{
                     list-style-type: square;
                     margin-left: 4%;
                 }
+
                 a{
                     text-decoration: underline;
                     cursor: pointer;
@@ -84,23 +98,29 @@ section{
                 }
             }
         }
+
         .modalites{
+
             strong{
                 color: $redCVB;
             }
         }
     }
+
     .docs-divers{
         margin-bottom: 3%;
+
         ul{
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         gap: 10%;
+
             li{
                 margin-top: 3%;
                 text-align: center;
             }
+
             p{
                 width: 50%;
                 margin: 5% auto;
@@ -111,6 +131,7 @@ section{
                 box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
                 position: relative;
                 transition: all 0.3s ease;
+
                 &:hover{
                     background-color: $yellowHoverCVB;
                     left: 1px; /* Déplacement vers la droite de 5 pixels */
@@ -133,6 +154,7 @@ section{
     color: $blueCVB;
     text-decoration: underline;
 }
+
 .partners{
     width: 60%;
     margin: 2% auto;
@@ -140,6 +162,7 @@ section{
     justify-content: center;
     flex-wrap: wrap;
     gap: 10%;
+
     img{
         height: 100px;
         width: auto;
@@ -154,30 +177,37 @@ section{
 .boutique{
     width: 70%;
     margin: 5% auto;
+
     .intro{
+
         h3{
             color: rgb(0, 0, 0);
             font-size: 22px;
             margin-bottom: 3%;
             font-weight: 600;
         }
+
         p{
             margin-top: 2%;
             line-height: 1.75;
             font-weight: 400;
             font-size: 18px;
+
             a{
                 color: $redCVB;
                 font-weight: 600;
                 cursor: pointer;
+
                 &:hover{
                     color: $yellowHoverCVB;
                 }
             }
         }
     }
+
     .riva-floc{
         margin-top: 5%;
+
         h2{
             margin: 2% auto;
             text-align: center;
@@ -186,25 +216,31 @@ section{
             color: $blueCVB;
             text-decoration: underline;
         }
+
         p{
             text-align: center;
             color: $redCVB;
             font-weight: 800;
             font-size: 20px;
+
             a{
                 cursor: pointer;
+
                 &:hover{
                     color: $yellowHoverCVB;
                 }
             }
         }
+
         img{
             margin: 0 auto;
             width: 90%;
             max-width: 1000px;
         }
     }
+
     .ak-seven{
+
         h2{
             margin: 2% auto;
             text-align: center;
@@ -213,40 +249,48 @@ section{
             color: $blueCVB;
             text-decoration: underline;
         }
+
         p{
             margin: 5% auto;
             text-align: center;
             color: $blueCVB;
             font-weight: 500;
             font-size: 20px;
+
             a{
                 color: $redCVB;
                 font-weight: 800;
                 cursor: pointer;
+
                 &:hover{
                     color: $yellowHoverCVB;
                 }
             }
         }
+
         img{
             margin: 0 auto;
             max-width: 1000px;
             width: 90%;
         }
+
         .bon-commande{
             margin-top: 5%;
             max-width: 1000px;
         }
+
         .bloc-tailles{
             margin-top: 5%;
             display: flex;
             justify-content: center;
+
             h3{
                 text-align: center;
                 color: $redCVB;
                 font-size: 25px;
                 font-weight: 700;
             }
+
             img{
                 max-height: 600px;
                 max-width: 700px;
@@ -254,7 +298,6 @@ section{
         }
     }
 }
-
 
 //________________________________________________________________
 // ______________________ Media queries __________________________
@@ -267,28 +310,35 @@ section{
 
 /* Media queries pour appareils mobiles */
 @media (max-width: 480px) {
+
     section{
+
         img{
             width: 100%;
             min-width: 320px;
             max-width: 480px;
         }
+
         h1{
             white-space: pre-wrap !important;
             margin: 3%;
             font-size: $sizeTitleMobile !important;
         }
+
         .planning, .organigramme, .historique, .reglement, .statuts, .tarifs, .mode-emploi-icence, .devenez-partenaire{
             margin: 10% 0%;
             display: flex;
             justify-content: center;
         }
+
         .reglement, .statuts, .tarifs, .mode-emploi-icence, .devenez-partenaire{
             border-bottom: solid 1px rgb(153, 153, 153);
         }
+
         .projet{
             margin: 0 auto;
             width: 100%;
+
             .intro{
                 padding: 3% 5%;
                 p{
@@ -297,16 +347,20 @@ section{
                     font-size: 16px;
                 }
             }
+
             .projet-content{
                 margin-top: 5%;
+
                 h3{
                     text-align: left;
                     margin: 2% 5%;
                 }
+
                 h4{
                     text-align: justify;
                     margin: 2% 5%;
                 }
+
                 p{
                     padding: 0 5%;
                     line-height: 1.5;
@@ -314,21 +368,26 @@ section{
                 }
             }
         }
+
         .docs-divers{
             margin-bottom: 3%;
+
             ul{
                 flex-direction: column;
                 flex-wrap: nowrap;
                 gap: 0;
+
                 li{
                     margin-top: 3%;
                     text-align: center;
+
                     iframe{
                         margin: 0 auto;
                         width: 95%;
                         height: 350px;
                     }
                 }
+
                 p{
                     width: 60%;
                     font-size: 16px;
@@ -340,49 +399,63 @@ section{
 
     .boutique{
         width: 95%;
+
         .intro{
+
             h3{
                 font-size: 22px;
             }
+
             p{
                 text-align: justify;
                 line-height: 1.5;
                 font-size: 16px;
             }
         }
+
         .riva-floc{
             margin-top: 5%;
+
             h2{
                 font-size: 22px;
             }
+
             p{
                 font-size: 16px;
             }
+
             img{
                 max-width: 480px;
             }
         }
+
         .ak-seven{
+
             h2{
                 font-size: 22px;
             }
+
             p{
                 font-size: 16px;
             }
+
             img{
                 margin: 0 auto;
                 max-width: 480px;
                 width: 95%;
             }
+
             .bon-commande{
                 margin-top: 10%;
                 max-width: 480px;
             }
+
             .bloc-tailles{
                 margin-top: 10%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+
                 h3{
                     font-size: 20px;
                 }
@@ -391,9 +464,11 @@ section{
     }   
 
     // _____________________________ Patners _________________________
+    
     .partners-title{
         font-size: 20px;
     }
+
     .partners{
         width: 100%;
         margin: 5% auto;
@@ -403,9 +478,11 @@ section{
         align-items: center; /* Ajouté pour centrer les éléments horizontalement */
         flex-wrap: nowrap;
         gap: 5%;
+
         .partners a {
             display: inline-block; /* Pour que les éléments a respectent la taille de leurs enfants */
         }
+        
         img{
             height: 100px; /* Taille fixe en hauteur */
             width: 200px; /* Taille fixe en largeur */

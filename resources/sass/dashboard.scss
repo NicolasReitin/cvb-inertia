@@ -4,11 +4,14 @@
 //________________________________________________________________
 // _____________________________ Login ____________________________
 //________________________________________________________________
+
 .login-form{
+
     .logoClub{
         width: 200px;
     }
 }
+
 .bouton-admin{
     // Utilisation de map.get() pour récupérer les valeurs de $buttonGold
     bottom: map.get($buttonGold, bottom);
@@ -20,7 +23,8 @@
     color: map.get($buttonGold, color);
     border-radius: map.get($buttonGold, border-radius);
     box-shadow: map.get($buttonGold, box-shadow);
-    transition: map.get($buttonGold, transition);        
+    transition: map.get($buttonGold, transition);     
+
     &:hover{
         // transform: scale(1.02);
         background-color: white;
@@ -29,18 +33,23 @@
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     }
 }
+
 //________________________________________________________________
 // _____________________________ Menu ____________________________
 //________________________________________________________________
+
 .logo-dashboard{
+
     .logoClub{
         width: 80px;
         margin : 10%;
     }
 }
+
 .main{
     width: 100%;
     display: flex;
+
     aside{
         width: 300px;
         min-width: 280px;
@@ -48,15 +57,20 @@
         min-height: 100vh;
         border-right: 1px solid rgb(200, 200, 200);
         position: static;
+
         ul{
+
             div{
+
                 &:hover{
                     background: rgba(0, 255, 170, 0.089);
+
                     li{
                         font-weight: 900;
                     }
                 }
             }
+
             li{
                 display: flex;
                 gap: 10px;
@@ -66,12 +80,14 @@
                 color: #959ea9;
                 border-radius: 5px;
                 cursor: pointer;
+
                 img{
                     width: 30px;
                 }
             }
         }
     }
+
     article{
         width: 100%;
         background: rgba(0, 255, 170, 0.089);
@@ -97,28 +113,34 @@
     width: 90%;
     margin: 5% auto;
     display: flex;
+    flex-wrap: wrap;
     gap: 2%;
     justify-content: space-around;
+
     .bloc-stats{
         display: flex;
         width: 300px;
         height: 150px;
         padding: 35px;
+        margin-bottom: 20px;
         background-color: white;
         border-radius: 10px;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+
         img{
             width: auto;
             height: 60px;
             margin-right: 20px;
             margin-top: 15px;
         }
+
         p{
             color: #959ea9;
             font-weight: 400;
             font-size: 20px;
             display: flex;
             flex-direction: column;
+
             span{
                 color: black;
                 font-size: 35px;
@@ -129,22 +151,27 @@
 
     }
 }
+
 .bloc-content{
     width: 80%;
     margin: 5% auto;
     display: flex;
     justify-content: space-around;
+
     .raccourcis{
+
         h3{
             font-size: 20px;
             text-decoration: underline;
             font-weight: 600;
             margin-bottom: 10px;
         }
+
         .liens{
             display: flex;
             flex-direction: column;
             gap: 50px;
+
             a{
                 border-radius: 10px;
                 background-color: white;
@@ -154,6 +181,7 @@
                 color: grey;
                 box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
                 position: relative;
+
                 &:hover{
                     color: orange;
                     left: 2px; 
@@ -164,6 +192,7 @@
         }
 
     }
+
     .first-team{
         width: 100%;
     }
@@ -183,6 +212,7 @@
 // _____________________________ Actualités ____________________________
 //________________________________________________________________
 .create-actu{
+
     .button-create-actu{
         margin: 5% 5% 2%;
         padding: 8px;
@@ -192,42 +222,52 @@
         font-weight: 800;
         border-radius: 5px;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+
         &:hover{
             background: rgb(98, 253, 194);
     
         }
     }
+
     .block-create-actu{
         width: 90%;
         margin: 0 auto;
+
         .new-actu{
             width: 50%;
+
             form{
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
+
                 .input-form{
                     display: flex;
                     flex-direction: column;
                 }
+
                 input[type="text"]{
                     width: 80%;
                     max-width: 500px;
                     border-radius: 10px;
                     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+
                     &:focus{
                         border: solid 1px rgb(0, 255, 157);
                     }
                 }
+
                 textarea{
                     width: 80%;
                     max-width: 500px;
                     border-radius: 10px;
                     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+
                     &:focus{
                         border: solid 1px rgb(0, 255, 157);
                     }
                 }
+
                 button{
                     width: 100px;
                     padding: 8px;
@@ -237,11 +277,14 @@
                     font-weight: 800;
                     border-radius: 5px;
                     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+
                     &:hover{
                         background: rgb(98, 253, 194);
                     }
                 }
+
                 .message-error-form{
+
                     p{
                         background: rgb(218, 114, 114);
                         color: white;
@@ -250,7 +293,9 @@
                         border-radius: 10px;
                     }
                 }
+
                 .message-valid-form{
+
                     p{
                         background: rgb(114, 218, 149);
                         color: rgb(255, 255, 255);
@@ -261,6 +306,7 @@
                 }
             }
         }
+
         .extrait{
             width: 50%;
             padding: 2%;
@@ -268,6 +314,7 @@
             background: white;
             border-radius: 10px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+
             h1{
                 position: relative;
                 white-space: nowrap;
@@ -277,6 +324,7 @@
                 color: $blueCVB;
                 font-weight: 900;
             }
+
             h1.with-bar::after {
                 content: '';
                 position: absolute;
@@ -286,7 +334,9 @@
                 height: 4px;
                 background: $redCVB;
             }
+
             .card-actu{
+
                 img{
                     width: 100%;
                     height: auto;
@@ -297,9 +347,11 @@
         }
     }
 }
+
 .liste-actus{
     width: 80%;
     margin: 2% auto;
+
     tr{
         background: white;
         min-height: 50px;
@@ -307,17 +359,20 @@
 
         td{
             padding: 5px;
+
             img{
                 width: 100px;
                 max-height: 60px;
                 object-fit: cover;
                 padding: 5px;
             }
+
             .button-edit, .button-delete{
                 width: 40px;
             }
         }
     }
+
     .prev-button, .next-button{
         width: 160px;
         padding: 8px;
@@ -327,6 +382,7 @@
         font-weight: 800;
         border-radius: 5px;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+
         &:hover{
             background: rgb(98, 253, 194);
         }
@@ -336,38 +392,48 @@
 //________________________________________________________________
 // _____________________________ Users ____________________________
 //________________________________________________________________
+
 .users{
     padding-top: 5%;
+
     table{
         width: 80%;
         margin: 0 auto;
         background-color: white;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
         th, td {
             padding: 0px 20px;
             text-align: start;
         }
+
         button{
             margin: 10px auto;
         }
+
         .button-edit, .button-delete{
+
             img{
                 width: 40px;
             }
         }
+
         .button-cancel{
+
             img{
                 width: 30px;
             }
         }
     }
+
     input{
         width: 200px;
         border: 1px solid rgb(192, 192, 192);
         border-radius: 10px;
         background: #f2f2f2;
     }
+
     .button-add-user{
         padding: 8px;
         background: rgb(255, 255, 255);
@@ -375,6 +441,7 @@
         color: black;
         font-weight: 800;
         border-radius: 5px;
+
         &:hover{
             background: rgb(98, 253, 194);
 

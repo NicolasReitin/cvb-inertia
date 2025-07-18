@@ -6,10 +6,12 @@ html, body{
     padding: 0;
     overflow-x: hidden;
 }
+
 body{
     background-color: $whiteBackgroundCVB;
     overflow-x: hidden;
 }
+
 //________________________________________________________________
 // _____________________________ Header ____________________________
 //________________________________________________________________
@@ -18,25 +20,31 @@ body{
     height: 125px; //hauteur de introBar(35px) + Navbar(90px)
     background-color: #ffffff;
 }
+
 .content{
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 2;
 }
+
 .introBar{
     background: linear-gradient(to left, $redCVB 0%, $blueCVB 100%);
     height: 35px;
+
     p{
         margin-left: 20%;
         font-size: 18px;
     }
+
     div{
         margin-right:20%;
     }
+
     img{
         width: 25px;
         transition: transform 0.3s ease-in-out;
+
         &:hover{
             transform: scale(1.1);
         }
@@ -54,11 +62,14 @@ body{
     .navbar-content{
         margin: 0 10%;
     }
+
     // ----------------- Menu desktop -----------------
     .menu-desktop{
+
         .MenuNavbar{
             display: flex;
             gap: 16px;
+
             li {
                 font-weight: 500;
                 font-size: 20px;
@@ -68,6 +79,7 @@ body{
                 text-decoration: none;
                 position: relative;
             }
+
             li::before{
                 content: '';
                 position: absolute;
@@ -79,10 +91,12 @@ body{
                 transition: width 0.4s ease-in-out, transform 0.4s ease-in-out;
                 transform-origin: left;
             }
+
             li:hover::before {
                 width: 100%;
                 left: 0;
             }  
+
             img{
                 width: 10px;
                 min-width: 10px;
@@ -90,10 +104,13 @@ body{
                 margin-left: 5px;
                 transition: transform 0.5s ease-in-out;
             }   
+
             li:hover img {
                 transform: rotate(180deg) translateY(0%);
             }
+
             .dropdown-content{
+
                 li{
                     font-size: 16px;
                 }
@@ -103,6 +120,7 @@ body{
 
 
     // ----------------- Menu burger -----------------
+
     .burger-menu {
         position: fixed;
         top: 25px;
@@ -115,99 +133,112 @@ body{
         // justify-content: space-between;
 
         .burger-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 30px;
-        right: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 30px;
+            right: 40px;
         }
+
         .burger-nav {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        background-color: #fff;
-        padding: 20px;
-        position: fixed;
-        top: 35px;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow-y: auto;
-        z-index: 999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            position: fixed;
+            top: 35px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            z-index: 999;
         }
+
         .burger-nav.open {
-        display: flex;
+            display: flex;
         }
+
         .burger-nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
         }
+
         .burger-nav ul li {
-        width: 100%;
-        margin: 10px 0;
+            width: 100%;
+            margin: 10px 0;
         }
+
         .burger-nav ul li .itemMenu {
-        color: rgb(30, 30, 30);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-        border-radius: 5px;
-        transition: 0.8s;
-        cursor: pointer;
-        font-weight: bold;
+            color: rgb(30, 30, 30);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.8s;
+            cursor: pointer;
+            font-weight: bold;
         }
+
         .burger-nav ul li .itemMenu:hover {
-        background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
+
         .burger-nav ul li .submenu {
-        list-style: none;
-        padding: 0;
-        margin: 10px 0;
-        width: 100%;
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            width: 100%;
         }
+
         .burger-nav ul li .submenu li {
-        margin: 5px 0;
+            margin: 5px 0;
         }
+
         .burger-nav ul li .submenu li a {
-        color: rgb(30, 30, 30);
-        text-decoration: none;
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: 0.8s;
-        text-align: center; /* Centrer les éléments de sous-menu */
+            color: rgb(30, 30, 30);
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.8s;
+            text-align: center; /* Centrer les éléments de sous-menu */
         }
+
         .burger-nav ul li .submenu li a:hover {
-        background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
+
         .close-button {
-        background: none;
-        border: none;
-        color: rgb(30, 30, 30);
-        cursor: pointer;
-        position: absolute;
-        top: 20px;
-        right: 40px;
+            background: none;
+            border: none;
+            color: rgb(30, 30, 30);
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 40px;
         }
+
         .itemMenu {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .itemMenu > span {
-        margin-right: 8px; /* Espace entre le texte et la flèche */
+            margin-right: 8px; /* Espace entre le texte et la flèche */
         }
 
         .menu-logo-burger{
@@ -218,10 +249,12 @@ body{
     }
     .itemMenu{
         white-space: nowrap;
+
         img{
             width: 15px;
         }
     }
+
     .logoClub{
         // position: absolute;
         top: 0%;
@@ -231,13 +264,13 @@ body{
     }
 }
 
-
 // _______________________Dropdown menu___________________
 
 .dropdown-item {
     position: relative;
     cursor: pointer;
 }
+
 .dropdown-content {
     opacity: 0;
     visibility: hidden; /* Masquer le contenu */
@@ -246,6 +279,7 @@ body{
     left: 0;
     z-index: 2;
     transition: opacity 0.6s ease, visibility 0.6s ease; /* Ajoutez une transition sur l'opacité et la visibilité */
+
     ul{
         margin-top: 10px;
         display: flex;
@@ -258,11 +292,13 @@ body{
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
         padding: 20px;
         background: #ffffffe8;
+
         h3{
             color: $yellowCVB;
         }
     }
 }
+
 .dropdown-item:hover .dropdown-content{
     // display: flex;
     opacity: 1; /* Au survol, l'opacité devient 1, affichant le contenu */
@@ -299,23 +335,29 @@ body{
         width: 100%;
         padding-bottom: 20px;
         background: $blueCVB;
+
         .logoClub{
             width: 200px;
         }
+
         .pratical-info{
+
             h2{
                 font-size: 32px;
                 font-weight: 900;
                 text-decoration: underline;
                 color: white;
             }
+
             p{
                 line-height: 150%;
                 font-size: 20px;
                 color: white;
             }
         }
+
         .mentions{
+
             li {
                 font-weight: 500;
                 font-size: 16px;
@@ -325,6 +367,7 @@ body{
                 text-decoration: none;
                 position: relative;
             }
+
             li::before{
                 content: '';
                 position: absolute;
@@ -336,11 +379,13 @@ body{
                 transition: width 0.4s ease-in-out, transform 0.4s ease-in-out;
                 transform-origin: left;
             }
+
             li:hover::before {
                 width: 100%;
                 left: 0;
             }  
         }
+
         .social-networks img{
                 width: 30px;
                 transition: transform 0.3s ease-in-out;
@@ -348,10 +393,13 @@ body{
                     transform: scale(1.1);
                 }
         }
+
         .sign{
+
             p{
                 font-size: 16px;
             }
+
             a {
                 font-weight: 500;
                 font-size: 16px;
@@ -361,6 +409,7 @@ body{
                 text-decoration: none;
                 position: relative;
             }
+
             a::before{
                 content: '';
                 position: absolute;
@@ -372,6 +421,7 @@ body{
                 transition: width 0.4s ease-in-out, transform 0.4s ease-in-out;
                 transform-origin: left;
             }
+
             a:hover::before {
                 width: 100%;
                 left: 0;
@@ -385,7 +435,8 @@ body{
 
 /* Media queries pour appareils mobiles */
 @media (max-width: 1024px) {
-        // ----------------- Menu -----------------
+
+    // ----------------- Menu -----------------
     .burger-menu {
       display: flex !important; /* Utilisez !important pour forcer le display à flex */
     }
@@ -393,27 +444,34 @@ body{
     .menu-desktop {
       display: none !important; /* Utilisez !important pour forcer le display à none */
     }
+
     .logoClub{
         display: none;
     }
-        // ----------------- Intro bar -----------------
+
+    // ----------------- Intro bar -----------------
     .header{
         height: 115px; //hauteur de introBar(25px) + Navbar(90px)
         background-color: #ffffff;
     }
+
     .introBar{
         background: linear-gradient(to left, $redCVB 0%, $blueCVB 100%);
         height: 25px;
+
         p{
             margin-left: 2%;
             font-size: 12px;
         }
+
         div{
             margin-right:5%;
         }
+
         img{
             width: 15px;
             transition: none;
+
             &:hover{
                 transform: none;
             }
@@ -422,31 +480,41 @@ body{
 }
 
 @media (max-width: 480px) {
+
     // _____________________________ Footer ____________________________
     .footer{
         width: 100%;
         padding-bottom: 20px;
+
         .logoClub{
             width: 200px;
         }
+
         .pratical-info{
+
             h2{
                 font-size: $sizeTitleMobile;
             }
+
             p{
                 font-size: 16px;
                 text-align: center;
             }
         }
+
         .mentions{
+
             li {
                 font-size: 12px;
             }
         }
+
         .sign{
+
             p{
                 font-size: 12px;
             }
+            
             a {
                 font-size: 12px;
             }

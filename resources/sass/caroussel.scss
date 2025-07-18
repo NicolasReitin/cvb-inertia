@@ -25,6 +25,7 @@ $animationSpeed: 50s;
 	width: 100%;
 	
 	&::before,
+
 	&::after {
 		@include white-gradient;
 		content: "";
@@ -54,7 +55,6 @@ $animationSpeed: 50s;
 			animation-play-state:paused;
 		}
 	}
-
 	
 	.slide img{
         margin-top: 50px;
@@ -71,7 +71,8 @@ $animationSpeed: 50s;
 /* Media queries pour appareils mobiles */
 @media (max-width: 480px) {
 	.slider {
-		height: 100px;		
+		height: 100px;	
+
 		&::before, &::after {
 			height: 0px;
 			width: 0px;
@@ -84,6 +85,7 @@ $animationSpeed: 50s;
 			justify-content: center;
 			align-items: center;
 		}
+		
 		.slide img{
 			margin-top: 0px;
 			max-height: 95px;
