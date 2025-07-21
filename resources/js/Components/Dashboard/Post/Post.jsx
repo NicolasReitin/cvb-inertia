@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import PostList from './PostList'
 import ButtonAddPost from './ButtonAddPost';
 
-
 export default function Post() {
   const [actualites, setActualites] = useState([]);
 

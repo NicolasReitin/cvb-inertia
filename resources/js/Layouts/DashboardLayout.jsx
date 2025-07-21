@@ -9,8 +9,11 @@ import Default from '@/Components/Dashboard/Default/Default';
 import Post from '@/Components/Dashboard/Post/Post';
 import Partner from '@/Components/Dashboard/Partner/Partner';
 import Team from '@/Components/Dashboard/Team/Team';
+import { usePage } from '@inertiajs/react';
 
 export default function Authenticated() {
+    const { partners, players, posts, staff, teams } = usePage().props;
+
     const [selectedMenuItem, setSelectedMenuItem] = useState('default');
 
     const handleMenuChange = (menuItem) => {
