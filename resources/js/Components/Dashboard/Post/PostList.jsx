@@ -71,38 +71,37 @@ export default function PostList() {
   return (
     <>
         <div className="test">
-        <table>
-            <thead>
+        <table className="table-auto w-full border border-gray-300 text-sm text-left">
+            <thead className="bg-gray-100">
               <tr>
-                <th>ID</th>
-                <th>Titre</th>
-                <th>Auteur</th>
-                <th>Photo</th>
-                <th>Contenu</th>
-                {/* <th>Edit</th> */}
-                <th>Delete</th>
+                <th className="border border-gray-300 px-4 py-2">Date</th>
+                <th className="border border-gray-300 px-4 py-2">Titre</th>
+                <th className="border border-gray-300 px-4 py-2">Auteur</th>
+                <th className="border border-gray-300 px-4 py-2">Photo</th>
+                <th className="border border-gray-300 px-4 py-2">Contenu</th>
+                <th className="border border-gray-300 px-4 py-2">Actions</th>
               </tr>
             </thead>
             <tbody>
                 {getPaginatedArticles().map((post) => (
                     post && (
                     <tr key={post.id}>
-                        <td className='w-8 text-center'>{post.id}</td>
-                        <td>{truncateContent(post.titre, 50)}</td>
-                        <td>{post.auteur}</td>
-                        <td>
-                            <img src={post.photo} alt='Photo actu' />
+                        <td className="border border-gray-300 px-4 py-2">{new Date(post.created_at).toLocaleDateString('fr-FR')}</td>
+                        <td className="border border-gray-300 px-4 py-2">{truncateContent(post.title, 50)}</td>
+                        <td className="border border-gray-300 px-4 py-2">{post.author}</td>
+                        <td className="border border-gray-300 px-4 py-2">
+                            <img className="post-image" src={post.photo} alt='Photo actu' />
                         </td>
-                        <td>{truncateContent(post.content, 150)}</td>
-                        {/* <td>
-                            <button className='button-edit' onClick={() => handleEdit(post)}>
-                                <img src="/assets/icones/edit-button.png" alt="button edit" />
-                            </button>
-                        </td> */}
-                        <td>
-                            <button className='button-delete' onClick={() => handleDelete(post)}>
-                                <img src="/assets/icones/delete-button.png" alt="button delete" />
-                            </button>
+                        <td className="border border-gray-300 px-4 py-2">{truncateContent(post.content, 150)}</td>
+                        <td className="border border-gray-300 px-4 py-2">
+                            <div className="flex items-stretch gap-2 h-full">
+                                <button className="button-edit">
+                                    <img src="/assets/icones/edit-button.png" alt="button edit" />
+                                </button>
+                                <button className="button-delete">
+                                    <img src="/assets/icones/delete-button.png" alt="button delete" />
+                                </button>
+                            </div>
                         </td>
                     </tr>
                     )
