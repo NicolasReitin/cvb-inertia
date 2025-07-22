@@ -16,11 +16,12 @@ Route::get('/', [WelcomeController::class, 'index']);
 //---------------------------- Admin / Auth ----------------------------
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(isAdmin::class);
-Route::get('/admin/posts', function () {
-    return Inertia::render('Admin/Post/Post', [
-        'posts' => Post::all(),
-    ]);
-})->name('admin.posts');
+Route::get('/admin/actualites', fn () => Inertia::render('Admin/Post/Post', ['posts' => Post::all()]))->name('admin.posts');
+Route::get('/admin/club', fn () => Inertia::render('Admin/Club/Club', []))->name('admin.club');
+Route::get('/admin/equipes', fn () => Inertia::render('Admin/Team/Team', []))->name('admin.team');
+Route::get('/admin/partenaires', fn () => Inertia::render('Admin/Partner/Partner', []))->name('admin.partner');
+Route::get('/admin/boutique', fn () => Inertia::render('Admin/Shop/Shop', []))->name('admin.shop');
+Route::get('/admin/utilisateurs', fn () => Inertia::render('Admin/User/User', []))->name('admin.user');
 
 //---------------------------- User --------------------------------
 // Route::middleware(isAdmin::class)->group(function () { // utilisation du middleware sans aliasp

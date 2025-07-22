@@ -1,60 +1,68 @@
 import { Link } from '@inertiajs/react';
 import React from 'react'
 
-export default function Menu( {onMenuChange}) {
-
-  const handleMenuClick = (menuItem) => {
-    onMenuChange(menuItem);
-  };
+export default function Menu() {
 
   return (
     <div className="menu-dashboard">
-        <ul>
-          <div>
-              <li onClick={() => handleMenuClick('default')}>
-                <img src="/assets/icones/home.png" alt="" />
-                  Dashboard
-              </li>
-          </div>
-          <div>
+      <ul>
+        <div>
+          <Link href="/dashboard">
             <li>
-              <Link href="/admin/posts">
-                <img src="/assets/icones/news.png" alt="" />
-                Actualites
-              </Link>
+              <img src="/assets/icones/home.png" alt="" />
+              Dashboard
             </li>
-          </div>
-          <div>
-            <li onClick={() => handleMenuClick('club')}>
+          </Link>
+        </div>
+        <div>
+          <Link href="/admin/actualites">
+            <li>
+              <img src="/assets/icones/news.png" alt="" />
+              Actualites
+            </li>
+          </Link>
+        </div>
+        <div>
+          <Link href="/admin/club">
+            <li>
               <img src="/assets/icones/club.png" alt="" />
-                Le club
+              Le club
             </li>
-          </div>
-          <div>
-            <li onClick={() => handleMenuClick('equipes')}>
+          </Link>
+        </div>
+        <div>
+          <Link href="/admin/equipes">
+            <li>
               <img src="/assets/icones/team.png" alt="" />
-                Les Équipes
+              Les Équipes
             </li>
-          </div>
-          <div>
-            <li onClick={() => handleMenuClick('partenaires')}>
+          </Link>
+        </div>
+        <div>
+          <Link href="/admin/partenaires">
+            <li>
               <img src="/assets/icones/partners.png" alt="" />
-                Les partenaires
+              Les partenaires
             </li>
-          </div>
-          <div>
-            <li onClick={() => handleMenuClick('shop')}>
+          </Link>
+        </div>
+        <div>
+          <Link href="/admin/boutique">
+            <li>
               <img src="/assets/icones/shop.png" alt="" />
-                La boutique
+              La boutique
             </li>
-          </div>
-          <div>
-            <li onClick={() => handleMenuClick('users')}>
+          </Link>
+        </div>
+        <div>
+          <Link href="/admin/utilisateurs">
+            <li>
               <img src="/assets/icones/user.png" alt="" />
-                Utilisateurs
+              Utilisateurs
             </li>
-          </div>
-        </ul>
+          </Link>
+        </div>
+      </ul>
     </div>
   )
 }

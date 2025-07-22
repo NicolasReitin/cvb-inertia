@@ -41,8 +41,8 @@
 .logo-dashboard{
 
     .logoClub{
-        width: 80px;
-        margin : 10%;
+        width: 120px;
+        margin : 10% auto;
     }
 }
 
@@ -58,31 +58,34 @@
         border-right: 1px solid rgb(200, 200, 200);
         position: static;
 
-        ul{
-
-            div{
-
-                &:hover{
-                    background: rgba(0, 255, 170, 0.089);
-
-                    li{
-                        font-weight: 900;
+        .menu-dashboard {
+            
+            ul{
+    
+                div{
+    
+                    &:hover{
+                        background: rgba(0, 255, 170, 0.089);
+    
+                        li{
+                            font-weight: 900;
+                        }
                     }
                 }
-            }
-
-            li{
-                display: flex;
-                gap: 10px;
-                padding: 10px 10px;
-                margin: 20px;
-                font-size: 20px;
-                color: #959ea9;
-                border-radius: 5px;
-                cursor: pointer;
-
-                img{
-                    width: 30px;
+    
+                li{
+                    display: flex;
+                    gap: 10px;
+                    padding: 10px 10px;
+                    margin: 20px;
+                    font-size: 20px;
+                    color: #959ea9;
+                    border-radius: 5px;
+                    cursor: pointer;
+    
+                    img{
+                        width: 30px;
+                    }
                 }
             }
         }
