@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import React from 'react'
 
 export default function Menu( {onMenuChange}) {
@@ -9,16 +10,18 @@ export default function Menu( {onMenuChange}) {
   return (
     <div className="menu-dashboard">
         <ul>
-        <div>
-            <li onClick={() => handleMenuClick('default')}>
-              <img src="/assets/icones/home.png" alt="" />
-                Accueil
-            </li>
+          <div>
+              <li onClick={() => handleMenuClick('default')}>
+                <img src="/assets/icones/home.png" alt="" />
+                  Dashboard
+              </li>
           </div>
           <div>
-            <li onClick={() => handleMenuClick('actualites')}>
-              <img src="/assets/icones/news.png" alt="" />
-              Actualites
+            <li>
+              <Link href="/admin/posts">
+                <img src="/assets/icones/news.png" alt="" />
+                Actualites
+              </Link>
             </li>
           </div>
           <div>

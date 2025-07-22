@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\WelcomeController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,6 +16,11 @@ Route::get('/', [WelcomeController::class, 'index']);
 //---------------------------- Admin / Auth ----------------------------
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(isAdmin::class);
+Route::get('/admin/posts', function () {
+    return Inertia::render('Admin/Post/Post', [
+        'posts' => Post::all(),
+    ]);
+})->name('admin.posts');
 
 //---------------------------- User --------------------------------
 // Route::middleware(isAdmin::class)->group(function () { // utilisation du middleware sans aliasp
