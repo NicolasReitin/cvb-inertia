@@ -1,25 +1,25 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import moment from 'moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from '@/libs/axios';
+import { useForm, usePage } from '@inertiajs/react';
 
-export default function ButtonAddPost({ addActualite }) {
+export default function CreatePost() {
     const [createActu, setCreateActu] = useState(false);
     const [previewImage, setPreviewImage] = useState(null);
-    const [formData, setFormData] = useState({
+    const [errorForm, setErrorForm] = useState(false);
+    const [validForm, setValidForm] = useState(false);
+    const { data, setData, post, processing, errors, reset } = useForm({
         author: '',
         title: '',
         content: '',
-        image: null
-        });
-    const [errorForm, setErrorForm] = useState(false);
-    const [validForm, setValidForm] = useState(false);
+        image: null,
+    });
     
     const notify = (type) => {
         switch (type) {
             case 'success':
-                toast.success("Actualité créée");
+                toast.success("Article créé");
                 break;
             case 'error':
                 toast.error("Le formulaire contient des erreurs");
@@ -29,68 +29,66 @@ export default function ButtonAddPost({ addActualite }) {
         }
     };
 
+    // Toggle sur CreateActu
     const handleCreateActu = () => {
         setCreateActu(prevState => !prevState);
     }
 
+    // Envoi le formulaire au backend
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (formData.author === '' || formData.title === '') {
+
+        if (data.author === '' || data.title === '') {
             setErrorForm(true);
             notify('error'); // Affiche la notification d'erreur si le formulaire est invalide
-        } else {
-            try {
-                const formDataToSend = new FormData();
-                formDataToSend.append('author', formData.author);
-                formDataToSend.append('title', formData.title);
-                formDataToSend.append('content', formData.content);
-                formDataToSend.append('image', formData.image);
-
-                const response = await axios.post(`/api/actualite/create`, formDataToSend);
-                if (response.status === 201){
-                    const newActu = response.data.actualite;
-
-                    addActualite(newActu);
-
-                    setErrorForm(false);
-                    setValidForm(true);
-
-                    notify('success'); // Affiche la notification de succès si le formulaire est valide
-                    
-                    setTimeout(() => {
-                        setFormData({
-                            author: '',
-                            title: '',
-                            content: '',
-                            image: null
-                        });
-                        setValidForm(false);
-                        setPreviewImage(null);
-                        setCreateActu(false);
-                    }, 3000);
-                }
-            } catch (error) {
-                console.error("Erreur lors de l'envoi des données :", error.message);
-            }
+            return;
         }
+
+        const formDataToSend = new FormData();
+        formDataToSend.append('author', data.author);
+        formDataToSend.append('title', data.title);
+        formDataToSend.append('content', data.content);
+
+        if (data.image) {
+            formDataToSend.append('image', data.image);
+        }
+
+        post(route('post.store'), formDataToSend, {
+            forceFormData: true, // 🔑 indique à Inertia d'envoyer en multipart/form-data
+            onError: (errors) => {
+                notify('error');
+            },
+        });
     }
 
+    // pour faire apparaitre en direct ce que l'on saisi ou l'image si c'est une image
     const handleChange = (e) => {
         const { name, value, files } = e.target;
         if (name === "image") {
-            const imageUrl = URL.createObjectURL(files[0]);
-            setFormData({
-                ...formData,
-                [name]: files[0]
-            });
-            setPreviewImage(imageUrl);
+            setData(name, files[0]);
+            setPreviewImage(URL.createObjectURL(files[0]));
         } else {
-            setFormData({
-                ...formData,
-                [name]: value
-            });
+            setData(name, value);
         }
     };
+
+    // recupère la props du formaulaire pour savoir si success n'est pas null, et dans ce cas referme CreateActu
+    const { flash } = usePage().props;
+
+    useEffect(() => {
+        if (flash.success) {
+            notify('success');
+            setErrorForm(false);
+            setValidForm(true);
+
+                setTimeout(() => {
+                    reset(); // Réinitialise le formulaire
+                    setValidForm(false);
+                    setPreviewImage(null);
+                    setCreateActu(false);
+                }, 3000);
+        }
+    }, [flash.success]);
 
     return (
         <>
@@ -107,7 +105,7 @@ export default function ButtonAddPost({ addActualite }) {
                                     <input 
                                         type="text" 
                                         name='author' 
-                                        value={formData.author}
+                                        value={data.author}
                                         onChange={handleChange}
                                         placeholder="Nom de l'auteur"
                                     />
@@ -117,7 +115,7 @@ export default function ButtonAddPost({ addActualite }) {
                                     <input 
                                         type="text" 
                                         name='title' 
-                                        value={formData.title}
+                                        value={data.title}
                                         onChange={handleChange}
                                         placeholder="Titre de l'article"
                                     />
@@ -128,7 +126,7 @@ export default function ButtonAddPost({ addActualite }) {
                                         rows="3" 
                                         cols="30" 
                                         name='content'
-                                        value={formData.content}
+                                        value={data.content}
                                         onChange={handleChange}
                                         placeholder="Entrez votre texte ici...">
                                     </textarea>                            
@@ -153,8 +151,12 @@ export default function ButtonAddPost({ addActualite }) {
                                     </div>
                                     
                                 )}
-                                <button type="submit" onClick={notify}>
-                                    Valider
+                                <button 
+                                    type="submit" 
+                                    disabled={processing}
+                                    onClick={notify}
+                                >
+                                    {processing ? 'Envoi en cours...' : 'Créer le post'}
                                 </button>
                                 <ToastContainer 
                                     position="bottom-right"
@@ -164,9 +166,9 @@ export default function ButtonAddPost({ addActualite }) {
                             </form>
                         </div>
                         <div className="extrait">
-                            <h1 className={formData.title ? 'with-bar' : ''}>{formData.title}</h1>
+                            <h1 className={data.title ? 'with-bar' : ''}>{data.title}</h1>
                             <div className='card-actu'>
-                                <h3>Par {formData.author} | Le {moment().format('DD/MM/YYYY')}</h3>
+                                <h3>Par {data.author} | Le {moment().format('DD/MM/YYYY')}</h3>
                                 {previewImage && (
                                     <div className='flex justify-center'>
                                         <img 
@@ -175,7 +177,7 @@ export default function ButtonAddPost({ addActualite }) {
                                         />
                                     </div>
                                 )}
-                                <p className='article-content'>{formData.content}</p>
+                                <p className='article-content'>{data.content}</p>
                             </div>
                         </div>
                     </div>

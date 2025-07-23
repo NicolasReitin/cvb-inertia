@@ -76,7 +76,7 @@ export default function PostList() {
                 <th className="border border-gray-300 px-4 py-2">Date</th>
                 <th className="border border-gray-300 px-4 py-2">Titre</th>
                 <th className="border border-gray-300 px-4 py-2">Auteur</th>
-                <th className="border border-gray-300 px-4 py-2">Photo</th>
+                <th className="border border-gray-300 px-4 py-2">Image</th>
                 <th className="border border-gray-300 px-4 py-2">Contenu</th>
                 <th className="border border-gray-300 px-4 py-2">Actions</th>
               </tr>
@@ -89,7 +89,7 @@ export default function PostList() {
                         <td className="border border-gray-300 px-4 py-2">{truncateContent(post.title, 50)}</td>
                         <td className="border border-gray-300 px-4 py-2">{post.author}</td>
                         <td className="border border-gray-300 px-4 py-2">
-                            <img className="post-image" src={post.photo} alt='Photo actu' />
+                            <img className="post-image" src={post.image} alt='Image actu' />
                         </td>
                         <td className="border border-gray-300 px-4 py-2">{truncateContent(post.content, 150)}</td>
                         <td className="border border-gray-300 px-4 py-2">

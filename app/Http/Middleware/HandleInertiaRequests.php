@@ -36,6 +36,10 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'teams' => Team::all(),
+            'flash' => [
+                'success' => $request->session()->get('success'),
+                'error' => $request->session()->get('error'),
+            ],
         ];
     }
 }

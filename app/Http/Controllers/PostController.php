@@ -7,6 +7,8 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -35,15 +37,31 @@ class PostController extends Controller
 
 
     // Créer une nouvelle news
-    public function store(StorePostRequest $request): JsonResponse
+    public function store(StorePostRequest $request): RedirectResponse
     {
-        $post = Post::create($request->validated());
+        $data = $request->validated();
+        
+        // Gérer l'image
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $image = $request->file('image');
+            $timestamp = now()->timestamp;
+            $original = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $image->getClientOriginalExtension();
 
-        return response()->json([
-            'message' => __('post.post_created'),
-            'data' => $post
-        ], 201);
+            // Nettoyage du nom (facultatif mais conseillé)
+            $safeName = Str::slug($original);
+            $filename = $timestamp . '-' . $safeName . '.' . $extension;
+            
+            // Déplacement dans public/assets/posts
+            $image->move(public_path('assets/posts'), $filename);
+            $data['image'] = '/assets/posts/' . $filename;
+        }
+        
+        $post = Post::create($data);
 
+        return redirect()->route('admin.posts')->with('success', 'Actualité créée avec succès à ' . now()->format('H:i:s'));  // Ajout de l'heure pour forcer la key a etre differente a chaque appel
+
+        // gerer le cas d'erreur : exemple, chamop manquant... ou mauvais caractere...
     }
 
     // Mettre à jour un news existant

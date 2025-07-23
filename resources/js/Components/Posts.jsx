@@ -36,7 +36,7 @@ export default function Posts({ firstPost, othersPosts }) {
           <div className="first-post">
             <Link href={`/actualites/${firstPost.id}`}>
               <div className='relative'>
-                  <img src={firstPost.photo} alt="main actus" />
+                  <img src={firstPost.image} alt="main actus" />
                   <div className="filtre-img"></div>
               </div>
               <p className='ml-5 mt-1'>Le { moment(firstPost.created_at).locale('fr').format('DD/MM/YYYY') }</p>

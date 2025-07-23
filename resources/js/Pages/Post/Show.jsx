@@ -35,7 +35,7 @@ export default function show() {
                 <div className='card-actu'>
                     <div className='relative'>
                         <h3>Par { post.author } | Le { moment(post.created_at).format('DD/MM/YYYY') }</h3> 
-                        <img src={post.photo} alt="actu" />
+                        <img src={post.image} alt="actu" />
                         <div className="filtre-img"></div>
                     </div>
                     <p className='article-content'>{ post.content }</p>

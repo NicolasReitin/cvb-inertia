@@ -1,20 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Head } from '@inertiajs/react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
-import ButtonAddPost from '@/Components/Dashboard/Post/ButtonAddPost';
 import PostList from '@/Components/Dashboard/Post/PostList';
+import CreatePost from '@/Components/Dashboard/Post/CreatePost';
 
 
 export default function Dashboard() {
-  const [actualites, setActualites] = useState([]);
-
-  const addActualite = async (newActu) => {
-      try {
-        setActualites(prevActualites => [newActu, ...prevActualites]);
-      } catch (error) {
-        console.error("Erreur lors de l'ajout de l'actualité :", error.message);
-      }
-  };
 
   return (
     <>
@@ -23,10 +14,10 @@ export default function Dashboard() {
       <DashboardLayout>
 
         <div className="">
-          <ButtonAddPost addActualite={addActualite} />
+          <CreatePost />
         </div>
         <div className="liste-actus mt-24">
-          <PostList actualites={actualites} setActualites={setActualites} />
+          <PostList />
         </div>
 
       </DashboardLayout>

@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('title', 255);
             $table->text('content')->Nullable();
             $table->string('author', 50);
-            $table->string('photo')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('team_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();

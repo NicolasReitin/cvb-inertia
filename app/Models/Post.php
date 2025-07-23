@@ -16,7 +16,7 @@ class Post extends Model
         'title',
         'content',
         'author',
-        'photo',
+        'image',
     ];
 
     public function teams(): BelongsTo

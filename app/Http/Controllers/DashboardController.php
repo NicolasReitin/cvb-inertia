@@ -21,7 +21,7 @@ class DashboardController extends Controller
     {
         $staff = User::all();
         $players = Player::all();
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'asc')->get();
         $teams = Team::all();
         $partners = Partner::all();
 

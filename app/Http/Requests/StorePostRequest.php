@@ -8,7 +8,7 @@ class StorePostRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -20,8 +20,7 @@ class StorePostRequest extends FormRequest
             'title' => 'required|string|max:255',
             'content' => 'nullable|string',
             'author' => 'required|string|max:50',
-            'photo' => 'nullable|string',
-            'team_id' => 'nullable|exists:team,id',
+            'image' => 'nullable|image|max:2048',
         ];
     }
 

@@ -15,8 +15,13 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 //---------------------------- Admin / Auth ----------------------------
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(isAdmin::class);
-Route::get('/admin/actualites', fn () => Inertia::render('Admin/Post/Post', ['posts' => Post::all()]))->name('admin.posts');
+
+Route::get('/admin/actualites', fn () => Inertia::render('Admin/Post/Post', [
+    'posts' => Post::orderBy('created_at', 'desc')->get()
+]))->name('admin.posts');
+
 Route::get('/admin/club', fn () => Inertia::render('Admin/Club/Club', []))->name('admin.club');
 Route::get('/admin/equipes', fn () => Inertia::render('Admin/Team/Team', []))->name('admin.team');
 Route::get('/admin/partenaires', fn () => Inertia::render('Admin/Partner/Partner', []))->name('admin.partner');
@@ -37,8 +42,9 @@ Route::middleware('auth')->group(function () {
 });
 
 //---------------------------- Posts ----------------------------
-Route::get('/actualites', [PostController::class, 'index'])->name('posts.index');
-Route::get('/actualites/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/actualites', [PostController::class, 'index'])->name('post.index');
+Route::get('/actualites/{post}', [PostController::class, 'show'])->name('post.show');
+Route::post('/admin/post/create', [PostController::class, 'store'])->name('post.store');
 
 //---------------------------- Teams ----------------------------
 Route::get('/equipe/{team}', [TeamController::class, 'show'])->name('team.show');
