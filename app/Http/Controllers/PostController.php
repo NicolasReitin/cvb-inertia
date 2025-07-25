@@ -6,7 +6,6 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -60,26 +59,23 @@ class PostController extends Controller
         $post = Post::create($data);
 
         return redirect()->route('admin.posts')->with('success', 'Actualité créée avec succès à ' . now()->format('H:i:s'));  // Ajout de l'heure pour forcer la key a etre differente a chaque appel
-
-        // gerer le cas d'erreur : exemple, chamop manquant... ou mauvais caractere...
     }
 
     // Mettre à jour un news existant
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $post->update($request->validated());
+        $data = $request->validated();
 
-        return response()->json([
-            'message' => __('post.post_created'),
-            'data' => $post
-        ]);    
+        $post->update($data);
+
+        return redirect()->route('admin.posts')->with('updated', 'Article modifié avec succès.');
     }
 
     // Supprimer un news
-    public function destroy(Post $post): JsonResponse
+    public function destroy(Post $post): RedirectResponse
     {
         $post->delete();
 
-        return response()->json(['message' => __('post.post_deleted')], 204);
+        return redirect()->route('admin.posts')->with('deleted', 'Article supprimé avec succès.');
     }
 }

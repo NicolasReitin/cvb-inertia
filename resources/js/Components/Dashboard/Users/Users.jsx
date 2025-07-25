@@ -1,4 +1,4 @@
-import {React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ButtonAddUser from './ButtonAddUser';
 import axios from '@/libs/axios';
 

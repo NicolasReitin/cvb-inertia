@@ -1,11 +1,10 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useForm, usePage } from '@inertiajs/react';
+import { router, useForm, usePage } from '@inertiajs/react';
 
-export default function CreatePost() {
-    const [createActu, setCreateActu] = useState(false);
+export default function CreatePost({ notify }) {
+    const [createPost, setCreatePost] = useState(false);
     const [previewImage, setPreviewImage] = useState(null);
     const [errorForm, setErrorForm] = useState(false);
     const [validForm, setValidForm] = useState(false);
@@ -15,23 +14,10 @@ export default function CreatePost() {
         content: '',
         image: null,
     });
-    
-    const notify = (type) => {
-        switch (type) {
-            case 'success':
-                toast.success("Article créé");
-                break;
-            case 'error':
-                toast.error("Le formulaire contient des erreurs");
-                break;
-            default:
-                break;
-        }
-    };
 
-    // Toggle sur CreateActu
+    // Toggle sur createPost
     const handleCreateActu = () => {
-        setCreateActu(prevState => !prevState);
+        setCreatePost(prevState => !prevState);
     }
 
     // Envoi le formulaire au backend
@@ -40,7 +26,7 @@ export default function CreatePost() {
 
         if (data.author === '' || data.title === '') {
             setErrorForm(true);
-            notify('error'); // Affiche la notification d'erreur si le formulaire est invalide
+            notify('form-error'); // Affiche la notification d'erreur si le formulaire est invalide
             return;
         }
 
@@ -53,10 +39,11 @@ export default function CreatePost() {
             formDataToSend.append('image', data.image);
         }
 
-        post(route('post.store'), formDataToSend, {
+        router.post(route('post.store'), formDataToSend, {
             forceFormData: true, // 🔑 indique à Inertia d'envoyer en multipart/form-data
+
             onError: (errors) => {
-                notify('error');
+                notify('form-error');
             },
         });
     }
@@ -72,7 +59,7 @@ export default function CreatePost() {
         }
     };
 
-    // recupère la props du formaulaire pour savoir si success n'est pas null, et dans ce cas referme CreateActu
+    // recupère la props du formaulaire pour savoir si success n'est pas null, et dans ce cas referme createPost
     const { flash } = usePage().props;
 
     useEffect(() => {
@@ -85,7 +72,7 @@ export default function CreatePost() {
                     reset(); // Réinitialise le formulaire
                     setValidForm(false);
                     setPreviewImage(null);
-                    setCreateActu(false);
+                    setCreatePost(false);
                 }, 3000);
         }
     }, [flash.success]);
@@ -96,7 +83,7 @@ export default function CreatePost() {
                 <button className='button-create-actu' onClick={handleCreateActu} >
                     Créer une nouvelle actualité
                 </button>
-                {createActu && (
+                {createPost && (
                     <div className='block-create-actu flex'>
                         <div className="new-actu">
                             <form onSubmit={handleSubmit}>
@@ -158,11 +145,6 @@ export default function CreatePost() {
                                 >
                                     {processing ? 'Envoi en cours...' : 'Créer le post'}
                                 </button>
-                                <ToastContainer 
-                                    position="bottom-right"
-                                    autoClose={2900}                                   
-                                    theme="light"
-                                />
                             </form>
                         </div>
                         <div className="extrait">

@@ -1,10 +1,13 @@
-import {React, useEffect, useState} from 'react'
-import { usePage } from '@inertiajs/react';
+import React, { useEffect, useState} from 'react'
+import { router, usePage } from '@inertiajs/react';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import UpdatePost from '@/Components/Dashboard/Post/UpdatePost';
 
-
-export default function PostList() {
-    const { posts } = usePage().props; // ← protège contre undefined
+export default function PostList({ notify }) {
+    const { posts } = usePage().props;
     const [postsList, setPostsList] = useState(posts || []);
+    const [updatePost, setUpdatePost] = useState(null);
 
     useEffect(() => {
         if (Array.isArray(posts)) {
@@ -12,9 +15,11 @@ export default function PostList() {
         }
     }, [posts]);
 
-    const [page, setPage] = useState(1); // État pour suivre la page actuelle
+    // État pour suivre la page actuelle    
+    const [page, setPage] = useState(1);
 
-    const postsPerPage = 8; // Nombre d'articles par page
+    // Nombre d'articles par page
+    const postsPerPage = 8;
 
     // Fonction pour filtrer les articles à afficher sur la page actuelle
     const getPaginatedArticles = () => {
@@ -48,65 +53,86 @@ export default function PostList() {
             : content;
     };
 
+    // update d'un article
     const handleEdit = (post) => {
-        // console.log(actualite);  
+        if (updatePost?.id === post.id) {
+            setUpdatePost(null); // fermer le formulaire si on reclique
+        } else {
+            setUpdatePost(post); // ouvrir pour ce post
+        }
     }
 
-    const handleDelete = (post) => {
-        // const isConfirmed = window.confirm(`Voulez-vous vraiment supprimer cet article ?`);
-        // if (isConfirmed) {
-        //     const fetchDeleteActualite = async() => {
-        //         try{
-        //             await axios.delete(`/api/actualite/${post.id}`, post)
-        //             setPostsList(prevActualites => prevActualites.filter(item => item.id !== post.id)); // filtre de l'item qui vient d'etre supprimé afin de reactualiser la liste en dropant la ligne supprimée...
-        //         } catch (err) {
-        //             console.error(err);
-        //         }
-        //     }    
-        //     fetchDeleteActualite(); 
-        // }
+    const handleCancel = () => {
+        setUpdatePost(null); // Ferme le formulaire
+    };
+
+    // suppression d'un article
+    const handleDelete = (post) => {       
+        const isConfirmed = window.confirm(`Voulez-vous vraiment supprimer cet article ?`);
+        if (!isConfirmed) return;
+
+        router.delete(route('post.destroy', post), {
+            onSuccess: () => {
+                notify('deleted');
+                
+                // Supprimer de l'état local pour mise à jour immédiate
+                setPostsList(prev => prev.filter(item => item.id !== post.id));
+            },
+            onError: (errors) => {
+                console.error('Erreur Inertia :', errors);
+            }
+        }); 
     }
 
   return (
     <>
-        <div className="test">
-        <table className="table-auto w-full border border-gray-300 text-sm text-left">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="border border-gray-300 px-4 py-2">Date</th>
-                <th className="border border-gray-300 px-4 py-2">Titre</th>
-                <th className="border border-gray-300 px-4 py-2">Auteur</th>
-                <th className="border border-gray-300 px-4 py-2">Image</th>
-                <th className="border border-gray-300 px-4 py-2">Contenu</th>
-                <th className="border border-gray-300 px-4 py-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-                {getPaginatedArticles().map((post) => (
-                    post && (
-                    <tr key={post.id}>
-                        <td className="border border-gray-300 px-4 py-2">{new Date(post.created_at).toLocaleDateString('fr-FR')}</td>
-                        <td className="border border-gray-300 px-4 py-2">{truncateContent(post.title, 50)}</td>
-                        <td className="border border-gray-300 px-4 py-2">{post.author}</td>
-                        <td className="border border-gray-300 px-4 py-2">
-                            <img className="post-image" src={post.image} alt='Image actu' />
-                        </td>
-                        <td className="border border-gray-300 px-4 py-2">{truncateContent(post.content, 150)}</td>
-                        <td className="border border-gray-300 px-4 py-2">
-                            <div className="flex items-stretch gap-2 h-full">
-                                <button className="button-edit">
-                                    <img src="/assets/icones/edit-button.png" alt="button edit" />
-                                </button>
-                                <button className="button-delete">
-                                    <img src="/assets/icones/delete-button.png" alt="button delete" />
-                                </button>
-                            </div>
-                        </td>
+        <div>
+            <table className="table-auto w-full border border-gray-300 text-sm text-left">
+                <thead className="bg-gray-100">
+                    <tr>
+                        <th className="border border-gray-300 px-4 py-2">Date</th>
+                        <th className="border border-gray-300 px-4 py-2">Titre</th>
+                        <th className="border border-gray-300 px-4 py-2">Auteur</th>
+                        <th className="border border-gray-300 px-4 py-2">Image</th>
+                        <th className="border border-gray-300 px-4 py-2">Contenu</th>
+                        <th className="border border-gray-300 px-4 py-2">Actions</th>
                     </tr>
-                    )
-                ))}
-            </tbody>
-          </table>
+                </thead>
+                <tbody>
+                    {getPaginatedArticles().map((post) => (
+                        post && (
+                            <React.Fragment key={post.id}>
+                                <tr key={post.id}>
+                                    <td className="border border-gray-300 px-4 py-2">{new Date(post.created_at).toLocaleDateString('fr-FR')}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{truncateContent(post.title, 50)}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{post.author}</td>
+                                    <td className="border border-gray-300 px-4 py-2">
+                                        <img className="post-image" src={post.image} alt='Image actu' />
+                                    </td>
+                                    <td className="border border-gray-300 px-4 py-2">{truncateContent(post.content, 150)}</td>
+                                    <td className="border border-gray-300 px-4 py-2">
+                                        <div className="flex items-stretch gap-2 h-full">
+                                            <button className="button-edit" onClick={() => handleEdit(post)}>
+                                                <img src="/assets/icones/edit-button.png" alt="button edit" />
+                                            </button>
+                                            <button className="button-delete" onClick={() => handleDelete(post)}>
+                                                <img src="/assets/icones/delete-button.png" alt="button delete" />
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {updatePost?.id === post.id && (
+                                    <UpdatePost 
+                                        post={post}
+                                        onCancel={handleCancel}
+                                        notify={notify}
+                                    />
+                                )}
+                            </React.Fragment>
+                        )
+                    ))}
+                </tbody>
+            </table>
         </div>
         <div className='flex justify-center gap-8 mt-6'>
             {/* Affichage des boutons de pagination */}

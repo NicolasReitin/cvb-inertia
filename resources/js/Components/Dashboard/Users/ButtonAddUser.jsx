@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import axios from '@/libs/axios';
 
 
@@ -25,14 +25,11 @@ export default function ButtonAddUser( {addUserToStaff}) {
 
     const handleSubmit =async (e) => {
         e.preventDefault();
-        console.log(formData);
 
         try {
             const response = await axios.post('/api/user/create', formData);
             if (response.status ===201){
-                // console.log('User created:', response.data);
                 alert(`L'utilisateur ${formData.name} a bien été créé`);
-                console.log(response.data);
                 addUserToStaff(response.data.user);
                 
             }
