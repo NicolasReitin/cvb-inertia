@@ -1,11 +1,15 @@
 import axios from 'axios';
 
+window.axios = axios;
+
+axios.defaults.withCredentials = true;
+
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-const token = document.querySelector('meta[name="csrf-token"]');
+// const token = document.querySelector('meta[name="csrf-token"]');
 
-if (token) {
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-    console.warn('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+// if (token) {
+//     axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+// } else {
+//     console.warn('CSRF token not found');
+// }

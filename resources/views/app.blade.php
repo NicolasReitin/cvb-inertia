@@ -13,8 +13,26 @@
 
         <!-- Scripts -->
         @routes
+
         @viteReactRefresh
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx", 'resources/sass/main.scss'])
+
+
+        @env('local')
+            @viteReactRefresh
+            @vite([
+                'resources/js/app.jsx',
+                "resources/js/Pages/{$page['component']}.jsx",
+                'resources/sass/main.scss'
+            ])
+        @endenv
+
+        @env('production')
+            {{-- Remplace "app.js" et "app.css" par les vrais fichiers compilés générés dans public/build/ --}}
+            <link rel="stylesheet" href="{{ asset('build/assets/app-DcgrtGKH.css') }}">
+            <script type="module" src="{{ asset('build/assets/app-P-w9gZnI.js') }}"></script>
+        @endenv
+
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
