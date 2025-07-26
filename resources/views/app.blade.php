@@ -11,26 +11,20 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
+        <!-- Routes -->
         @routes
-
-        @viteReactRefresh
-        @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx", 'resources/sass/main.scss'])
-
+        
+        <!-- Scripts -->
+        <!-- @viteReactRefresh
+        @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx", 'resources/sass/main.scss']) -->
 
         @env('local')
             @viteReactRefresh
-            @vite([
-                'resources/js/app.jsx',
-                "resources/js/Pages/{$page['component']}.jsx",
-                'resources/sass/main.scss'
-            ])
+            @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx", 'resources/sass/main.scss'])
         @endenv
 
         @env('production')
-            {{-- Remplace "app.js" et "app.css" par les vrais fichiers compilés générés dans public/build/ --}}
-            <link rel="stylesheet" href="{{ asset('build/assets/app-DcgrtGKH.css') }}">
-            <script type="module" src="{{ asset('build/assets/app-P-w9gZnI.js') }}"></script>
+            @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx", 'resources/sass/main.scss'])
         @endenv
 
         @inertiaHead
