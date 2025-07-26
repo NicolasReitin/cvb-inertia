@@ -51,6 +51,7 @@
     display: flex;
 
     aside{
+        background-color: $dashboardBackgroundMenu;
         width: 300px;
         min-width: 280px;
         // height: 100vh;
@@ -65,7 +66,7 @@
                 div{
     
                     &:hover{
-                        background: rgba(0, 255, 170, 0.089);
+                        background: #4849da;
     
                         li{
                             font-weight: 900;
@@ -79,7 +80,7 @@
                     padding: 10px 10px;
                     margin: 20px;
                     font-size: 20px;
-                    color: #959ea9;
+                    color: #f7f7f7;
                     border-radius: 5px;
                     cursor: pointer;
     
@@ -93,7 +94,7 @@
 
     article{
         width: 100%;
-        background: rgba(0, 255, 170, 0.089);
+        background: $dashboardBackground;
 
         nav{
             height: 8vh;
@@ -217,18 +218,18 @@
 .create-actu{
 
     .button-create-actu{
-        margin: 5% 5% 2%;
+        margin: 1% 5%;
         padding: 8px;
         background: rgb(255, 255, 255);
-        border: solid 1px rgb(0, 255, 157);
-        color: black;
+        border: solid 1px $dashboardButton;
+        color: $dashboardButton;
         font-weight: 800;
         border-radius: 5px;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
         &:hover{
-            background: rgb(98, 253, 194);
-    
+            background: $dashboardButton;
+            color: white;
         }
     }
 
@@ -275,14 +276,15 @@
                     max-width: 200px;
                     padding: 8px;
                     background: rgb(255, 255, 255);
-                    border: solid 1px rgb(0, 255, 157);
-                    color: black;
+                    border: solid 1px $dashboardButton;
+                    color: $dashboardButton;
                     font-weight: 800;
                     border-radius: 5px;
                     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
                     &:hover{
-                        background: rgb(98, 253, 194);
+                        background: $dashboardButton;
+                        color: white;
                     }
                 }
 
@@ -313,7 +315,7 @@
         .extrait{
             width: 50%;
             padding: 2%;
-            margin-top: -10%;
+            margin-top: -6%;
             background: white;
             border-radius: 10px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
@@ -337,7 +339,7 @@
                 height: 4px;
                 background: $redCVB;
             }
-
+            
             .card-actu{
 
                 img{
@@ -352,7 +354,7 @@
 }
 
 .liste-actus{
-    width: 80%;
+    width: 90%;
     margin: 2% auto;
 
     tr{
@@ -382,14 +384,15 @@
         width: 160px;
         padding: 8px;
         background: rgb(255, 255, 255);
-        border: solid 1px rgb(0, 255, 157);
-        color: black;
+        border: solid 1px $dashboardButton;
+        color: $dashboardButton;
         font-weight: 800;
         border-radius: 5px;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
         &:hover{
-            background: rgb(98, 253, 194);
+            background: $dashboardButton;
+            color: white;
         }
     }
 }
@@ -442,14 +445,14 @@
     .button-add-user{
         padding: 8px;
         background: rgb(255, 255, 255);
-        border: solid 1px rgb(0, 255, 157);
-        color: black;
+        border: solid 1px $dashboardButton;
+        color: $dashboardButton;
         font-weight: 800;
         border-radius: 5px;
 
         &:hover{
-            background: rgb(98, 253, 194);
-
+            background: $dashboardButton;
+            color: white;
         }
     }
 }

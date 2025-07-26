@@ -49,7 +49,7 @@ export default function Dashboard() {
             notify={notify}
           />
         </div>
-        <div className="liste-actus mt-24">
+        <div className="liste-actus">
           <PostList 
             notify={notify}
           />

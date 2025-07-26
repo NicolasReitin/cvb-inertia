@@ -11,7 +11,7 @@ export default function Authenticated({children}) {
                 <aside>
                     <div className="logo-dashboard">
                         <LogoClub 
-                            filePath="/assets/images/logo-cvb-black.png"
+                            filePath="/assets/images/logo-cvb-white.png"
                         />
                     </div>
 
