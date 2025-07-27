@@ -10,10 +10,10 @@ export default function VariousDocuments() {
                     <ul>
                         <li>
                             <iframe 
-                            src="\assets\documents\Formulaire_demande_licences.pdf" 
-                            type="application/pdf" 
-                            width="400px" 
-                            height="550px" 
+                                src="\assets\documents\Formulaire_demande_licences.pdf" 
+                                type="application/pdf" 
+                                width="400px" 
+                                height="550px" 
                             />
                             <a 
                             href="/assets/documents/Formulaire_demande_licences.pdf" 
@@ -23,10 +23,10 @@ export default function VariousDocuments() {
                         </li>
                         <li>
                             <iframe 
-                            src="\assets\documents\FFvolley_Attestation_Honorabilite.pdf" 
-                            type="application/pdf" 
-                            width="400px" 
-                            height="550px" 
+                                src="\assets\documents\FFvolley_Attestation_Honorabilite.pdf" 
+                                type="application/pdf" 
+                                width="400px" 
+                                height="550px" 
                             />
                             <a 
                             href="/assets/documents/FFvolley_Attestation_Honorabilite.pdf" 
@@ -36,10 +36,10 @@ export default function VariousDocuments() {
                         </li>
                         <li>
                             <iframe 
-                            src="\assets\documents\FFvolley_Attestation_Honorabilite_Mineur.pdf" 
-                            type="application/pdf" 
-                            width="400px" 
-                            height="550px" />
+                                src="\assets\documents\FFvolley_Attestation_Honorabilite_Mineur.pdf" 
+                                type="application/pdf" 
+                                width="400px" 
+                                height="550px" />
                             <a 
                             href="/assets/documents/FFvolley_Attestation_Honorabilite_Mineur.pdf" 
                             target='_blank'>

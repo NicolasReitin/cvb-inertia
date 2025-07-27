@@ -52,7 +52,7 @@ class PostController extends Controller
             $filename = $timestamp . '-' . $safeName . '.' . $extension;
             
             // Déplacement dans public/assets/posts
-            $image->move(public_path('assets/posts'), $filename);
+            $image->move(public_path('assets/Post'), $filename);
             $data['image'] = '/assets/posts/' . $filename;
         }
         

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDocumentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PostController;
@@ -13,7 +14,9 @@ use Inertia\Inertia;
 //---------------------------- Accueil ----------------------------
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
+//----------------------------------------------------------------------
 //---------------------------- Admin / Auth ----------------------------
+//----------------------------------------------------------------------
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(isAdmin::class);
 
@@ -29,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/utilisateurs', fn () => Inertia::render('Admin/User/User', []))->name('admin.user');
 });
 
+Route::post('/admin/documents/update', [AdminDocumentController::class, 'update'])
+    ->name('admin.documents.update');
 
 //---------------------------- User --------------------------------
 // Route::middleware(isAdmin::class)->group(function () { // utilisation du middleware sans aliasp
@@ -42,6 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//----------------------------------------------------------------------
+//---------------------------- Admin / Auth ----------------------------
+//----------------------------------------------------------------------
 
 //---------------------------- Posts ----------------------------
 Route::get('/actualites', [PostController::class, 'index'])->name('post.index');
@@ -69,7 +78,7 @@ Route::get('/documents-divers', fn () => Inertia::render('Various/VariousDocumen
 
 //---------------------------- Partners ----------------------------
 Route::get('/partenaires', [PartnerController::class, 'index'])->name('partners.index');
-Route::get('/devenez-partenaire', fn () => Inertia::render('Partners/BecomePartner'));
+Route::get('/devenez-partenaire', fn () => Inertia::render('Partner/BecomePartner'));
 
 //---------------------------- Shop ----------------------------
 Route::get('/boutique', fn () => Inertia::render('Shop/Shop'));

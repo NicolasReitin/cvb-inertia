@@ -7,7 +7,7 @@ export default function InternalRules() {
       <section>
           <h1>Règlement intérieur du Caen Volley Ball</h1>
           <div className='reglement'>
-              <embed src="\assets\documents\reglement.pdf" type="application/pdf" width="100%" height="1000px" />
+              <embed src="\storage\documents\reglement.pdf" type="application/pdf" width="100%" height="1000px" />
           </div>
       </section>
     </MainLayout>

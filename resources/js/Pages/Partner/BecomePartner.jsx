@@ -7,7 +7,7 @@ export default function BecomePartner() {
       <section>
           <h1>Devenez partenaire du Caen Volley Ball</h1>
           <div className='devenez-partenaire'>
-              <embed src="\assets\images\divers\devenez_partenaire.pdf" type="application/pdf" width="100%" height="1000px" />
+              <embed src="\storage\documents\devenez_partenaire.pdf" type="application/pdf" width="100%" height="1000px" />
           </div>
       </section>
     </MainLayout>

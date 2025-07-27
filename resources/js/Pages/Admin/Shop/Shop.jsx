@@ -8,8 +8,9 @@ export default function Club() {
         <Head title = "Admin - Club" />
 
         <DashboardLayout>
+          <h1>La boutique</h1>
 
-            <div>Shop</div>
+          <div>Shop</div>
 
         </DashboardLayout>
     </>

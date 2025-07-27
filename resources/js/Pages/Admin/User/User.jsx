@@ -9,6 +9,7 @@ export default function Club() {
         <Head title = "Admin - Club" />
 
         <DashboardLayout>
+          <h1>Les utilisateurs</h1>
 
             <Users />
 

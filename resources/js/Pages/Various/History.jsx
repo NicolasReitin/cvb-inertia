@@ -7,7 +7,7 @@ export default function History() {
       <section>
           <h1>Historique du Caen Volley Ball</h1>
           <div className='historique'>
-              <img src="/assets/images/divers/historique.png" alt="historique" />
+              <img src="/assets/documents/historique.png" alt="historique" />
           </div>
       </section>
     </MainLayout>

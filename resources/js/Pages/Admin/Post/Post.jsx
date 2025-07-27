@@ -38,6 +38,7 @@ export default function Dashboard() {
       <Head title = "Admin - Actualités" />
 
       <DashboardLayout>
+        <h1>Actualités</h1>
 
         <ToastContainer 
             position="bottom-right"
