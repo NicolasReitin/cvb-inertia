@@ -1,34 +1,35 @@
 import React, { useEffect, useState} from 'react'
 import { router, usePage } from '@inertiajs/react';
 import 'react-toastify/dist/ReactToastify.css';
-import UpdatePost from '@/Components/Dashboard/Post/UpdatePost';
+import UpdatePartner from '@/Components/Dashboard/Partner/UpdatePartner';
 
-export default function PostList({ notify }) {
-    const { posts } = usePage().props;
-    const [postsList, setPostsList] = useState(posts || []);
-    const [updatePost, setUpdatePost] = useState(null);
+export default function PartnerList({ notify }) {
+    const { partners } = usePage().props;
+    
+    const [partnersList, setPartnersList] = useState(partners || []);
+    const [updatePartner, setUpdatePartner] = useState(null);
 
     useEffect(() => {
-        if (Array.isArray(posts)) {
-            setPostsList(posts);
+        if (Array.isArray(partners)) {
+            setPartnersList(partners);
         }
-    }, [posts]);
+    }, [partners]);
 
     // État pour suivre la page actuelle    
     const [page, setPage] = useState(1);
 
     // Nombre d'articles par page
-    const postsPerPage = 8;
+    const partnersPerPage = 8;
 
     // Fonction pour filtrer les articles à afficher sur la page actuelle
-    const getPaginatedArticles = () => {
-        const startIndex = (page - 1) * postsPerPage;
-        const endIndex = startIndex + postsPerPage;
-        return postsList.slice(startIndex, endIndex);
+    const getPaginatedPartners = () => {
+        const startIndex = (page - 1) * partnersPerPage;
+        const endIndex = startIndex + partnersPerPage;
+        return partnersList.slice(startIndex, endIndex);
     };
 
     // Calcul du nombre total de pages
-    const totalPages = postsList?.length ? Math.ceil(postsList.length / postsPerPage) : 1;
+    const totalPages = partnersList?.length ? Math.ceil(partnersList.length / partnersPerPage) : 1;
 
     // Fonction pour passer à la page suivante
     const nextPage = () => {
@@ -53,29 +54,29 @@ export default function PostList({ notify }) {
     };
 
     // update d'un article
-    const handleEdit = (post) => {
-        if (updatePost?.id === post.id) {
-            setUpdatePost(null); // fermer le formulaire si on reclique
+    const handleEdit = (partner) => {
+        if (updatePartner?.id === partner.id) {
+            setUpdatePartner(null); // fermer le formulaire si on reclique
         } else {
-            setUpdatePost(post); // ouvrir pour ce post
+            setUpdatePartner(partner); // ouvrir pour ce partner
         }
     }
 
     const handleCancel = () => {
-        setUpdatePost(null); // Ferme le formulaire
+        setUpdatePartner(null); // Ferme le formulaire
     };
 
     // suppression d'un article
-    const handleDelete = (post) => {       
-        const isConfirmed = window.confirm(`Voulez-vous vraiment supprimer cet article ?`);
+    const handleDelete = (partner) => {       
+        const isConfirmed = window.confirm(`Voulez-vous vraiment supprimer ce partenaire ?`);
         if (!isConfirmed) return;
 
-        router.delete(route('post.destroy', post), {
+        router.delete(route('partner.destroy', partner), {
             onSuccess: () => {
                 notify('deleted');
                 
                 // Supprimer de l'état local pour mise à jour immédiate
-                setPostsList(prev => prev.filter(item => item.id !== post.id));
+                setPartnersList(prev => prev.filter(item => item.id !== partner.id));
             },
         }); 
     }
@@ -86,40 +87,40 @@ export default function PostList({ notify }) {
             <table className="table-auto w-full border border-gray-300 text-sm text-left">
                 <thead className="bg-gray-100">
                     <tr>
-                        <th className="border border-gray-300 px-4 py-2">Date</th>
-                        <th className="border border-gray-300 px-4 py-2">Titre</th>
-                        <th className="border border-gray-300 px-4 py-2">Auteur</th>
-                        <th className="border border-gray-300 px-4 py-2">Image</th>
-                        <th className="border border-gray-300 px-4 py-2">Contenu</th>
-                        <th className="border border-gray-300 px-4 py-2">Actions</th>
+                        <th>Date</th>
+                        <th>Nom</th>
+                        <th>Url</th>
+                        <th>Logo</th>
+                        <th>Role</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {getPaginatedArticles().map((post) => (
-                        post && (
-                            <React.Fragment key={post.id}>
-                                <tr key={post.id}>
-                                    <td className="border border-gray-300 px-4 py-2">{new Date(post.created_at).toLocaleDateString('fr-FR')}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{truncateContent(post.title, 50)}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{post.author}</td>
-                                    <td className="border border-gray-300 px-4 py-2">
-                                        <img className="post-image" src={post.image} alt='Image actu' />
+                    {getPaginatedPartners().map((partner) => (
+                        partner && (
+                            <React.Fragment key={partner.id}>
+                                <tr key={partner.id}>
+                                    <td>{new Date(partner.created_at).toLocaleDateString('fr-FR')}</td>
+                                    <td>{partner.name}</td>
+                                    <td>{partner.url}</td>
+                                    <td>
+                                        <img className="partner-image" src={partner.logo} alt='partenaire' />
                                     </td>
-                                    <td className="border border-gray-300 px-4 py-2">{truncateContent(post.content, 150)}</td>
-                                    <td className="border border-gray-300 px-4 py-2">
+                                    <td>{partner.role}</td>
+                                    <td>
                                         <div className="flex items-stretch gap-2 h-full">
-                                            <button className="button-edit" onClick={() => handleEdit(post)}>
+                                            <button className="button-edit" onClick={() => handleEdit(partner)}>
                                                 <img src="/assets/icones/edit-button.png" alt="button edit" />
                                             </button>
-                                            <button className="button-delete" onClick={() => handleDelete(post)}>
+                                            <button className="button-delete" onClick={() => handleDelete(partner)}>
                                                 <img src="/assets/icones/delete-button.png" alt="button delete" />
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
-                                {updatePost?.id === post.id && (
-                                    <UpdatePost 
-                                        post={post}
+                                {updatePartner?.id === partner.id && (
+                                    <UpdatePartner 
+                                        partner={partner}
                                         onCancel={handleCancel}
                                         notify={notify}
                                     />

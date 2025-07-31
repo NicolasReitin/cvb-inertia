@@ -5,7 +5,7 @@ import PostList from '@/Components/Dashboard/Post/PostList';
 import CreatePost from '@/Components/Dashboard/Post/CreatePost';
 import { ToastContainer, toast } from 'react-toastify';
 
-export default function Dashboard() {
+export default function Post() {
 
   // notification toast selon message
   const notify = (type) => {

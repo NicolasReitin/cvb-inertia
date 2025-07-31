@@ -3,7 +3,7 @@ import { Head } from '@inertiajs/react'
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Users from '@/Components/Dashboard/Users/Users';
 
-export default function Club() {
+export default function User() {
   return (
     <>
         <Head title = "Admin - Club" />

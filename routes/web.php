@@ -17,18 +17,30 @@ Route::get('/', [WelcomeController::class, 'index'])->name('home');
 //----------------------------------------------------------------------
 //---------------------------- Admin / Auth ----------------------------
 //----------------------------------------------------------------------
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(isAdmin::class);
-
 Route::middleware('auth')->group(function () {
-    Route::get('/admin/actualites', fn () => Inertia::render('Admin/Post/Post', [
-        'posts' => Post::orderBy('created_at', 'desc')->get()
-    ]))->name('admin.posts');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/admin/actualites', [PostController::class, 'admin'])->name('admin.post');
+    Route::post('/admin/post/create', [PostController::class, 'store'])->name('post.store');
+    Route::put('/admin/post/update/{post}', [PostController::class, 'update'])->name('post.update');
+    Route::delete('/admin/post/delete/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
     Route::get('/admin/club', fn () => Inertia::render('Admin/Club/Club', []))->name('admin.club');
+
     Route::get('/admin/equipes', fn () => Inertia::render('Admin/Team/Team', []))->name('admin.team');
-    Route::get('/admin/partenaires', fn () => Inertia::render('Admin/Partner/Partner', []))->name('admin.partner');
+
+    Route::get('/admin/partenaires', [PartnerController::class, 'admin'])->name('admin.partner');
+    Route::post('/admin/partner/create', [PartnerController::class, 'store'])->name('partner.store');
+    Route::put('/admin/partner/update/{post}', [PartnerController::class, 'update'])->name('partner.update');
+    Route::delete('/admin/partner/delete/{post}', [PartnerController::class, 'destroy'])->name('partner.destroy');
+
     Route::get('/admin/boutique', fn () => Inertia::render('Admin/Shop/Shop', []))->name('admin.shop');
+
     Route::get('/admin/utilisateurs', fn () => Inertia::render('Admin/User/User', []))->name('admin.user');
 });
 
@@ -42,22 +54,10 @@ Route::post('/admin/documents/update', [AdminDocumentController::class, 'update'
 //     Route::delete('/user/{user}', [UserController::class, 'destroy']);
 // });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-//----------------------------------------------------------------------
-//---------------------------- Admin / Auth ----------------------------
-//----------------------------------------------------------------------
-
 //---------------------------- Posts ----------------------------
 Route::get('/actualites', [PostController::class, 'index'])->name('post.index');
 Route::get('/actualites/{post}', [PostController::class, 'show'])->name('post.show');
-Route::post('/admin/post/create', [PostController::class, 'store'])->name('post.store');
-Route::put('/admin/post/update/{post}', [PostController::class, 'update'])->name('post.update');
-Route::delete('/admin/post/delete/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+
 
 //---------------------------- Teams ----------------------------
 Route::get('/equipe/{team}', [TeamController::class, 'show'])->name('team.show');

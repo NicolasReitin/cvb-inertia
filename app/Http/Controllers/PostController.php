@@ -34,7 +34,6 @@ class PostController extends Controller
         ]);
     }
 
-
     // Créer une nouvelle news
     public function store(StorePostRequest $request): RedirectResponse
     {
@@ -53,12 +52,12 @@ class PostController extends Controller
             
             // Déplacement dans public/assets/posts
             $image->move(public_path('assets/Post'), $filename);
-            $data['image'] = '/assets/posts/' . $filename;
+            $data['image'] = '/assets/Post/' . $filename;
         }
         
-        $post = Post::create($data);
+        Post::create($data);
 
-        return redirect()->route('admin.posts')->with('success', 'Actualité créée avec succès à ' . now()->format('H:i:s'));  // Ajout de l'heure pour forcer la key a etre differente a chaque appel
+        return redirect()->route('admin.post')->with('success', 'Actualité créée avec succès à ' . now()->format('H:i:s'));  // Ajout de l'heure pour forcer la key a etre differente a chaque appel
     }
 
     // Mettre à jour un news existant
@@ -68,7 +67,7 @@ class PostController extends Controller
 
         $post->update($data);
 
-        return redirect()->route('admin.posts')->with('updated', 'Article modifié avec succès.');
+        return redirect()->route('admin.post')->with('updated', 'Article modifié avec succès.');
     }
 
     // Supprimer un news
@@ -76,6 +75,15 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('admin.posts')->with('deleted', 'Article supprimé avec succès.');
+        return redirect()->route('admin.post')->with('deleted', 'Article supprimé avec succès.');
+    }
+
+    public function admin(): Response
+    {
+        $posts = Post::orderBy('created_at','desc')->get();
+
+        return Inertia::render('Admin/Post/Post', [
+            'posts' => $posts,
+        ]);
     }
 }

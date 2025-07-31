@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { router } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 
-export default function UpdatePost({ post, onCancel, notify }) {
+export default function UpdatePartner({ partner, onCancel, notify }) {
     const [form, setForm] = useState({
-        title: post.title || '',
-        author: post.author || '',
-        content: post.content || '',
-        image: post.image || '',
+        name: partner.name || '',
+        url: partner.url || '',
+        role: partner.role || '',
+        logo: partner.logo || '',
     });
 
     const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ export default function UpdatePost({ post, onCancel, notify }) {
         e.preventDefault();
         setLoading(true);
 
-        router.put(route('post.update', post.id), form, {
+        router.put(route('partner.update', partner.id), form, {
             onSuccess: () => {
                 notify('updated')
                 onCancel()
@@ -37,35 +37,37 @@ export default function UpdatePost({ post, onCancel, notify }) {
         <tr className="bg-yellow-100">
             <td colSpan="6" className="p-4 border border-gray-300">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-                    <div className="flex gap-2">
-                        <label htmlFor="title">Titre</label>
+                    <div className="flex gap-12">
+                        <label htmlFor="name">Nom</label>
                         <input
                             type="text"
-                            name="title"
-                            value={form.title}
+                            name="name"
+                            value={form.name}
                             onChange={handleChange}
                             className="input"
                             placeholder="Titre"
                         />
-                        <label htmlFor="author">Auteur</label>
+                        <label htmlFor="url">Url</label>
                         <input
                             type="text"
-                            name="author"
-                            value={form.author}
+                            name="url"
+                            value={form.url}
                             onChange={handleChange}
                             className="input"
                             placeholder="Auteur"
                         />
-                    </div>
-                    <label htmlFor="content">Contenu</label>
-                    <textarea
-                        name="content"
-                        value={form.content}
+                    <label htmlFor="role">Role</label>
+                    <select
+                        name="role"
+                        value={form.role}
                         onChange={handleChange}
-                        className="input"
-                        placeholder="Contenu"
-                        rows={3}
-                    />
+                        className="input w-96"
+                    >
+                        <option value="institutional partner">Partenaires institutionnels</option>
+                        <option value="private partner">Partenaires privés</option>
+                        <option value="helped us">Nous ont aidés</option>
+                    </select>
+                    </div>
                     <div className="flex justify-end gap-2">
                         <button
                             type="button"

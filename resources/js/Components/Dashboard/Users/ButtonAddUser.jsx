@@ -34,7 +34,6 @@ export default function ButtonAddUser( {addUserToStaff}) {
                 
             }
         } catch (error) {
-            console.error('Error creating user:', error);
             alert('Une erreur est survenue lors de la création de l\'utilisateur.');
         }
         setCreateUser(false)

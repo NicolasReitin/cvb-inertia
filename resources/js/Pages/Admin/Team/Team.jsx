@@ -2,7 +2,7 @@ import React from 'react'
 import { Head } from '@inertiajs/react'
 import DashboardLayout from '@/Layouts/DashboardLayout';
 
-export default function Club() {
+export default function Team() {
   return (
     <>
         <Head title = "Admin - Club" />

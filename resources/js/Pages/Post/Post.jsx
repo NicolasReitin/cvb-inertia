@@ -51,7 +51,7 @@ export default function Post() {
                                 {/* <Link href={route('post.data.show', {post: post.id})}> */}
                                 <Link href={`/actualites/${post.data.id}`}>
                                     <div className='relative'>
-                                        <img src={post.data.image} alt="actualité" className="w-full h-auto" />
+                                        <img src={post.data.image[0] ? post.data.image : '/assets/images/no-photo.png'} alt="actualité" className="w-full h-auto" />
                                         <div className="filtre-img absolute inset-0"></div>
                                     </div>
                                     <h2>{ post.data.title }</h2> 
