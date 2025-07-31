@@ -58,7 +58,7 @@ class PartnerController extends Controller
     public function update(UpdatePartnerRequest $request, Partner $partner)
     {
         $data = $request->validated();
-
+        
         $partner->update($data);
 
         return redirect()->route('admin.partner')->with('updated', 'Partenaire modifié avec succès.');

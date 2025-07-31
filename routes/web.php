@@ -25,19 +25,23 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    // posts
     Route::get('/admin/actualites', [PostController::class, 'admin'])->name('admin.post');
     Route::post('/admin/post/create', [PostController::class, 'store'])->name('post.store');
     Route::put('/admin/post/update/{post}', [PostController::class, 'update'])->name('post.update');
     Route::delete('/admin/post/delete/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
+    // club
     Route::get('/admin/club', fn () => Inertia::render('Admin/Club/Club', []))->name('admin.club');
 
+    // teams
     Route::get('/admin/equipes', fn () => Inertia::render('Admin/Team/Team', []))->name('admin.team');
 
+    // partners
     Route::get('/admin/partenaires', [PartnerController::class, 'admin'])->name('admin.partner');
     Route::post('/admin/partner/create', [PartnerController::class, 'store'])->name('partner.store');
-    Route::put('/admin/partner/update/{post}', [PartnerController::class, 'update'])->name('partner.update');
-    Route::delete('/admin/partner/delete/{post}', [PartnerController::class, 'destroy'])->name('partner.destroy');
+    Route::put('/admin/partner/update/{partner}', [PartnerController::class, 'update'])->name('partner.update');
+    Route::delete('/admin/partner/delete/{partner}', [PartnerController::class, 'destroy'])->name('partner.destroy');
 
     Route::get('/admin/boutique', fn () => Inertia::render('Admin/Shop/Shop', []))->name('admin.shop');
 
