@@ -9,6 +9,7 @@ use App\Http\Resources\PartnerResource;
 use App\Models\Partner;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Str;
 
 class PartnerController extends Controller
 {
@@ -66,6 +67,11 @@ class PartnerController extends Controller
 
     public function destroy(Partner $partner)
     {
+        // Supprimer le fichier logo s'il existe
+        if ($partner->logo && file_exists(public_path($partner->logo))) {
+            unlink(public_path($partner->logo));
+        }
+        
         $partner->delete();
 
         return redirect()->route('admin.partner')->with('deleted', 'Partenaire supprimé avec succès.');

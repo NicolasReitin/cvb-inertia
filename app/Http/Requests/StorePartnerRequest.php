@@ -24,8 +24,8 @@ class StorePartnerRequest extends FormRequest
         return [
             'name' => 'required|string|max:55',
             'url' => 'nullable|string|max:255',
-            'logo' => 'nullable|string',
-            'role' => 'nullable|string|in:institutional partner, private partner, helped us',
+            'role' => 'nullable|string|in:institutional partner,private partner,helped us',
+            'logo' => 'nullable|image|max:2048',
         ];
     }
 

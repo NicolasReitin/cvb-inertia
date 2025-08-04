@@ -1,65 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
 import 'react-toastify/dist/ReactToastify.css';
 import { router, useForm, usePage } from '@inertiajs/react';
 
 export default function CreatePartner({ notify }) {
-    const [createPost, setCreatePost] = useState(false);
-    const [previewImage, setPreviewImage] = useState(null);
+    const [createPartner, setCreatePartner] = useState(false);
     const [errorForm, setErrorForm] = useState(false);
     const [validForm, setValidForm] = useState(false);
     const { data, setData, post, processing, errors, reset } = useForm({
-        author: '',
-        title: '',
-        content: '',
-        image: null,
+        name: '',
+        url: '',
+        role: '',
+        logo: null,
     });
 
-    // Toggle sur createPost
-    const handleCreateActu = () => {
-        setCreatePost(prevState => !prevState);
+    // Toggle sur createPartner
+    const handleCreatePartner = () => {
+        setCreatePartner(prevState => !prevState);
     }
 
     // Envoi le formulaire au backend
     const handleSubmit = async (e) => {
+
         e.preventDefault();
 
-        if (data.author === '' || data.title === '') {
+        if (data.name === '') {
             setErrorForm(true);
             notify('form-error'); // Affiche la notification d'erreur si le formulaire est invalide
             return;
         }
 
-        const formDataToSend = new FormData();
-        formDataToSend.append('author', data.author);
-        formDataToSend.append('title', data.title);
-        formDataToSend.append('content', data.content);
-
-        if (data.image) {
-            formDataToSend.append('image', data.image);
-        }
-
-        router.post(route('post.store'), formDataToSend, {
+        router.post(route('partner.store'), data, {
             forceFormData: true, // 🔑 indique à Inertia d'envoyer en multipart/form-data
-
             onError: (errors) => {
+                console.log('Erreurs Laravel:', errors);
                 notify('form-error');
             },
         });
     }
 
-    // pour faire apparaitre en direct ce que l'on saisi ou l'image si c'est une image
-    const handleChange = (e) => {
-        const { name, value, files } = e.target;
-        if (name === "image") {
-            setData(name, files[0]);
-            setPreviewImage(URL.createObjectURL(files[0]));
-        } else {
-            setData(name, value);
-        }
-    };
-
-    // recupère la props du formaulaire pour savoir si success n'est pas null, et dans ce cas referme createPost
+    // recupère la props du formaulaire pour savoir si success n'est pas null, et dans ce cas referme createPartner
     const { flash } = usePage().props;
 
     useEffect(() => {
@@ -71,8 +50,7 @@ export default function CreatePartner({ notify }) {
                 setTimeout(() => {
                     reset(); // Réinitialise le formulaire
                     setValidForm(false);
-                    setPreviewImage(null);
-                    setCreatePost(false);
+                    setCreatePartner(false);
                 }, 3000);
         }
     }, [flash.success]);
@@ -80,51 +58,54 @@ export default function CreatePartner({ notify }) {
     return (
         <>
             <div className="create-actu">
-                <button className='button-create-actu' onClick={handleCreateActu} >
-                    Créer une nouvelle actualité
+                <button className='button-create-actu' onClick={handleCreatePartner} >
+                    Créer un nouveau partenaire
                 </button>
-                {createPost && (
+                {createPartner && (
                     <div className='block-create-actu flex'>
                         <div className="new-actu">
                             <form onSubmit={handleSubmit}>
                                 <div className='input-form'>
-                                    <label htmlFor="author">Auteur</label>
+                                    <label htmlFor="name">Nom</label>
                                     <input 
                                         type="text" 
-                                        name='author' 
-                                        value={data.author}
-                                        onChange={handleChange}
-                                        placeholder="Nom de l'auteur"
+                                        name='name' 
+                                        value={data.name}
+                                        onChange={(e) => setData('name', e.target.value)}
+                                        placeholder="Nom du partenaire"
                                     />
                                 </div>
                                 <div className='input-form'>
-                                    <label htmlFor="title">Titre</label>
+                                    <label htmlFor="url">Url</label>
                                     <input 
                                         type="text" 
-                                        name='title' 
-                                        value={data.title}
-                                        onChange={handleChange}
-                                        placeholder="Titre de l'article"
+                                        name='url' 
+                                        value={data.url}
+                                        placeholder="Url du site du partenaire"
+                                        onChange={(e) => setData('url', e.target.value)}
                                     />
                                 </div>
-                                <div className='input-form'>
-                                    <label htmlFor="content">Contenu</label>
-                                    <textarea 
-                                        rows="3" 
-                                        cols="30" 
-                                        name='content'
-                                        value={data.content}
-                                        onChange={handleChange}
-                                        placeholder="Entrez votre texte ici...">
-                                    </textarea>                            
+                                <div className="input-form">
+                                    <label htmlFor="role">Rôle</label>
+                                    <select
+                                        name="role"
+                                        value={data.role}
+                                        onChange={(e) => setData('role', e.target.value)}
+                                        className="input w-96"
+                                    >
+                                        <option value="">-- Sélectionner un rôle --</option>
+                                        <option value="institutional partner">Partenaires institutionnels</option>
+                                        <option value="private partner">Partenaires privés</option>
+                                        <option value="helped us">Nous ont aidés</option>
+                                    </select>
                                 </div>
                                 <div className='input-form'>
-                                    <label htmlFor="image">Image</label>
+                                    <label htmlFor="logo">Logo</label>
                                     <input 
                                         type="file" 
-                                        name="image" 
-                                        accept="image/*" 
-                                        onChange={handleChange}
+                                        name="logo" 
+                                        accept="image/*"
+                                        onChange={(e) => setData('logo', e.target.files[0])} 
                                     />
                                 </div>
                                 {errorForm && (
@@ -134,7 +115,7 @@ export default function CreatePartner({ notify }) {
                                 )}
                                 {validForm && (
                                     <div className='message-valid-form'>
-                                        <p>L'article a bien été créé!</p>
+                                        <p>Le partenaire a bien été créé!</p>
                                     </div>
                                     
                                 )}
@@ -143,24 +124,9 @@ export default function CreatePartner({ notify }) {
                                     disabled={processing}
                                     onClick={notify}
                                 >
-                                    {processing ? 'Envoi en cours...' : 'Créer le post'}
+                                    {processing ? 'Envoi en cours...' : 'Créer le partenaire'}
                                 </button>
                             </form>
-                        </div>
-                        <div className="extrait">
-                            <h1 className={data.title ? 'with-bar' : ''}>{data.title}</h1>
-                            <div className='card-actu'>
-                                <h3>Par {data.author} | Le {moment().format('DD/MM/YYYY')}</h3>
-                                {previewImage && (
-                                    <div className='flex justify-center'>
-                                        <img 
-                                            src={previewImage} 
-                                            alt="Aperçu de l'image" 
-                                        />
-                                    </div>
-                                )}
-                                <p className='article-content'>{data.content}</p>
-                            </div>
                         </div>
                     </div>
                 )}

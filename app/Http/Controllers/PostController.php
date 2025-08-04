@@ -73,6 +73,11 @@ class PostController extends Controller
     // Supprimer un news
     public function destroy(Post $post): RedirectResponse
     {
+        // Supprimer le fichier image s'il existe
+        if ($post->image && file_exists(public_path($post->image))) {
+            unlink(public_path($post->image));
+        }
+
         $post->delete();
 
         return redirect()->route('admin.post')->with('deleted', 'Article supprimé avec succès.');

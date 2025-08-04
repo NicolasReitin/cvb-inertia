@@ -45,11 +45,11 @@ export default function Partner() {
             autoClose={2900}                                   
             theme="light"
         />
-        {/* <div className="">
+        <div className="">
           <CreatePartner 
             notify={notify}
           />
-        </div> */}
+        </div>
         <div className="list-partners">
           <PartnerList
             notify={notify}
