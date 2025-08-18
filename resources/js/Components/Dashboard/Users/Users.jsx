@@ -3,9 +3,8 @@ import ButtonAddUser from './ButtonAddUser';
 import axios from '@/libs/axios';
 
 const Users = () => {
-  //recuperation JSON contenant infos du staff
   const [staff, setStaff] = useState([]);
-  const [utilisateurId, setUtilisateurId] = useState(''); // Déclarez utilisateurId comme un state
+  const [userId, setUserId] = useState(''); // Déclarez userId comme un state
   const [action, setAction] = useState(''); // Action à effectuer : "edit" ou "delete"
   const [formData, setFormData] = useState({ //recuperation des data de utilisateur ciblé
     id :'',
@@ -15,7 +14,7 @@ const Users = () => {
 
   //EDIT
   const handleEdit = (id, name, email) => {
-    setUtilisateurId(id); // recuperer id de l'utilisateur ciblé
+    setUserId(id); // recuperer id de l'utilisateur ciblé
     setFormData({
       id: id,
       name: name, //modif nom utilisateur
@@ -25,13 +24,15 @@ const Users = () => {
   }
 
   const updateHandleEdit = (id, name, email) => {
-    setUtilisateurId(id); // recuperer id de l'utilisateur ciblé
+    setUserId(id); // recuperer id de l'utilisateur ciblé
     setAction('update'); //remettre action par defaut
+
     //mettre a jour les données du tableau
     const updatedStaff = staff.map((user) => {
       if (user.id !== id) {
         return user
       }
+
       return {
         ...user,
         name,
@@ -43,7 +44,7 @@ const Users = () => {
  
   //DELETE
   const handleDelete = (id, name, email) => {
-    setUtilisateurId(id); // recuperer id de l'utilisateur ciblé
+    setUserId(id); // recuperer id de l'utilisateur ciblé
 
     const isConfirmed = window.confirm(`Voulez-vous vraiment supprimer l'utilisateur ${name}?`);
     if (isConfirmed) {
@@ -51,6 +52,7 @@ const Users = () => {
     }
     // fonction pour filtrer le user concerner et le supprimer selon l'id selectionné
     const deleteStaff = staff.filter((user) => user.id !== id);
+
     setStaff(deleteStaff);
   }
 
@@ -61,15 +63,16 @@ const Users = () => {
   
   useEffect(() => {
     // Envoyez la requête POST une fois que formData est mis à jour
-    if ( utilisateurId !== null && action !== null) {
+    if ( userId !== null && action !== null) {
       if (action === 'delete') {
         const fetchDeleteStaff = async() => {
-          const response = await axios.delete(`/api/user/${utilisateurId}`, formData)
+          const response = await axios.delete(`/api/user/${userId}`, formData)
         }
+        
         fetchDeleteStaff();
       } else if (action === 'update' && formData.name !== '' && formData.email !== '') {
         const fetchUpdateStaff = async() => {
-            const response = await axios.post(`/api/user/update/${utilisateurId}`, formData)
+            const response = await axios.post(`/api/user/update/${userId}`, formData)
           }    
           fetchUpdateStaff(); 
       }
@@ -99,8 +102,7 @@ const Users = () => {
                 <th>ID</th>
                 <th>Nom</th>
                 <th>Email</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -123,7 +125,7 @@ const Users = () => {
                   </tr>
                     {action === "edit" && (
                       <>
-                        {utilisateurId === utilisateur.id && (
+                        {userId === utilisateur.id && (
                           <tr key={utilisateur.id}>
                             <td></td>
                             <td>
@@ -145,13 +147,12 @@ const Users = () => {
                               </div>
                             </td>
                             <td>
-                              <button className='button-cancel' onClick={() => handleCancel()}>
-                                <img src="/assets/icones/cancel.png" alt="button cancel" />
-                              </button>
-                            </td>
-                            <td>
                               <button className='button-edit' onClick={() => updateHandleEdit(utilisateur.id, formData.name, formData.email)}>
                                 <img src="/assets/icones/valid.png" alt="button check"/>
+                              </button>
+                              
+                              <button className='button-cancel' onClick={() => handleCancel()}>
+                                <img src="/assets/icones/cancel.png" alt="button cancel" />
                               </button>
                             </td>                            
                           </tr>

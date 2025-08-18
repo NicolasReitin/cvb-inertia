@@ -55,7 +55,7 @@ export default function Menu() {
           </Link>
         </div>
         <div>
-          <Link href="/admin/utilisateurs">
+          <Link href="/admin/users">
             <li>
               <img src="/assets/icones/user.png" alt="" />
               Utilisateurs
