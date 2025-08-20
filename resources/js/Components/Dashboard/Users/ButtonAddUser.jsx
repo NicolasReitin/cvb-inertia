@@ -1,71 +1,117 @@
-import React, { useEffect, useState} from 'react'
-import axios from '@/libs/axios';
+import React, { useState } from 'react';
+import { useForm, usePage } from '@inertiajs/react';
 
+export default function ButtonAddUser({ roles, addUserToStaff, notify }) {
+    const [createUser, setCreateUser] = useState(false);
+console.log(usePage());
 
-export default function ButtonAddUser( {addUserToStaff}) {
-    const [createUser, setCreateUser] = useState(false)
-
-    const [formData, setFormData] = useState({
+    // useForm d’Inertia
+    const { data, setData, post, processing, reset, errors } = useForm({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        role_id: '',
     });
 
     const handleAddUser = () => {
-        setCreateUser(true)
-    }
+        setCreateUser(true);
+    };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        post(route('user.store'), {
+            onSuccess: (page) => {
+                notify(success)
+                alert(`L'utilisateur ${data.name} a bien été créé`);
+                addUserToStaff(page.props.user); // si tu renvoies le user depuis ton contrôleur
+                reset();
+                setCreateUser(false);
+            },
+            onError: () => {
+                alert("Une erreur est survenue lors de la création de l'utilisateur.");
+            },
         });
     };
 
-    const handleSubmit =async (e) => {
-        e.preventDefault();
+    return (
+        <>
+            <button className="button-add-user" onClick={handleAddUser}>
+                Créer un nouvel utilisateur
+            </button>
 
-        try {
-            const response = await axios.post('/api/user/create', formData);
-            if (response.status ===201){
-                alert(`L'utilisateur ${formData.name} a bien été créé`);
-                addUserToStaff(response.data.user);
-                
-            }
-        } catch (error) {
-            alert('Une erreur est survenue lors de la création de l\'utilisateur.');
-        }
-        setCreateUser(false)
-    }
+            {createUser && (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-6 mt-8 mb-8">
+                    <div className="flex gap-6">
+                        <div className="flex flex-col">
+                            <label htmlFor="name">Nom</label>
+                            <input
+                                type="text"
+                                name="name"
+                                value={data.name}
+                                onChange={(e) => setData('name', e.target.value)}
+                                className="border rounded p-2"
+                            />
+                            {errors.name && <div className="text-red-500 text-sm">{errors.name}</div>}
+                        </div>
 
+                        <div className="flex flex-col">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={data.email}
+                                onChange={(e) => setData('email', e.target.value)}
+                                className="border rounded p-2"
+                            />
+                            {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
+                        </div>
+                    </div>
 
-  return (
-    <>
-        <button className='button-add-user' onClick={() => handleAddUser()}>
-            Créer un nouvel utilisateur
-        </button>
-        {createUser && (
-            <>
-                <form onSubmit={handleSubmit} className='flex gap-6 mt-8 mb-8'>
-                    <div className='flex items-center gap-2'>
-                        <label htmlFor="">Nom</label>
-                        <input type="text" name='name' value={formData.name} onChange={handleChange}/>
+                    <div className="flex gap-6">
+                        <div className="flex flex-col">
+                            <label htmlFor="password">Mot de passe</label>
+                            <input
+                                type="password"
+                                name="password"
+                                value={data.password}
+                                onChange={(e) => setData('password', e.target.value)}
+                                className="border rounded p-2"
+                            />
+                            {errors.password && <div className="text-red-500 text-sm">{errors.password}</div>}
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label htmlFor="role_id">Rôle</label>
+                            <select
+                                id="role_id"
+                                name="role_id"
+                                value={data.role_id}
+                                onChange={e => setData('role_id', e.target.value)}
+                                className="border rounded p-2"
+                            >
+                                <option value="">-- Sélectionner un rôle --</option>
+                                {roles.map(role => (
+                                    <option key={role.id} value={role.id}>
+                                        {role.name}
+                                    </option>
+                                ))}
+                            </select>
+                            {errors.role_id && <span className="text-red-500">{errors.role_id}</span>}
+                        </div>
                     </div>
-                    <div className='flex items-center gap-2'>
-                        <label htmlFor="">Email</label>
-                        <input type='email' name='email' value={formData.email} onChange={handleChange}/>
+
+                    <div>
+                        <button 
+                            type="submit" 
+                            className="button-add-user" 
+                            disabled={processing}
+                        >
+                            {processing ? 'Création...' : 'Valider'}
+                        </button>
                     </div>
-                    <div className='flex items-center gap-2'>
-                        <label htmlFor="">Mot de passe</label>
-                        <input type="password" name='password' value={formData.password} onChange={handleChange}/>
-                    </div>
-                    <button type='submit' className='button-add-user'>
-                        Valider
-                    </button>
                 </form>
-            </>
-        )}
-    </>
-  )
+            )}
+        </>
+    );
 }

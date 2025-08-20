@@ -1,170 +1,119 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ButtonAddUser from './ButtonAddUser';
-import axios from '@/libs/axios';
+import { useForm, usePage } from '@inertiajs/react';
 
-const Users = () => {
-  const [staff, setStaff] = useState([]);
-  const [userId, setUserId] = useState(''); // Déclarez userId comme un state
-  const [action, setAction] = useState(''); // Action à effectuer : "edit" ou "delete"
-  const [formData, setFormData] = useState({ //recuperation des data de utilisateur ciblé
-    id :'',
-    name: '',
-    email: ''
-  });
+const Users = ({notify}) => {
+  const { users } = usePage().props;
+  const { roles } = usePage().props;
+  const [editId, setEditId] = useState(null);
+  const form = useForm({ name: '', email: '', role_id: ''});
 
   //EDIT
-  const handleEdit = (id, name, email) => {
-    setUserId(id); // recuperer id de l'utilisateur ciblé
-    setFormData({
-      id: id,
-      name: name, //modif nom utilisateur
-      email: email //modif email
+  const handleEdit = (user) => {
+    setEditId(user.id);
+    form.setData({
+      name: user.name,
+      email: user.email,
+      role_id: user.role ? user.role.id : ''
     });
-    setAction('edit'); // Définir l'action sur "edit"
-  }
+    console.log(form);
+  };
 
-  const updateHandleEdit = (id, name, email) => {
-    setUserId(id); // recuperer id de l'utilisateur ciblé
-    setAction('update'); //remettre action par defaut
-
-    //mettre a jour les données du tableau
-    const updatedStaff = staff.map((user) => {
-      if (user.id !== id) {
-        return user
-      }
-
-      return {
-        ...user,
-        name,
-        email
-      }
-    })
-    setStaff(updatedStaff)
-  }
+  const handleUpdate = (id) => {
+    form.put(route('admin.user.update', id), {
+      onSuccess: () => setEditId(null),
+    });
+  };
  
   //DELETE
-  const handleDelete = (id, name, email) => {
-    setUserId(id); // recuperer id de l'utilisateur ciblé
-
-    const isConfirmed = window.confirm(`Voulez-vous vraiment supprimer l'utilisateur ${name}?`);
-    if (isConfirmed) {
-      setAction('delete'); // Définir l'action sur "delete"
+  const handleDelete = (id) => {
+    if (confirm('Supprimer cet utilisateur ?')) {
+      form.delete(route('admin.user.destroy', id));
     }
-    // fonction pour filtrer le user concerner et le supprimer selon l'id selectionné
-    const deleteStaff = staff.filter((user) => user.id !== id);
-
-    setStaff(deleteStaff);
-  }
-
-  //Cancel
-  const handleCancel = () => {
-    setAction(''); //remettre action par defaut
-  }
-  
-  useEffect(() => {
-    // Envoyez la requête POST une fois que formData est mis à jour
-    if ( userId !== null && action !== null) {
-      if (action === 'delete') {
-        const fetchDeleteStaff = async() => {
-          const response = await axios.delete(`/api/user/${userId}`, formData)
-        }
-        
-        fetchDeleteStaff();
-      } else if (action === 'update' && formData.name !== '' && formData.email !== '') {
-        const fetchUpdateStaff = async() => {
-            const response = await axios.post(`/api/user/update/${userId}`, formData)
-          }    
-          fetchUpdateStaff(); 
-      }
-      // Réinitialiser l'état de l'action après l'exécution de la requête POST
-    }
-  }, [action, staff]);
+  };
 
   const addUserToStaff = (newUser) => {
     setStaff((prevStaff) => [...prevStaff, newUser]);
   };
   
-    return (
-      <>
-      <hr />
-        <div className="users" >
-          <div className='ml-8 mb-8'>
-            <div>
-              <ButtonAddUser
-                addUserToStaff = {addUserToStaff}
-              />
-            </div>
+  return (
+    <>
+      <hr/>
+      <div className="users" >
+        <div className='ml-8 mb-8'>
+          <div>
+            <ButtonAddUser
+              roles = {roles}
+              addUserToStaff = {addUserToStaff}
+              notify = {notify}
+            />
           </div>
+        </div>
 
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {staff.map((utilisateur) => ( 
-                <>
-                  <tr key={utilisateur.id}>
-                    <td>{utilisateur.id}</td>
-                    <td>{utilisateur.name}</td>
-                    <td>{utilisateur.email}</td>                    
-                    <td>
-                      <button className='button-edit' onClick={() => handleEdit(utilisateur.id, utilisateur.name, utilisateur.email)}>
-                        <img src="/assets/icones/edit-button.png" alt="button edit" />
-                      </button>
-                    </td>
-                    <td>
-                      <button className='button-delete' onClick={() => handleDelete(utilisateur.id, utilisateur.name, utilisateur.email)}>
-                        <img src="/assets/icones/delete-button.png" alt="button delete" />
-                      </button>
-                    </td>
-                  </tr>
-                    {action === "edit" && (
-                      <>
-                        {userId === utilisateur.id && (
-                          <tr key={utilisateur.id}>
-                            <td></td>
-                            <td>
-                              <div className='flex'>
-                                <input 
-                                  type="text" 
-                                  value={formData.name} 
-                                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                />
-                              </div>
-                            </td>
-                            <td>
-                              <div className='flex'>
-                                <input 
-                                  type="text" 
-                                  value={formData.email} 
-                                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}                                  
-                                />
-                              </div>
-                            </td>
-                            <td>
-                              <button className='button-edit' onClick={() => updateHandleEdit(utilisateur.id, formData.name, formData.email)}>
-                                <img src="/assets/icones/valid.png" alt="button check"/>
-                              </button>
-                              
-                              <button className='button-cancel' onClick={() => handleCancel()}>
-                                <img src="/assets/icones/cancel.png" alt="button cancel" />
-                              </button>
-                            </td>                            
-                          </tr>
-                        )}
-                      </>
-                    )}
-                </>
-              ))}
-            </tbody>
-          </table>
-        </div>  
-      </>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Rôle</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              editId === user.id ? (
+                <tr key={user.id}>
+                  <td>{user.id}</td>
+                  <td>
+                    <input
+                      value={form.data.name}
+                      onChange={(e) => form.setData('name', e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      value={form.data.email}
+                      onChange={(e) => form.setData('email', e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <select
+                      name="role_id"
+                      value={form.data.role_id ?? ''}
+                      onChange={(e) => form.setData('role_id', e.target.value)}
+                      className="input"
+                    >
+                      <option value="">-- Sélectionner un rôle --</option>
+                      {roles.map((role) => (
+                        <option key={role.id} value={role.id}>
+                          {role.name}
+                        </option>
+                      ))}
+                    </select>
+                  </td>
+                  <td>
+                    <button onClick={() => handleUpdate(user.id)}>✅</button>
+                    <button onClick={() => setEditId(null)}>❌</button>
+                  </td>
+                </tr>
+              ) : (
+                <tr key={user.id}>
+                  <td>{user.id}</td>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.role ? user.role.name : "Aucun rôle"}</td>
+                  <td>
+                    <button onClick={() => handleEdit(user)}>✏️</button>
+                    <button onClick={() => handleDelete(user.id)}>❌</button>
+                  </td>
+                </tr>
+              )
+            ))}
+          </tbody>
+        </table>
+      </div>  
+    </>
   );
 };
 

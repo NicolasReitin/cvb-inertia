@@ -20,7 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        'role_id',
     ];
 
     /**
@@ -39,17 +39,12 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role_id' => 'integer',
         ];
     }
 
-    public function getRole(): RoleEnum
+    public function role()
     {
-        return RoleEnum::from($this->role); // Convertit la valeur stockée en RoleEnum
-    }
-
-    // Méthode pour assigner un rôle
-    public function setRole(RoleEnum $role)
-    {
-        $this->role = $role->value;
+        return $this->belongsTo(Role::class);
     }
 }

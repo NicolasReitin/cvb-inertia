@@ -17,7 +17,6 @@ class StoreTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
             'name' => 'required|string|max:55',
             'category' => 'nullable|string|in:senior, young',
             'role' => 'nullable|string|in:male, female, mixed',
