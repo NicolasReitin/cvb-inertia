@@ -16,25 +16,29 @@ const Users = ({notify}) => {
       email: user.email,
       role_id: user.role ? user.role.id : ''
     });
-    console.log(form);
   };
 
+  // UPDATE
   const handleUpdate = (id) => {
     form.put(route('admin.user.update', id), {
-      onSuccess: () => setEditId(null),
+      onSuccess: () => {
+       setEditId(null),
+       notify('updated') 
+      },
     });
   };
  
-  //DELETE
+  // DELETE
   const handleDelete = (id) => {
     if (confirm('Supprimer cet utilisateur ?')) {
-      form.delete(route('admin.user.destroy', id));
+      form.delete(route('admin.user.destroy', id), {
+        onSuccess: () => {
+          notify('deleted');
+        },
+      });
     }
   };
 
-  const addUserToStaff = (newUser) => {
-    setStaff((prevStaff) => [...prevStaff, newUser]);
-  };
   
   return (
     <>
@@ -44,7 +48,6 @@ const Users = ({notify}) => {
           <div>
             <ButtonAddUser
               roles = {roles}
-              addUserToStaff = {addUserToStaff}
               notify = {notify}
             />
           </div>

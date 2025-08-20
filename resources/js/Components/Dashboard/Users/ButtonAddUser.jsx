@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { useForm, usePage } from '@inertiajs/react';
 
-export default function ButtonAddUser({ roles, addUserToStaff, notify }) {
+export default function ButtonAddUser({ roles, notify }) {
     const [createUser, setCreateUser] = useState(false);
-console.log(usePage());
-
-    // useForm d’Inertia
     const { data, setData, post, processing, reset, errors } = useForm({
         name: '',
         email: '',
@@ -14,7 +11,7 @@ console.log(usePage());
     });
 
     const handleAddUser = () => {
-        setCreateUser(true);
+        setCreateUser(prevState => !prevState);
     };
 
     const handleSubmit = (e) => {
@@ -22,14 +19,12 @@ console.log(usePage());
 
         post(route('user.store'), {
             onSuccess: (page) => {
-                notify(success)
-                alert(`L'utilisateur ${data.name} a bien été créé`);
-                addUserToStaff(page.props.user); // si tu renvoies le user depuis ton contrôleur
+                notify('success')
                 reset();
                 setCreateUser(false);
             },
             onError: () => {
-                alert("Une erreur est survenue lors de la création de l'utilisateur.");
+                notify('error')
             },
         });
     };
@@ -106,6 +101,7 @@ console.log(usePage());
                             type="submit" 
                             className="button-add-user" 
                             disabled={processing}
+                            onClick={notify}
                         >
                             {processing ? 'Création...' : 'Valider'}
                         </button>
