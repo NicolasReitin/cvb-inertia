@@ -7,5 +7,9 @@ Route::get('/equipe/{team}', [TeamController::class, 'show'])->name('team.show')
 
 // Admin
 Route::middleware('auth')->group(function () {
-    Route::get('/admin/equipes', fn () => Inertia::render('Admin/Team/Team', []))->name('admin.team');
+    // Team
+    Route::get('/admin/equipes', [TeamController::class, 'admin'])->name('admin.team');
+
+    // Player
+    
 });

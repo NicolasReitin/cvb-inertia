@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
-use App\Models\Player;
 use App\Models\Team;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class TeamController extends Controller
 {
@@ -47,5 +47,14 @@ class TeamController extends Controller
     public function destroy(Team $team)
     {
         //
+    }
+
+    public function admin(): Response
+    {
+        $teams = Team::all();
+
+        return Inertia::render('Admin/Team/Team', [
+            'teams' => $teams,
+        ]);
     }
 }
